@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Phone, ShieldCheck, Sparkles, Star, Award, Users, Boxes, BadgeCheck } from "lucide-react";
 import * as Icons from "lucide-react";
 import heroImg from "@/assets/hero-shop.jpg";
+import ownerImg from "@/assets/owner.png";
+import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, CATEGORIES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
 
@@ -129,12 +131,15 @@ function HomePage() {
         </div>
       </section>
 
+      {/* BRAND LOGOS MARQUEE */}
+      <BrandMarquee />
+
       {/* SERVICES */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-2xl">
             <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.services")}</h2>
+            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.services")}</h2>
             <p className="mt-3 text-muted-foreground">{t("section.servicesSub")}</p>
           </div>
           <Link to="/services" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-primary hover:underline sm:inline-flex">
@@ -142,9 +147,9 @@ function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.slice(0, 8).map((s) => (
-            <div key={s.key} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-1 hover:shadow-elevated">
+            <div key={s.key} className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
@@ -161,7 +166,7 @@ function HomePage() {
           <div className="flex items-end justify-between gap-4">
             <div className="max-w-2xl">
               <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
-              <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.products")}</h2>
+              <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.products")}</h2>
               <p className="mt-3 text-muted-foreground">{t("section.productsSub")}</p>
             </div>
             <Link to="/products" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-primary hover:underline sm:inline-flex">
@@ -175,7 +180,7 @@ function HomePage() {
                 key={c.key}
                 to="/products"
                 hash={c.key}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:shadow-elevated"
+                className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover"
               >
                 <div className="flex items-start justify-between">
                   <span className="grid h-14 w-14 place-items-center rounded-2xl gradient-hero text-primary-foreground shadow-soft">
@@ -203,18 +208,21 @@ function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-primary-soft shadow-soft">
-              <div className="grid h-full w-full place-items-center gradient-hero">
-                <div className="text-center text-primary-foreground">
-                  <div className="grid h-24 w-24 mx-auto place-items-center rounded-full bg-secondary text-4xl font-black text-secondary-foreground shadow-elevated">
-                    R
-                  </div>
-                  <p className="mt-6 text-2xl font-bold">R. C. Ramalingam</p>
-                  <p className="mt-1 text-sm text-primary-foreground/70">Founder · SRS Computer & Service</p>
-                </div>
+            <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
+              <img
+                src={ownerImg}
+                alt="R. C. Ramalingam"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white">
+                <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-accent/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-accent-foreground mb-2 shadow-soft">
+                  <Sparkles className="h-3 w-3" /> {t("hero.eyebrow")}
+                </span>
+                <p className="text-2xl font-black tracking-tight text-white">{BUSINESS.owner}</p>
+                <p className="text-sm font-medium text-white/85">Founder · SRS Computer & Service</p>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-card p-5 shadow-elevated sm:block">
+            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-card p-5 border border-border shadow-elevated sm:block transition-transform hover:scale-105 duration-300">
               <p className="text-3xl font-black text-primary">15+</p>
               <p className="text-xs font-medium text-muted-foreground">{t("stats.years")}</p>
             </div>
@@ -222,7 +230,7 @@ function HomePage() {
 
           <div>
             <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.about")}</p>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.about")}</h2>
+            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.about")}</h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">{t("section.aboutBody")}</p>
             <Link
               to="/about"

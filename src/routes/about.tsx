@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Award, Users, ShieldCheck, Heart, Sparkles, Wrench } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS } from "@/lib/business";
+import ownerImg from "@/assets/owner.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -42,18 +43,20 @@ function AboutPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-elevated">
-            <div className="grid h-full w-full place-items-center gradient-hero">
-              <div className="text-center text-primary-foreground">
-                <div className="grid mx-auto h-28 w-28 place-items-center rounded-full bg-secondary text-5xl font-black text-secondary-foreground shadow-elevated">R</div>
-                <p className="mt-6 text-2xl font-bold">{BUSINESS.owner}</p>
-                <p className="mt-1 text-sm text-primary-foreground/70">Founder · Est. {BUSINESS.established}</p>
-              </div>
+          <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
+            <img
+              src={ownerImg}
+              alt={BUSINESS.owner}
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 text-white">
+              <p className="text-2xl font-black tracking-tight text-white">{BUSINESS.owner}</p>
+              <p className="text-sm font-medium text-white/80">Founder · Est. {BUSINESS.established}</p>
             </div>
           </div>
 
           <div>
-            <h2 className="text-2xl font-black tracking-tight sm:text-3xl">
+            <h2 className="text-2xl font-black tracking-tight sm:text-3xl text-gradient">
               {lang === "ta" ? "எங்கள் கதை" : "Our story"}
             </h2>
             <div className="mt-5 space-y-4 text-muted-foreground leading-relaxed">
@@ -71,8 +74,8 @@ function AboutPage() {
 
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {VALUES.map((v, i) => (
-                <div key={i} className="rounded-2xl border border-border bg-card p-4">
-                  <v.icon className="h-6 w-6 text-secondary" />
+                <div key={i} className="group rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-5 glass-card glow-hover">
+                  <v.icon className="h-6 w-6 text-secondary transition-transform duration-300 group-hover:scale-110" />
                   <p className="mt-3 text-sm font-bold">{lang === "ta" ? v.ta : v.en}</p>
                 </div>
               ))}
