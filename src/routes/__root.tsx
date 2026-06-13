@@ -11,6 +11,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { I18nProvider } from "@/lib/i18n";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { FloatingContact } from "@/components/site/FloatingContact";
 
 function NotFoundComponent() {
   return (
@@ -77,19 +81,56 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SRS Computer & Service — Perambalur's Trusted Computer Shop" },
+      {
+        name: "description",
+        content:
+          "Computer & laptop sales, printers, CCTV cameras, networking, repairs and AMC in Perambalur. Trusted since 2009 by R. C. Ramalingam.",
+      },
+      { name: "author", content: "SRS Computer & Service" },
+      { name: "theme-color", content: "#0F4C81" },
+      { property: "og:site_name", content: "SRS Computer & Service" },
+      { property: "og:title", content: "SRS Computer & Service — Perambalur" },
+      {
+        property: "og:description",
+        content:
+          "Laptops, desktops, printers, CCTV, networking & repairs in Perambalur since 2009.",
+      },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "SRS Computer & Service",
+          image: "/__l5e/og/srs.jpg",
+          founder: "R. C. Ramalingam",
+          foundingDate: "2009-11-15",
+          telephone: "+916380876818",
+          email: "srscomputerservicepblr@gmail.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "1st Floor, Royal Enfield Showroom, Venkatesapuram",
+            addressLocality: "Perambalur",
+            postalCode: "621212",
+            addressRegion: "Tamil Nadu",
+            addressCountry: "IN",
+          },
+          areaServed: "Perambalur",
+          priceRange: "₹₹",
+        }),
       },
     ],
   }),
@@ -118,8 +159,16 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <I18nProvider>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+        <FloatingContact />
+      </I18nProvider>
     </QueryClientProvider>
   );
 }
