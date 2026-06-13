@@ -118,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           image: "/__l5e/og/srs.jpg",
           founder: "R. C. Ramalingam",
           foundingDate: "2009-11-15",
-          telephone: "+916380876818",
+          telephone: ["+916380876818", "+917305670008"],
           email: "srscomputerservicepblr@gmail.com",
           address: {
             "@type": "PostalAddress",

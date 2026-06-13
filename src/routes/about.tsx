@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Award, Users, ShieldCheck, Heart, Sparkles, Wrench } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS } from "@/lib/business";
+import { PRODUCT_SHOWCASE } from "@/lib/shop-images";
 import ownerImg from "@/assets/owner.png";
 
 export const Route = createFileRoute("/about")({
@@ -42,8 +43,9 @@ function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr]">
+          <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:mx-0">
+            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
             <img
               src={ownerImg}
               alt={BUSINESS.owner}
@@ -52,6 +54,7 @@ function AboutPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 text-white">
               <p className="text-2xl font-black tracking-tight text-white">{BUSINESS.owner}</p>
               <p className="text-sm font-medium text-white/80">Founder · Est. {BUSINESS.established}</p>
+            </div>
             </div>
           </div>
 
@@ -95,6 +98,41 @@ function AboutPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/40 py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
+          <h2 className="mt-2 text-2xl font-black tracking-tight sm:text-3xl text-gradient">
+            {lang === "ta" ? "கடையில் கிடைக்கும் தயாரிப்புகள்" : "Products available in our store"}
+          </h2>
+          <p className="mt-3 max-w-2xl text-muted-foreground">
+            {lang === "ta"
+              ? "எங்கள் கடையில் உள்ள உண்மையான தயாரிப்பு புகைப்படங்கள் — பெயருக்கு ஏற்ப வகைப்படுத்தப்பட்டுள்ளன."
+              : "Real photos from our store shelves — matched to the products we sell."}
+          </p>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {PRODUCT_SHOWCASE.map((p) => (
+              <article
+                key={p.key}
+                className="group overflow-hidden rounded-2xl border border-border/80 bg-card shadow-soft transition hover:-translate-y-0.5 hover:shadow-elevated"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={p.en}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="px-4 py-3">
+                  <h3 className="text-sm font-bold">{lang === "ta" ? p.ta : p.en}</h3>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

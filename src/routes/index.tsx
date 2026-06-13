@@ -4,6 +4,7 @@ import * as Icons from "lucide-react";
 import heroImg from "@/assets/hero-shop.jpg";
 import ownerImg from "@/assets/owner.png";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
+import { ShopGallery, ShopGalleryMarquee } from "@/components/site/ShopGallery";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, CATEGORIES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
 
@@ -110,9 +111,13 @@ function HomePage() {
               </dl>
             </div>
 
+            <div className="lg:hidden">
+              <ShopGallery compact autoPlayMs={3500} />
+            </div>
+
             <div className="relative hidden lg:block">
-              <div className="animate-float-soft relative overflow-hidden rounded-3xl border border-primary-foreground/20 shadow-elevated">
-                <img src={heroImg} alt="SRS Computer & Service shop interior" width={1600} height={1024} className="h-full w-full object-cover" />
+              <div className="animate-float-soft">
+                <ShopGallery compact autoPlayMs={3500} />
               </div>
               <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-2xl bg-card p-4 shadow-elevated">
                 <div className="flex items-center gap-2 text-secondary">
@@ -133,6 +138,9 @@ function HomePage() {
 
       {/* BRAND LOGOS MARQUEE */}
       <BrandMarquee />
+
+      {/* STORE GALLERY */}
+      <ShopGalleryMarquee />
 
       {/* SERVICES */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
@@ -207,8 +215,8 @@ function HomePage() {
       {/* ABOUT OWNER */}
       <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="relative">
-            <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
+          <div className="relative mx-auto max-w-xs sm:max-w-sm lg:mx-0">
+            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
               <img
                 src={ownerImg}
                 alt="R. C. Ramalingam"

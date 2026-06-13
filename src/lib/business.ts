@@ -8,7 +8,7 @@ export const BUSINESS = {
   },
   phones: ["6380876818", "7305670008"],
   emails: ["srscomputerservicepblr@gmail.com", "srstech123@gmail.com"],
-  whatsapp: "6380876818",
+  whatsapp: "7305670008",
   mapLink: "https://share.google/pgsblmcmw5jwUF06Z",
   mapEmbed:
     "https://www.google.com/maps?q=Royal+Enfield+Showroom+Venkatesapuram+Perambalur&output=embed",
