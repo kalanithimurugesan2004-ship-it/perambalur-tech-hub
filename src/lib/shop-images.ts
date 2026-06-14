@@ -4,6 +4,22 @@ import storeShelf from "@/assets/store-shelf.png";
 import accessoriesCabinet from "@/assets/accessories-cabinet.png";
 import components from "@/assets/components.png";
 import printerSupplies from "@/assets/printer-supplies.png";
+import {
+  laptop,
+  desktop,
+  monitor,
+  printer,
+  cctvBullet,
+  solarCamera,
+  adapter,
+  memoryCard,
+  router,
+  motherboard,
+  keyboardMouse,
+  ups,
+  scanner,
+  toner,
+} from "@/lib/product-images";
 
 export type ShopImage = {
   src: string;
@@ -52,18 +68,18 @@ export type ProductShowcase = {
 };
 
 export const PRODUCT_SHOWCASE: ProductShowcase[] = [
-  { key: "cctv", en: "CCTV Camera", ta: "சிசிடிவி கேமரா", image: cctvCameras },
-  { key: "cctv-smart", en: "CCTV SIM / WiFi / Solar Camera", ta: "சிசிடிவி SIM / WiFi / சோலார் கேமரா", image: cctvCameras },
-  { key: "computer", en: "Computer", ta: "கணினி", image: storeShelf },
-  { key: "laptop", en: "Laptop", ta: "லேப்டாப்", image: storeShelf },
-  { key: "monitor", en: "Monitor", ta: "மானிட்டர்", image: storeShelf },
-  { key: "printer", en: "All Model Printer", ta: "அனைத்து மாடல் பிரிண்டர்", image: printerSupplies },
-  { key: "toner", en: "Toner & Toner Refilling", ta: "டோனர் & டோனர் ரீஃபில்", image: printerSupplies },
-  { key: "adapters", en: "Laptop Adapters", ta: "லேப்டாப் அடாப்டர்கள்", image: accessoriesCabinet },
-  { key: "storage", en: "SSD & Data Card", ta: "SSD & டேட்டா கார்டு", image: accessoriesCabinet },
-  { key: "router", en: "Wireless Router", ta: "வயர்லெஸ் ரூட்டர்", image: printerSupplies },
-  { key: "components", en: "Motherboard & RAM", ta: "மதர்போர்டு & RAM", image: components },
-  { key: "keyboard", en: "Keyboard & Mouse", ta: "விசைப்பலகை & சுட்டி", image: printerSupplies },
-  { key: "ups", en: "UPS & Speakers", ta: "UPS & ஸ்பீக்கர்கள்", image: storeShelf },
-  { key: "scanner", en: "Scanner", ta: "ஸ்கேனர்", image: printerSupplies },
+  { key: "cctv", en: "CCTV Camera", ta: "சிசிடிவி கேமரா", image: cctvBullet },
+  { key: "cctv-smart", en: "CCTV SIM / WiFi / Solar Camera", ta: "சிசிடிவி SIM / WiFi / சோலார் கேமரா", image: solarCamera },
+  { key: "computer", en: "Computer", ta: "கணினி", image: desktop },
+  { key: "laptop", en: "Laptop", ta: "லேப்டாப்", image: laptop },
+  { key: "monitor", en: "Monitor", ta: "மானிட்டர்", image: monitor },
+  { key: "printer", en: "All Model Printer", ta: "அனைத்து மாடல் பிரிண்டர்", image: printer },
+  { key: "toner", en: "Toner & Toner Refilling", ta: "டோனர் & டோனர் ரீஃபில்", image: toner },
+  { key: "adapters", en: "Laptop Adapters", ta: "லேப்டாப் அடாப்டர்கள்", image: adapter },
+  { key: "storage", en: "SSD & Data Card", ta: "SSD & டேட்டா கார்டு", image: memoryCard },
+  { key: "router", en: "Wireless Router", ta: "வயர்லெஸ் ரூட்டர்", image: router },
+  { key: "components", en: "Motherboard & RAM", ta: "மதர்போர்டு & RAM", image: motherboard },
+  { key: "keyboard", en: "Keyboard & Mouse", ta: "விசைப்பலகை & சுட்டி", image: keyboardMouse },
+  { key: "ups", en: "UPS & Speakers", ta: "UPS & ஸ்பீக்கர்கள்", image: ups },
+  { key: "scanner", en: "Scanner", ta: "ஸ்கேனர்", image: scanner },
 ];

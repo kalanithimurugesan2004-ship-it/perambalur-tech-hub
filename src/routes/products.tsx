@@ -3,6 +3,7 @@ import * as Icons from "lucide-react";
 import { CheckCircle2, MessageCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { CATEGORIES, whatsappLink } from "@/lib/business";
+import { getProductImage } from "@/lib/product-images";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -75,33 +76,41 @@ function ProductsPage() {
                   return (
                     <article
                       key={p}
-                      className="group flex flex-col gap-3 rounded-2xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:shadow-elevated"
+                      className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card transition hover:-translate-y-0.5 hover:shadow-elevated"
                     >
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="text-sm font-bold leading-snug">{p}</h3>
+                      <div className="relative aspect-[4/3] overflow-hidden bg-muted/40">
+                        <img
+                          src={getProductImage(p)}
+                          alt={p}
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          loading="lazy"
+                        />
                         <span
-                          className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                          className={`absolute right-3 top-3 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-soft ${
                             isRefurb
-                              ? "bg-secondary/15 text-secondary"
-                              : "bg-accent/15 text-accent"
+                              ? "bg-secondary/95 text-secondary-foreground"
+                              : "bg-accent/95 text-accent-foreground"
                           }`}
                         >
                           {isRefurb ? t("badge.refurb") : t("badge.inStock")}
                         </span>
                       </div>
-                      <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
-                        {lang === "ta" ? "கடையில் கிடைக்கும்" : "Available in store"}
-                      </p>
-                      <a
-                        href={whatsappLink(`Hello SRS, I'd like to enquire about: ${p}`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs font-bold text-accent-foreground shadow-soft transition hover:scale-[1.02]"
-                      >
-                        <MessageCircle className="h-3.5 w-3.5" />
-                        {t("cta.enquire")}
-                      </a>
+                      <div className="flex flex-1 flex-col gap-3 p-5">
+                        <h3 className="text-sm font-bold leading-snug">{p}</h3>
+                        <p className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+                          {lang === "ta" ? "கடையில் கிடைக்கும்" : "Available in store"}
+                        </p>
+                        <a
+                          href={whatsappLink(`Hello SRS, I'd like to enquire about: ${p}`)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-auto inline-flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs font-bold text-accent-foreground shadow-soft transition hover:scale-[1.02]"
+                        >
+                          <MessageCircle className="h-3.5 w-3.5" />
+                          {t("cta.enquire")}
+                        </a>
+                      </div>
                     </article>
                   );
                 })}

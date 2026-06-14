@@ -1,12 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import type { CarouselApi } from "@/components/ui/carousel";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 import { GALLERY_IMAGES } from "@/lib/shop-images";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -17,82 +9,88 @@ type ShopGalleryProps = {
   autoPlayMs?: number;
 };
 
-export function ShopGallery({ className, compact = false, autoPlayMs = 4000 }: ShopGalleryProps) {
+export function ShopGallery({ className, compact = false, autoPlayMs = 4500 }: ShopGalleryProps) {
   const { lang } = useI18n();
-  const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
-
-  const onSelect = useCallback((carouselApi: CarouselApi) => {
-    if (!carouselApi) return;
-    setActive(carouselApi.selectedScrollSnap());
-  }, []);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    if (!api) return;
-    onSelect(api);
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api, onSelect]);
-
-  useEffect(() => {
-    if (!api) return;
     const timer = setInterval(() => {
-      if (api.canScrollNext()) api.scrollNext();
-      else api.scrollTo(0);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setActive((prev) => (prev + 1) % GALLERY_IMAGES.length);
+        setIsTransitioning(false);
+      }, 500);
     }, autoPlayMs);
     return () => clearInterval(timer);
-  }, [api, autoPlayMs]);
+  }, [autoPlayMs]);
+
+  const current = GALLERY_IMAGES[active];
 
   return (
     <div className={cn("relative", className)}>
-      <Carousel
-        setApi={setApi}
-        opts={{ loop: true }}
-        className="w-full"
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-[2rem] border border-primary-foreground/15 bg-primary-foreground/5 shadow-elevated",
+          compact ? "aspect-[4/3]" : "aspect-[16/10] lg:aspect-[4/3]",
+        )}
       >
-        <CarouselContent>
-          {GALLERY_IMAGES.map((img, i) => (
-            <CarouselItem key={i}>
-              <div
-                className={cn(
-                  "relative overflow-hidden rounded-3xl border border-primary-foreground/20 shadow-elevated",
-                  compact ? "aspect-[4/3]" : "aspect-[16/10] lg:aspect-[4/3]",
-                )}
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  loading={i === 0 ? "eager" : "lazy"}
-                />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent px-4 py-3 sm:px-5 sm:py-4">
-                  <p className="text-sm font-bold text-white sm:text-base">
-                    {lang === "ta" ? img.caption.ta : img.caption.en}
-                  </p>
-                </div>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="left-3 border-primary-foreground/20 bg-card/90 text-foreground shadow-soft hover:bg-card" />
-        <CarouselNext className="right-3 border-primary-foreground/20 bg-card/90 text-foreground shadow-soft hover:bg-card" />
-      </Carousel>
-
-      <div className="mt-3 flex justify-center gap-1.5">
-        {GALLERY_IMAGES.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            aria-label={`Go to slide ${i + 1}`}
-            onClick={() => api?.scrollTo(i)}
+        {GALLERY_IMAGES.map((img, i) => (
+          <img
+            key={img.alt}
+            src={img.src}
+            alt={img.alt}
+            aria-hidden={i !== active}
             className={cn(
-              "h-2 rounded-full transition-all duration-300",
-              active === i ? "w-6 bg-secondary" : "w-2 bg-muted-foreground/35 hover:bg-muted-foreground/55",
+              "absolute inset-0 h-full w-full object-cover transition-all duration-[900ms] ease-in-out",
+              i === active
+                ? cn("opacity-100 scale-100", isTransitioning && "scale-[1.03]")
+                : "opacity-0 scale-[1.06]",
             )}
+            loading={i === 0 ? "eager" : "lazy"}
           />
         ))}
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-16 sm:px-6 sm:pb-6">
+          <p
+            className={cn(
+              "text-sm font-semibold text-white/95 transition-all duration-700 sm:text-base",
+              isTransitioning ? "translate-y-2 opacity-0" : "translate-y-0 opacity-100",
+            )}
+          >
+            {lang === "ta" ? current.caption.ta : current.caption.en}
+          </p>
+        </div>
+
+        <div className="absolute left-5 top-5 rounded-2xl bg-black/35 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90 backdrop-blur-md">
+          {String(active + 1).padStart(2, "0")} / {String(GALLERY_IMAGES.length).padStart(2, "0")}
+        </div>
+      </div>
+
+      <div className="mt-4 flex items-center gap-3">
+        <div className="h-1 flex-1 overflow-hidden rounded-full bg-primary-foreground/15">
+          <div
+            key={active}
+            className="h-full origin-left rounded-full bg-secondary animate-[gallery-progress_var(--gallery-duration)_linear_forwards]"
+            style={{ "--gallery-duration": `${autoPlayMs}ms` } as React.CSSProperties}
+          />
+        </div>
+        <div className="flex gap-2">
+          {GALLERY_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Show slide ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={cn(
+                "h-2.5 rounded-full transition-all duration-500",
+                active === i ? "w-8 bg-secondary" : "w-2.5 bg-primary-foreground/25 hover:bg-primary-foreground/40",
+              )}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -120,12 +118,12 @@ export function ShopGalleryMarquee() {
           {items.map((img, i) => (
             <figure
               key={`${img.alt}-${i}`}
-              className="w-64 shrink-0 overflow-hidden rounded-2xl border border-border/80 bg-card shadow-soft sm:w-72"
+              className="w-64 shrink-0 overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-soft sm:w-72"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={img.src} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />
               </div>
-              <figcaption className="px-3 py-2.5 text-xs font-semibold text-muted-foreground">
+              <figcaption className="px-4 py-3 text-xs font-semibold text-muted-foreground">
                 {lang === "ta" ? img.caption.ta : img.caption.en}
               </figcaption>
             </figure>

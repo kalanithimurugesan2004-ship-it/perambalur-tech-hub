@@ -111,14 +111,14 @@ function AboutPage() {
           <p className="mt-3 max-w-2xl text-muted-foreground">
             {lang === "ta"
               ? "எங்கள் கடையில் உள்ள உண்மையான தயாரிப்பு புகைப்படங்கள் — பெயருக்கு ஏற்ப வகைப்படுத்தப்பட்டுள்ளன."
-              : "Real photos from our store shelves — matched to the products we sell."}
+              : "Product images matched to each item we sell — laptops, CCTV, printers, and more."}
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {PRODUCT_SHOWCASE.map((p) => (
               <article
                 key={p.key}
-                className="group overflow-hidden rounded-2xl border border-border/80 bg-card shadow-soft transition hover:-translate-y-0.5 hover:shadow-elevated"
+                className="group overflow-hidden rounded-[1.5rem] border border-border/80 bg-card shadow-soft transition hover:-translate-y-0.5 hover:shadow-elevated"
               >
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
