@@ -6,7 +6,9 @@ import ownerImg from "@/assets/owner.png";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { ShopGallery, ShopGalleryMarquee } from "@/components/site/ShopGallery";
 import { useI18n } from "@/lib/i18n";
-import { BUSINESS, SERVICES, CATEGORIES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
+import { BUSINESS, SERVICES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
+import { PRODUCT_CATEGORIES } from "@/lib/product-catalog";
+import { getCategoryImage } from "@/lib/product-images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,14 +43,14 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
+      <section id="home" className="hero-3d relative isolate overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img
             src={heroImg}
             alt=""
             width={1600}
             height={1024}
-            className="h-full w-full object-cover opacity-25"
+            className="hero-3d-bg h-full w-full object-cover opacity-25"
           />
           <div className="absolute inset-0 gradient-hero opacity-95" />
         </div>
@@ -112,12 +114,12 @@ function HomePage() {
             </div>
 
             <div className="lg:hidden">
-              <ShopGallery compact autoPlayMs={3500} />
+              <ShopGallery compact />
             </div>
 
-            <div className="relative hidden lg:block">
-              <div className="animate-float-soft">
-                <ShopGallery compact autoPlayMs={3500} />
+            <div className="relative hidden lg:block perspective">
+              <div className="animate-rotate-3d">
+                <ShopGallery compact />
               </div>
               <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-2xl bg-card p-4 shadow-elevated">
                 <div className="flex items-center gap-2 text-secondary">
@@ -143,7 +145,7 @@ function HomePage() {
       <ShopGalleryMarquee />
 
       {/* SERVICES */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-2xl">
             <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
@@ -169,9 +171,9 @@ function HomePage() {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section className="bg-muted/40 py-20">
+      <section id="products" className="bg-muted/40 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between gap-4">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div className="max-w-2xl">
               <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
               <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.products")}</h2>
@@ -182,13 +184,13 @@ function HomePage() {
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {CATEGORIES.slice(0, 6).map((c) => (
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {PRODUCT_CATEGORIES.slice(0, 6).map((c) => (
               <Link
                 key={c.key}
                 to="/products"
                 hash={c.key}
-                className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover"
+                className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover transition hover:-translate-y-0.5 hover:shadow-elevated"
               >
                 <div className="flex items-start justify-between">
                   <span className="grid h-14 w-14 place-items-center rounded-2xl gradient-hero text-primary-foreground shadow-soft">
@@ -198,12 +200,9 @@ function HomePage() {
                     {t("badge.inStock")}
                   </span>
                 </div>
-                <h3 className="mt-5 text-lg font-bold">{lang === "ta" ? c.ta : c.en}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{c.products.length}+ items</p>
-                <p className="mt-3 line-clamp-2 text-xs text-muted-foreground/80">
-                  {c.products.slice(0, 4).join(" · ")}
-                </p>
-                <div className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-primary">
+                <h3 className="mt-5 text-lg font-bold">{c.name}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{c.description}</p>
+                <div className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary">
                   Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </div>
               </Link>
@@ -213,7 +212,7 @@ function HomePage() {
       </section>
 
       {/* ABOUT OWNER */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section id="about" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative mx-auto max-w-xs sm:max-w-sm lg:mx-0">
             <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">

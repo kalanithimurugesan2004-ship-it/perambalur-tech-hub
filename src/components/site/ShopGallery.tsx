@@ -9,7 +9,63 @@ type ShopGalleryProps = {
   autoPlayMs?: number;
 };
 
-export function ShopGallery({ className, compact = false, autoPlayMs = 4500 }: ShopGalleryProps) {
+export function ShopGallery({ className, compact = false }: Omit<ShopGalleryProps, 'autoPlayMs'>) {
+  const { lang } = useI18n();
+  const [active, setActive] = useState(0);
+
+  const current = GALLERY_IMAGES[active];
+
+  return (
+    <div className={cn("relative", className)}>
+      <div
+        className={cn(
+          "relative overflow-hidden rounded-[2rem] border border-primary-foreground/15 bg-primary-foreground/5 shadow-elevated",
+          compact ? "aspect-[4/3]" : "aspect-[16/10] lg:aspect-[4/3]",
+        )}
+      >
+        <img
+          src={current.src}
+          alt={current.alt}
+          className="h-full w-full object-cover"
+          loading="eager"
+        />
+
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+        <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-16 sm:px-6 sm:pb-6">
+          <p className="text-sm font-semibold text-white/95 sm:text-base">
+            {lang === "ta" ? current.caption.ta : current.caption.en}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-4 flex items-center gap-3">
+        <div className="flex gap-2">
+          {GALLERY_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Show slide ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={cn(
+                "h-2.5 rounded-full transition-all duration-500",
+                active === i ? "w-8 bg-secondary" : "w-2.5 bg-primary-foreground/25 hover:bg-primary-foreground/40",
+              )}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+type ShopGalleryLegacyProps = {
+  className?: string;
+  compact?: boolean;
+  autoPlayMs?: number;
+};
+
+export function ShopGalleryLegacy({ className, compact = false, autoPlayMs = 4500 }: ShopGalleryLegacyProps) {
   const { lang } = useI18n();
   const [active, setActive] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -62,10 +118,6 @@ export function ShopGallery({ className, compact = false, autoPlayMs = 4500 }: S
           >
             {lang === "ta" ? current.caption.ta : current.caption.en}
           </p>
-        </div>
-
-        <div className="absolute left-5 top-5 rounded-2xl bg-black/35 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-white/90 backdrop-blur-md">
-          {String(active + 1).padStart(2, "0")} / {String(GALLERY_IMAGES.length).padStart(2, "0")}
         </div>
       </div>
 

@@ -109,7 +109,7 @@ export function BrandMarquee() {
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />
 
       {/* Repeating Label */}
-      <div className="max-w-7xl mx-auto px-4 mb-3 flex items-center justify-between text-xs font-semibold tracking-wider text-muted-foreground uppercase">
+      <div className="max-w-7xl mx-auto px-4 mb-3 flex flex-col items-center justify-center gap-2 text-center text-xs font-semibold tracking-wider text-muted-foreground uppercase sm:flex-row sm:gap-4">
         <span>{lang === "ta" ? "அங்கீகரிக்கப்பட்ட பிராண்டுகள் & சேவைகள்" : "Authorized Brands & Services"}</span>
         <span className="inline-flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />

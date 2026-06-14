@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Cpu } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
@@ -15,7 +15,42 @@ const NAV = [
 export function Header() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setActiveSection("home");
+      return;
+    }
+
+    const sectionIds = ["home", "services", "products", "about"];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible?.target?.id) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: [0.25, 0.5, 0.75] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [pathname]);
+
+  const sectionByRoute: Record<string, string> = {
+    "/": "home",
+    "/services": "services",
+    "/products": "products",
+    "/about": "about",
+    "/contact": "contact",
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
@@ -32,7 +67,10 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((item) => {
-            const active = item.to === "/" ? pathname === "/" : pathname.startsWith(item.to);
+            const active =
+              item.to === "/"
+                ? pathname === "/" && activeSection === "home"
+                : pathname === item.to || (pathname === "/" && sectionByRoute[item.to] === activeSection);
             return (
               <Link
                 key={item.to}

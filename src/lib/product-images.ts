@@ -132,6 +132,35 @@ const PRODUCT_IMAGES: Record<string, string> = {
   "Refurbished Printers": refurbPrinter,
 };
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  laptops: laptop,
+  desktops: desktop,
+  monitors: monitor,
+  printers: printer,
+  "printer-inks-toners": ink,
+  "cctv-cameras": cctvBullet,
+  "dvr-nvr": nvr,
+  networking: router,
+  ram: ram,
+  "ssd-hdd": ssd,
+  processors: intelCpu,
+  motherboards: motherboard,
+  "graphics-cards": graphicsCard,
+  cabinets: cabinet,
+  smps: smps,
+  ups: ups,
+  "keyboard-mouse": keyboardMouse,
+  adapters: adapter,
+  speakers: speaker,
+  "cables-connectors": cable,
+  "memory-cards": memoryCard,
+};
+
+export function getCategoryImage(categoryKey: string): string {
+  if (CATEGORY_IMAGES[categoryKey]) return CATEGORY_IMAGES[categoryKey];
+  return laptop;
+}
+
 export function getProductImage(name: string): string {
   if (PRODUCT_IMAGES[name]) return PRODUCT_IMAGES[name];
 
