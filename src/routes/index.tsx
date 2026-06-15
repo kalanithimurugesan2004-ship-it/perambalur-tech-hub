@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Phone, ShieldCheck, Sparkles, Star, Award, Users, Boxes, BadgeCheck } from "lucide-react";
 import * as Icons from "lucide-react";
+import { useState } from "react";
 import heroImg from "@/assets/hero-shop.jpg";
 import ownerImg from "@/assets/owner.png";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { ShopGallery, ShopGalleryMarquee } from "@/components/site/ShopGallery";
+import { TechHeroAnimation3D } from "@/components/site/TechHeroAnimation3D";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
 import { PRODUCT_CATEGORIES } from "@/lib/product-catalog";
@@ -37,8 +39,33 @@ function Icon({ name, className = "" }: { name: string; className?: string }) {
   return <Comp className={className} />;
 }
 
+const categoryColors: Record<string, { gradient: string; text: string; bg: string }> = {
+  "laptops": { gradient: "from-blue-600 to-cyan-500", text: "text-blue-500", bg: "hover:border-blue-500/40 hover:shadow-blue-500/10 hover:bg-blue-500/[0.02]" },
+  "desktops": { gradient: "from-indigo-600 to-violet-500", text: "text-indigo-500", bg: "hover:border-indigo-500/40 hover:shadow-indigo-500/10 hover:bg-indigo-500/[0.02]" },
+  "monitors": { gradient: "from-violet-600 to-fuchsia-500", text: "text-violet-500", bg: "hover:border-violet-500/40 hover:shadow-violet-500/10 hover:bg-violet-500/[0.02]" },
+  "printers": { gradient: "from-amber-600 to-orange-500", text: "text-amber-500", bg: "hover:border-amber-500/40 hover:shadow-amber-500/10 hover:bg-amber-500/[0.02]" },
+  "printer-inks-toners": { gradient: "from-orange-600 to-red-500", text: "text-orange-500", bg: "hover:border-orange-500/40 hover:shadow-orange-500/10 hover:bg-orange-500/[0.02]" },
+  "cctv-cameras": { gradient: "from-emerald-600 to-teal-500", text: "text-emerald-500", bg: "hover:border-emerald-500/40 hover:shadow-emerald-500/10 hover:bg-emerald-500/[0.02]" },
+  "dvr-nvr": { gradient: "from-teal-600 to-cyan-500", text: "text-teal-500", bg: "hover:border-teal-500/40 hover:shadow-teal-500/10 hover:bg-teal-500/[0.02]" },
+  "networking": { gradient: "from-sky-600 to-blue-500", text: "text-sky-500", bg: "hover:border-sky-500/40 hover:shadow-sky-500/10 hover:bg-sky-500/[0.02]" },
+  "ram": { gradient: "from-rose-600 to-pink-500", text: "text-rose-500", bg: "hover:border-rose-500/40 hover:shadow-rose-500/10 hover:bg-rose-500/[0.02]" },
+  "ssd-hdd": { gradient: "from-pink-600 to-rose-500", text: "text-pink-500", bg: "hover:border-pink-500/40 hover:shadow-pink-500/10 hover:bg-pink-500/[0.02]" },
+  "processors": { gradient: "from-cyan-600 to-blue-500", text: "text-cyan-500", bg: "hover:border-cyan-500/40 hover:shadow-cyan-500/10 hover:bg-cyan-500/[0.02]" },
+  "motherboards": { gradient: "from-fuchsia-600 to-purple-500", text: "text-fuchsia-500", bg: "hover:border-fuchsia-500/40 hover:shadow-fuchsia-500/10 hover:bg-fuchsia-500/[0.02]" },
+  "graphics-cards": { gradient: "from-purple-600 to-indigo-500", text: "text-purple-500", bg: "hover:border-purple-500/40 hover:shadow-purple-500/10 hover:bg-purple-500/[0.02]" },
+  "cabinets": { gradient: "from-slate-600 to-zinc-500", text: "text-slate-500", bg: "hover:border-slate-500/40 hover:shadow-slate-500/10 hover:bg-slate-500/[0.02]" },
+  "smps": { gradient: "from-yellow-600 to-amber-500", text: "text-yellow-500", bg: "hover:border-yellow-500/40 hover:shadow-yellow-500/10 hover:bg-yellow-500/[0.02]" },
+  "ups": { gradient: "from-lime-600 to-green-500", text: "text-lime-500", bg: "hover:border-lime-500/40 hover:shadow-lime-500/10 hover:bg-lime-500/[0.02]" },
+  "keyboard-mouse": { gradient: "from-teal-600 to-emerald-500", text: "text-teal-500", bg: "hover:border-teal-500/40 hover:shadow-teal-500/10 hover:bg-teal-500/[0.02]" },
+  "adapters": { gradient: "from-blue-600 to-slate-500", text: "text-blue-500", bg: "hover:border-blue-500/40 hover:shadow-blue-500/10 hover:bg-blue-500/[0.02]" },
+  "speakers": { gradient: "from-red-600 to-orange-500", text: "text-red-500", bg: "hover:border-red-500/40 hover:shadow-red-500/10 hover:bg-red-500/[0.02]" },
+  "cables-connectors": { gradient: "from-emerald-600 to-green-500", text: "text-emerald-500", bg: "hover:border-emerald-500/40 hover:shadow-emerald-500/10 hover:bg-emerald-500/[0.02]" },
+  "memory-cards": { gradient: "from-sky-600 to-indigo-500", text: "text-sky-500", bg: "hover:border-sky-500/40 hover:shadow-sky-500/10 hover:bg-sky-500/[0.02]" }
+};
+
 function HomePage() {
   const { t, lang } = useI18n();
+  const [showAllCategories, setShowAllCategories] = useState(false);
 
   return (
     <>
@@ -113,22 +140,16 @@ function HomePage() {
               </dl>
             </div>
 
-            <div className="lg:hidden">
-              <ShopGallery compact />
-            </div>
-
-            <div className="relative hidden lg:block perspective">
-              <div className="animate-rotate-3d">
-                <ShopGallery compact />
-              </div>
-              <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-2xl bg-card p-4 shadow-elevated">
+            <div className="relative flex justify-center items-center">
+              <TechHeroAnimation3D />
+              <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-2xl bg-card p-4 shadow-elevated border border-border/80 hidden lg:block">
                 <div className="flex items-center gap-2 text-secondary">
                   {[0,1,2,3,4].map((i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                 </div>
                 <p className="mt-2 text-sm font-semibold text-card-foreground">"Honest pricing. Quick service."</p>
                 <p className="mt-1 text-xs text-muted-foreground">— Verified customer, Perambalur</p>
               </div>
-              <div className="absolute -right-6 top-8 rounded-2xl bg-card p-4 shadow-elevated">
+              <div className="absolute -right-6 top-8 rounded-2xl bg-card p-4 shadow-elevated border border-border/80 hidden lg:block">
                 <ShieldCheck className="h-6 w-6 text-accent" />
                 <p className="mt-1 text-sm font-bold text-card-foreground">Genuine Products</p>
                 <p className="text-xs text-muted-foreground">Brand warranty</p>
@@ -185,15 +206,15 @@ function HomePage() {
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PRODUCT_CATEGORIES.slice(0, 6).map((c) => (
+            {(showAllCategories ? PRODUCT_CATEGORIES : PRODUCT_CATEGORIES.slice(0, 6)).map((c) => (
               <Link
                 key={c.key}
                 to="/products"
                 hash={c.key}
-                className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover transition hover:-translate-y-0.5 hover:shadow-elevated"
+                className={`group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${categoryColors[c.key]?.bg || "hover:border-primary/40 hover:shadow-primary/10"}`}
               >
                 <div className="flex items-start justify-between">
-                  <span className="grid h-14 w-14 place-items-center rounded-2xl gradient-hero text-primary-foreground shadow-soft">
+                  <span className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${categoryColors[c.key]?.gradient || "gradient-hero"} text-white shadow-soft transition-transform group-hover:scale-105 duration-300`}>
                     <Icon name={c.icon} className="h-7 w-7" />
                   </span>
                   <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-accent">
@@ -207,6 +228,19 @@ function HomePage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAllCategories(!showAllCategories)}
+              className="inline-flex items-center gap-2.5 rounded-full bg-primary hover:bg-primary/95 px-6 py-3.5 text-sm font-bold text-primary-foreground transition-all hover:scale-[1.02] shadow-elevated cursor-pointer"
+            >
+              {showAllCategories
+                ? (lang === "ta" ? "குறைவான வகைகளைக் காட்டு" : "Show Less Categories")
+                : (lang === "ta" ? `அனைத்து ${PRODUCT_CATEGORIES.length} வகைகளையும் காட்டு` : `Show All ${PRODUCT_CATEGORIES.length} Categories`)}
+              <ArrowRight className={`h-4 w-4 transition-transform duration-300 ${showAllCategories ? "rotate-90" : ""}`} />
+            </button>
           </div>
         </div>
       </section>

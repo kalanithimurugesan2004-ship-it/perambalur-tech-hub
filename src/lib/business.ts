@@ -190,27 +190,35 @@ export type Testimonial = { name: string; role: { en: string; ta: string }; quot
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Karthik R.",
-    role: { en: "Small business owner, Perambalur", ta: "சிறு வணிக உரிமையாளர், பெரம்பலூர்" },
+    name: "Rajkumar S.",
+    role: { en: "Verified Buyer", ta: "சரிபார்க்கப்பட்ட வாங்குபவர்" },
     quote: {
-      en: "Got my office desktops and a CCTV setup done by SRS. Honest pricing and quick service.",
-      ta: "என் அலுவலக டெஸ்க்டாப்புகள் மற்றும் சிசிடிவியை SRS-ல் செய்தேன். நேர்மையான விலை, விரைவான சேவை.",
+      en: "Best place in Perambalur to buy laptops and assembled desktops. The owner Ramalingam is very polite and guides us to choose the right configuration based on our budget. Services are fast and neat.",
+      ta: "பெரம்பலூரில் லேப்டாப் மற்றும் அசெம்பிள் செய்யப்பட்ட டெஸ்க்டாப் வாங்க சிறந்த இடம். உரிமையாளர் ராமலிங்கம் அவர்கள் மிகவும் கனிவாக நடந்து கொண்டு நமது பட்ஜெட்டுக்கு ஏற்ப சரியான உள்ளமைவைத் தேர்ந்தெடுக்க வழிகாட்டுகிறார். சேவைகள் வேகமாகவும் சுத்தமாகவும் உள்ளன.",
     },
   },
   {
-    name: "Priya S.",
-    role: { en: "Student", ta: "மாணவி" },
+    name: "Vijay Anand",
+    role: { en: "Laptop Customer", ta: "லேப்டாப் வாடிக்கையாளர்" },
     quote: {
-      en: "My laptop was repaired the same day. Ramalingam sir explained everything clearly.",
-      ta: "என் லேப்டாப்பை அதே நாளில் சரி செய்தார்கள். ராமலிங்கம் சார் தெளிவாக விளக்கினார்.",
+      en: "I gave my HP laptop for screen and keyboard replacement. They did it within 3 hours at a very reasonable price. Very reliable computer service center in Perambalur.",
+      ta: "எனது எச்பி லேப்டாப்பை திரை மற்றும் கீபோர்டு மாற்ற கொடுத்தேன். மிக நியாயமான விலையில் 3 மணி நேரத்திற்குள் செய்து கொடுத்தனர். பெரம்பலூரில் மிகவும் நம்பகமான கணினி சேவை மையம்.",
     },
   },
   {
-    name: "Senthil M.",
-    role: { en: "School admin", ta: "பள்ளி நிர்வாகி" },
+    name: "Saravanan K",
+    role: { en: "Business Owner", ta: "வணிக உரிமையாளர்" },
     quote: {
-      en: "We use SRS for our school's AMC. Reliable, on time, and very supportive team.",
-      ta: "எங்கள் பள்ளியின் AMC-க்காக SRS பயன்படுத்துகிறோம். நம்பகமான, சரியான நேரம், ஆதரவான குழு.",
+      en: "Best CCTV and camera installation service. Got 4 bullet cameras installed for my shop. Clear explanation, neat wiring, and quick setup. Highly recommended.",
+      ta: "சிறந்த CCTV மற்றும் கேமரா நிறுவல் சேவை. எனது கடைக்கு 4 புல்லட் கேமராக்களை நிறுவினேன். தெளிவான விளக்கம், நேர்த்தியான வயரிங் மற்றும் விரைவான அமைப்பு. மிகவும் பரிந்துரைக்கப்படுகிறது.",
+    },
+  },
+  {
+    name: "Meera Krishnan",
+    role: { en: "Home Office User", ta: "வீட்டு அலுவலக பயனர்" },
+    quote: {
+      en: "Excellent customer support for printer repairs. They resolved my Canon printer ink clogging issue quickly. Honest pricing.",
+      ta: "பிரிண்டர் பழுதுபார்ப்புக்கு சிறந்த வாடிக்கையாளர் ஆதரவு. எனது கேனான் பிரிண்டர் மை அடைப்பு பிரச்சனையை விரைவாக தீர்த்து வைத்தனர். நேர்மையான விலை.",
     },
   },
 ];
