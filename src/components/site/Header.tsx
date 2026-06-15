@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X, Cpu } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { LanguageToggle } from "./LanguageToggle";
+import logoImg from "@/assets/logo-cropped.png";
 
 const NAV = [
   { to: "/", key: "nav.home" },
@@ -55,14 +56,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl gradient-hero text-primary-foreground shadow-soft">
-            <Cpu className="h-5 w-5" />
-          </span>
-          <span className="flex min-w-0 flex-col leading-tight">
-            <span className="truncate text-base font-extrabold tracking-tight text-foreground">SRS Computer</span>
-            <span className="truncate text-[11px] font-semibold uppercase tracking-wider text-secondary">& Service</span>
-          </span>
+        <Link to="/" className="flex min-w-0 items-center">
+          <div className="rounded-full bg-slate-950 px-4 py-2 flex items-center h-12 shadow-sm border border-white/5 hover:bg-slate-900 transition duration-200">
+            <img 
+              src={`${logoImg}?v=3`} 
+              alt="SRS Technology Solutions" 
+              className="h-8 w-auto object-contain" 
+            />
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
