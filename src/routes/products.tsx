@@ -31,7 +31,6 @@ function Icon({ name, className = "" }: { name: string; className?: string }) {
   return <Comp className={className} />;
 }
 
-<<<<<<< HEAD
 const categoryColors: Record<string, { gradient: string; text: string; bg: string }> = {
   "laptops": { gradient: "from-blue-600 to-cyan-500", text: "text-blue-500", bg: "hover:border-blue-500/40 hover:shadow-blue-500/10 hover:bg-blue-500/[0.01]" },
   "desktops": { gradient: "from-indigo-600 to-violet-500", text: "text-indigo-500", bg: "hover:border-indigo-500/40 hover:shadow-indigo-500/10 hover:bg-indigo-500/[0.01]" },
@@ -54,7 +53,8 @@ const categoryColors: Record<string, { gradient: string; text: string; bg: strin
   "speakers": { gradient: "from-red-600 to-orange-500", text: "text-red-500", bg: "hover:border-red-500/40 hover:shadow-red-500/10 hover:bg-red-500/[0.01]" },
   "cables-connectors": { gradient: "from-emerald-600 to-green-500", text: "text-emerald-500", bg: "hover:border-emerald-500/40 hover:shadow-emerald-500/10 hover:bg-emerald-500/[0.01]" },
   "memory-cards": { gradient: "from-sky-600 to-indigo-500", text: "text-sky-500", bg: "hover:border-sky-500/40 hover:shadow-sky-500/10 hover:bg-sky-500/[0.01]" }
-=======
+};
+
 interface ProductDetails {
   title: string;
   badge: { en: string; ta: string };
@@ -659,7 +659,6 @@ const INTERACTIVE_PRODUCTS: Record<string, (lang: string) => ProductDetails> = {
     ],
     whatsappEnquiry: "2TB Internal Hard Disk Drive (HDD)",
   })
->>>>>>> local-backup
 };
 
 function ProductsPage() {
