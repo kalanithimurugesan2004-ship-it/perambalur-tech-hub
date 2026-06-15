@@ -1,4 +1,5 @@
 import { useI18n } from "@/lib/i18n";
+import logoImg from "@/assets/logo-cropped.png";
 
 interface Brand {
   name: string;
@@ -125,11 +126,10 @@ export function BrandMarquee() {
           >
             {/* Display SRS Logo Badge next to brands to repeatedly show the company logo running across */}
             {idx % 4 === 0 && (
-              <span className="flex items-center gap-1.5 border-r border-border pr-3">
-                <span className="h-5 w-5 rounded-md gradient-hero text-primary-foreground grid place-items-center text-[10px] font-black">
-                  SRS
-                </span>
-                <span className="text-xs font-extrabold text-foreground">SRS Computer</span>
+              <span className="flex items-center border-r border-border pr-3">
+                <div className="rounded-xl bg-slate-950 p-1.5 flex items-center h-8 shadow-sm">
+                  <img src={`${logoImg}?v=3`} alt="SRS" className="h-5 w-auto object-contain" />
+                </div>
               </span>
             )}
             <div className="text-muted-foreground transition-colors group-hover:text-foreground flex items-center">

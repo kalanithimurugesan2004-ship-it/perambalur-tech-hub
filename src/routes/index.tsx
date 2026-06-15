@@ -41,7 +41,7 @@ function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative isolate overflow-hidden">
+      <section className="relative isolate overflow-hidden lg:h-[calc(100vh-5.5rem)] lg:min-h-[550px] lg:flex lg:items-center py-8 lg:py-0">
         <div className="absolute inset-0 -z-10">
           <img
             src={heroImg}
@@ -53,33 +53,33 @@ function HomePage() {
           <div className="absolute inset-0 gradient-hero opacity-95" />
         </div>
 
-        <div className="mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 sm:pt-20 lg:px-8 lg:pt-28">
-          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="mx-auto max-w-7xl px-4 w-full sm:px-6 lg:px-8 py-6 lg:py-8">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_0.75fr] w-full">
             <div className="animate-fade-up text-primary-foreground">
               <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-semibold backdrop-blur">
                 <Sparkles className="h-3.5 w-3.5 text-secondary" />
                 {t("hero.eyebrow")}
               </span>
-              <h1 className="mt-5 text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+              <h1 className="mt-3 text-3xl font-black leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem]">
                 {t("hero.headline")}
               </h1>
-              <p className="mt-5 max-w-xl text-base text-primary-foreground/85 sm:text-lg">
+              <p className="mt-3 max-w-xl text-sm text-primary-foreground/85 sm:text-base leading-relaxed">
                 {t("hero.subheadline")}
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-wrap gap-2.5">
                 <a
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-glow transition hover:scale-[1.02]"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs sm:text-sm font-bold text-accent-foreground shadow-glow transition hover:scale-[1.02]"
                 >
                   {t("cta.whatsapp")}
                   <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
                   href={telLink(BUSINESS.phones[0])}
-                  className="inline-flex items-center gap-2 rounded-full gradient-cta px-5 py-3 text-sm font-bold text-secondary-foreground shadow-elevated transition hover:scale-[1.02]"
+                  className="inline-flex items-center gap-2 rounded-full gradient-cta px-4 py-2.5 text-xs sm:text-sm font-bold text-secondary-foreground shadow-elevated transition hover:scale-[1.02]"
                 >
                   <Phone className="h-4 w-4" />
                   {t("cta.call")}
@@ -88,48 +88,50 @@ function HomePage() {
                   href={BUSINESS.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-5 py-3 text-sm font-bold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/15"
+                  className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/15"
                 >
                   <MapPin className="h-4 w-4" />
                   {t("cta.visit")}
                 </a>
               </div>
 
-              <dl className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
-                {[
-                  { v: "15+", k: "stats.years", Icon: Award },
-                  { v: "5000+", k: "stats.customers", Icon: Users },
-                  { v: "100+", k: "stats.products", Icon: Boxes },
-                  { v: "20+", k: "stats.brands", Icon: BadgeCheck },
-                ].map((s) => (
-                  <div key={s.k}>
-                    <s.Icon className="mb-2 h-5 w-5 text-secondary" />
-                    <dt className="text-2xl font-black tracking-tight">{s.v}</dt>
-                    <dd className="text-xs font-medium text-primary-foreground/70">{t(s.k)}</dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/15 p-4 backdrop-blur-sm max-w-lg">
+                <dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4">
+                  {[
+                    { v: "15+", k: "stats.years", Icon: Award },
+                    { v: "5000+", k: "stats.customers", Icon: Users },
+                    { v: "100+", k: "stats.products", Icon: Boxes },
+                    { v: "20+", k: "stats.brands", Icon: BadgeCheck },
+                  ].map((s) => (
+                    <div key={s.k} className="flex flex-col items-start">
+                      <s.Icon className="mb-1.5 h-4 w-4 text-secondary" />
+                      <dt className="text-xl font-black tracking-tight text-white">{s.v}</dt>
+                      <dd className="text-[10px] font-semibold text-white/80">{t(s.k)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
             </div>
 
             <div className="lg:hidden">
               <ShopGallery compact autoPlayMs={3500} />
             </div>
 
-            <div className="relative hidden lg:block">
+            <div className="relative hidden lg:block max-w-md mx-auto w-full">
               <div className="animate-float-soft">
                 <ShopGallery compact autoPlayMs={3500} />
               </div>
-              <div className="absolute -bottom-6 -left-6 max-w-[260px] rounded-2xl bg-card p-4 shadow-elevated">
+              <div className="absolute -bottom-6 -left-6 max-w-[220px] rounded-2xl bg-card p-3.5 border border-border shadow-elevated">
                 <div className="flex items-center gap-2 text-secondary">
                   {[0,1,2,3,4].map((i) => <Star key={i} className="h-4 w-4 fill-current" />)}
                 </div>
-                <p className="mt-2 text-sm font-semibold text-card-foreground">"Honest pricing. Quick service."</p>
-                <p className="mt-1 text-xs text-muted-foreground">— Verified customer, Perambalur</p>
+                <p className="mt-2 text-xs font-semibold text-card-foreground">"Honest pricing. Quick service."</p>
+                <p className="mt-1 text-[10px] text-muted-foreground">— Verified customer, Perambalur</p>
               </div>
-              <div className="absolute -right-6 top-8 rounded-2xl bg-card p-4 shadow-elevated">
+              <div className="absolute -right-6 top-8 rounded-2xl bg-card p-3.5 border border-border shadow-elevated">
                 <ShieldCheck className="h-6 w-6 text-accent" />
-                <p className="mt-1 text-sm font-bold text-card-foreground">Genuine Products</p>
-                <p className="text-xs text-muted-foreground">Brand warranty</p>
+                <p className="mt-1 text-xs font-bold text-card-foreground">Genuine Products</p>
+                <p className="text-[10px] text-muted-foreground">Brand warranty</p>
               </div>
             </div>
           </div>

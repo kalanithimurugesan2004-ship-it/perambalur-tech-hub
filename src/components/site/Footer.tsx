@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Clock, Cpu } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, telLink } from "@/lib/business";
+import logoImg from "@/assets/logo-cropped.png";
 
 export function Footer() {
   const { t, lang } = useI18n();
@@ -11,14 +12,12 @@ export function Footer() {
     <footer className="mt-24 border-t border-border bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div>
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-10 w-10 place-items-center rounded-xl bg-secondary text-secondary-foreground">
-              <Cpu className="h-5 w-5" />
-            </span>
-            <div className="flex flex-col leading-tight">
-              <span className="text-base font-extrabold">SRS Computer</span>
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary">& Service</span>
-            </div>
+          <div className="flex items-center">
+            <img 
+              src={`${logoImg}?v=3`} 
+              alt="SRS Technology Solutions" 
+              className="h-10 w-auto object-contain" 
+            />
           </div>
           <p className="mt-4 text-sm leading-relaxed text-primary-foreground/75">{t("footer.tagline")}</p>
           <p className="mt-4 text-xs text-primary-foreground/60">Est. {BUSINESS.established}</p>
