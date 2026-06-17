@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, MessageCircle, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { whatsappLink } from "@/lib/business";
-import { getProductImage, getCategoryImage, ACER_ASPIRE_LITE_IMAGES, DELL_I3_IMAGES, DELL_RYZEN_IMAGES, DELL_SLIM_IMAGES, EPSON_L3210_IMAGES, EPSON_L3250_IMAGES, EPSON_L6460_IMAGES, EPSON_M2050_IMAGES, EPSON_M1100_IMAGES, CANON_G2010_IMAGES, CANON_MF3010_IMAGES, CANON_LBP6030_IMAGES, CANON_LBP6030W_IMAGES, CP_PLUS_BULLET_IMAGES, CP_PLUS_DOME_IMAGES, CP_PLUS_NVR_IMAGES, CP_PLUS_DVR_IMAGES, CP_PLUS_ROBOT_IMAGES, DAHUA_BULLET_IMAGES, DAHUA_DVR_IMAGES, DAHUA_NVR_IMAGES, SIM_4G_CAMERA_IMAGES, HOME_SECURITY_IMAGES, OFFICE_SECURITY_IMAGES, ACER_20_MONITOR_IMAGES, ACER_22_MONITOR_IMAGES, DELL_20_MONITOR_IMAGES, DELL_22_MONITOR_IMAGES, FINGERS_22_MONITOR_IMAGES, EVM_MONITOR_IMAGES, SSD_128GB_IMAGES, SSD_256GB_IMAGES, SSD_512GB_IMAGES, HDD_1TB_IMAGES, HDD_2TB_IMAGES } from "@/lib/product-images";
+import { getProductImage, getCategoryImage, ACER_ASPIRE_LITE_IMAGES, DELL_I3_IMAGES, DELL_RYZEN_IMAGES, DELL_SLIM_IMAGES, EPSON_L3210_IMAGES, EPSON_L3250_IMAGES, EPSON_L6460_IMAGES, EPSON_M2050_IMAGES, EPSON_M1100_IMAGES, CANON_G2010_IMAGES, CANON_MF3010_IMAGES, CANON_LBP6030_IMAGES, CANON_LBP6030W_IMAGES, CP_PLUS_BULLET_IMAGES, CP_PLUS_DOME_IMAGES, CP_PLUS_NVR_IMAGES, CP_PLUS_DVR_IMAGES, CP_PLUS_ROBOT_IMAGES, DAHUA_BULLET_IMAGES, DAHUA_DVR_IMAGES, DAHUA_NVR_IMAGES, SIM_4G_CAMERA_IMAGES, HOME_SECURITY_IMAGES, OFFICE_SECURITY_IMAGES, ACER_20_MONITOR_IMAGES, ACER_22_MONITOR_IMAGES, DELL_20_MONITOR_IMAGES, DELL_22_MONITOR_IMAGES, FINGERS_22_MONITOR_IMAGES, EVM_MONITOR_IMAGES, SSD_128GB_IMAGES, SSD_256GB_IMAGES, SSD_512GB_IMAGES, HDD_1TB_IMAGES, HDD_2TB_IMAGES, ACER_LAPTOP_BAG_IMAGES, DELL_LAPTOP_BAG_IMAGES, DELL_BATTERY_G91J0_IMAGES, DELL_DC15250_IMAGES } from "@/lib/product-images";
 import { PRODUCT_CATEGORIES, PRODUCTS, type Product } from "@/lib/product-catalog";
 
 export const Route = createFileRoute("/products")({
@@ -64,6 +64,67 @@ interface ProductDetails {
 }
 
 const INTERACTIVE_PRODUCTS: Record<string, (lang: string) => ProductDetails> = {
+  "ACER LAPTOP CARRY CASE": (lang) => ({
+    title: "Acer Laptop Carry Case",
+    badge: {
+      en: "Lightweight Carry Case",
+      ta: "இலகுவான கேரி கேஸ்",
+    },
+    images: ACER_LAPTOP_BAG_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "பொருள் (Material)" : "Material", value: "High-Quality Water-Resistant Polyester", icon: "Layers" },
+      { label: lang === "ta" ? "பொருந்தக்கூடிய அளவு" : "Compatibility", value: "Up to 15.6\" Laptops", icon: "Monitor" },
+      { label: lang === "ta" ? "அறைகள் (Compartments)" : "Compartments", value: "Multi-pocket layout with front zipper pocket", icon: "Briefcase" },
+      { label: lang === "ta" ? "பாதுகாப்பு (Protection)" : "Protection", value: "Padded lining to prevent scratches", icon: "Shield" },
+    ],
+    whatsappEnquiry: "Acer Laptop Carry Case",
+  }),
+  "DELL LAPTOP BAG": (lang) => ({
+    title: "Dell Laptop Bag",
+    badge: {
+      en: "Genuine Dell Backpack",
+      ta: "அசல் டெல் பேக்பேக்",
+    },
+    images: DELL_LAPTOP_BAG_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "பொருந்தக்கூடிய அளவு" : "Compatibility", value: "Up to 15.6\" Laptops", icon: "Monitor" },
+      { label: lang === "ta" ? "பொருள் (Material)" : "Material", value: "Durable, weather-resistant fabric", icon: "Layers" },
+      { label: lang === "ta" ? "அறைகள் (Compartments)" : "Compartments", value: "Dedicated laptop section + spacious main compartments", icon: "Briefcase" },
+      { label: lang === "ta" ? "பாதுகாப்பு (Protection)" : "Protection", value: "Padded interior vault for shock absorption", icon: "Shield" },
+    ],
+    whatsappEnquiry: "Dell Laptop Bag",
+  }),
+  "DELL LAPTOP OEM ORIGINAL BATTERY G91J0": (lang) => ({
+    title: "Dell Laptop OEM Original Battery G91J0",
+    badge: {
+      en: "Genuine Dell OEM Battery",
+      ta: "அசல் டெல் ஓஇஎம் பேட்டரி",
+    },
+    images: DELL_BATTERY_G91J0_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "மாதிரி (Model)" : "Model", value: "G91J0 (Genuine OEM Part)", icon: "Cpu" },
+      { label: lang === "ta" ? "திறன் (Capacity)" : "Capacity", value: "41 Wh (Standard Rechargeable)", icon: "Battery" },
+      { label: lang === "ta" ? "மின்னழுத்தம் (Voltage)" : "Voltage", value: "11.25 V", icon: "Zap" },
+      { label: lang === "ta" ? "பாதுகாப்புச் சான்றிதழ்" : "Certification", value: "BIS Certified · Safe charging control chip", icon: "Shield" },
+    ],
+    whatsappEnquiry: "Dell Laptop OEM Original Battery G91J0",
+  }),
+  "Dell Laptop DC15250 Core 3": (lang) => ({
+    title: "Dell Laptop DC15250 - Core 3",
+    badge: {
+      en: "Intel Core 3 Laptop",
+      ta: "இன்டெல் கோர் 3 லேப்டாப்",
+    },
+    images: DELL_DC15250_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "செயலி (Processor)" : "Processor", value: "Intel Core 3 (High-performance)", icon: "Cpu" },
+      { label: lang === "ta" ? "நினைவகம் (Memory)" : "RAM", value: "16 GB High-Speed DDR4", icon: "Layers" },
+      { label: lang === "ta" ? "சேமிப்பகம் (Storage)" : "Storage", value: "512 GB PCIe NVMe M.2 SSD", icon: "HardDrive" },
+      { label: lang === "ta" ? "திரை (Display)" : "Display", value: '15.6" Full HD ComfortView (1920x1080)', icon: "Monitor" },
+      { label: lang === "ta" ? "இயக்க முறைமை (OS)" : "Operating System", value: "Windows 11 Home + MS Office", icon: "Settings" },
+    ],
+    whatsappEnquiry: "Dell Laptop DC15250 Core 3 laptop",
+  }),
   "Acer Aspire Lite Core i5 13th Gen": (lang) => ({
     title: "Acer Aspire Lite Core i5 13th Gen",
     badge: {
@@ -715,6 +776,8 @@ function ProductsPage() {
           : "Browse our complete range of laptops, custom desktops, CCTV cameras, printers, and genuine IT accessories.",
       };
 
+  const activeColors = categoryColors[activeCategory.key || ""] || { gradient: "from-primary to-accent", text: "text-primary", bg: "hover:border-primary" };
+
   const categoryProducts = selectedCategory
     ? PRODUCTS.filter((product) => product.category === selectedCategory)
     : PRODUCTS;
@@ -750,10 +813,98 @@ function ProductsPage() {
     navigate({ to: "/products", hash: key || undefined, replace: true });
   }
 
+  function translateSpec(spec: string, lang: string): string {
+    if (lang !== "ta") return spec;
+    const s = spec.trim().toLowerCase();
+    if (s.startsWith("genuine ") && s.endsWith(" product")) {
+      const brand = spec.substring(8, spec.length - 8);
+      return `அசல் ${brand} தயாரிப்பு`;
+    }
+    const translations: Record<string, string> = {
+      "high durability & reliability": "அதிக ஆயுள் & நம்பகத்தன்மை",
+      "excellent value for money": "பணத்திற்கான சிறந்த மதிப்பு",
+      "high page yield replacement": "அதிக பக்கங்களை அச்சிடும் திறன்",
+      "vibrant & sharp text output": "தெளிவான மற்றும் கூர்மையான உரை",
+      "single-function monochrome/color": "ஒற்றை செயல்பாடு கருப்பு-வெள்ளை/வண்ணம்",
+      "print, scan & copy": "அச்சிடுதல், ஸ்கேன் & நகல் எடுத்தல்",
+      "wireless wi-fi printing": "வைஃபை மூலம் கம்பியில்லா அச்சிடுதல்",
+      "8gb capacity": "8 ஜிபி நினைவகம் (RAM)",
+      "16gb capacity": "16 ஜிபி நினைவகம் (RAM)",
+      "4gb capacity": "4 ஜிபி நினைவகம் (RAM)",
+      "ddr4 technology": "DDR4 அதிவேக தொழில்நுட்பம்",
+      "ddr3 technology": "DDR3 நினைவக தொழில்நுட்பம்",
+      "for desktop pcs": "டெஸ்க்டாப் கணினிகளுக்கு உகந்தது",
+      "for laptop upgrades": "லேப்டாப் கணினி மேம்படுத்தலுக்கு",
+      "128gb storage space": "128 ஜிபி சேமிப்பக திறன் (SSD)",
+      "256gb storage space": "256 ஜிபி சேமிப்பக திறன் (SSD)",
+      "512gb storage space": "512 ஜிபி சேமிப்பக திறன் (SSD)",
+      "1tb storage space": "1 டிபி சேமிப்பக திறன் (HDD)",
+      "2tb storage space": "2 டிபி சேமிப்பக திறன் (HDD)",
+      "500gb storage space": "500 ஜிபி சேமிப்பக திறன் (HDD)",
+      "solid state drive (ssd)": "அதிவேக எஸ்எஸ்டி சேமிப்பகம் (SSD)",
+      "hard disk drive (hdd)": "ஹார்ட் டிஸ்க் சேமிப்பகம் (HDD)",
+      "ultra-fast nvme m.2 interface": "அதிவேக NVMe M.2 இடைமுகம்",
+      "sata iii 6gb/s interface": "SATA III 6Gb/s இடைமுகம்",
+      "19.5\" screen size": "19.5 இன்ச் திரை அளவு",
+      "21.5\" screen size": "21.5 இன்ச் திரை அளவு",
+      "ips wide viewing panel": "ஐபிஎஸ் அகலக் கோணத் திரை",
+      "led backlit panel": "எல்இடி பின்னொளித் திரை",
+      "4 megapixel ultra-hd": "4 மெகாபிக்சல் அல்ட்ரா எச்டி தரம்",
+      "3 megapixel quad-hd": "3 மெகாபிக்சல் குவாட் எச்டி தரம்",
+      "2 megapixel-full hd": "2 மெகாபிக்சல் முழு எச்டி தரம்",
+      "2 megapixel full-hd": "2 மெகாபிக்சல் முழு எச்டி தரம்",
+      "dome design for indoors": "உட்புறத்திற்கான டோம் வடிவமைப்பு",
+      "bullet design for outdoors": "வெளிப்புறத்திற்கான புல்லட் வடிவமைப்பு",
+      "360° pan/tilt ptz wifi robot": "360° சுழலும் பிடிஇசட் வைஃபை ரோபோட்"
+    };
+    return translations[s] || spec;
+  }
+
   function getInteractiveProduct(productName: string) {
-    if (INTERACTIVE_PRODUCTS[productName]) return productName;
-    const stripped = productName.replace(" Printer", "");
-    if (INTERACTIVE_PRODUCTS[stripped]) return stripped;
+    const name = productName.toLowerCase();
+    for (const key of Object.keys(INTERACTIVE_PRODUCTS)) {
+      if (key.toLowerCase() === name) return key;
+    }
+    if (name.includes("dell") && name.includes("bag")) return "DELL LAPTOP BAG";
+    if (name.includes("acer") && (name.includes("bag") || name.includes("carry case"))) return "ACER LAPTOP CARRY CASE";
+    if (name.includes("dell") && (name.includes("battery") || name.includes("g91j0"))) return "DELL LAPTOP OEM ORIGINAL BATTERY G91J0";
+    if (name.includes("dell") && (name.includes("dc15250") || name.includes("dc 15250"))) return "Dell Laptop DC15250 Core 3";
+    if ((name.includes("aspire lite") || name.includes("aspi light")) && name.includes("i5")) return "Acer Aspire Lite Core i5 13th Gen";
+    if (name.includes("aspire 3") || name.includes("arpire 3") || (name.includes("aspire") && name.includes("i3")) || (name.includes("aspi") && name.includes("i3"))) return "Acer Aspire Lite Core i5 13th Gen";
+    if (name.includes("dell") && name.includes("i3")) {
+      if (name.includes("slim")) return "Dell Slim Core i3 14th Gen";
+      return "Dell Core i3 14th Gen";
+    }
+    if (name.includes("dell") && name.includes("ryzen")) return "Dell Ryzen 3 Laptop";
+    if (name.includes("l3210")) return "Epson L3210";
+    if (name.includes("l3250")) return "Epson L3250 WiFi Printer";
+    if (name.includes("l6460")) return "Epson L6460";
+    if (name.includes("m2050")) return "Epson M2050";
+    if (name.includes("m1100")) return "Epson M1100";
+    if (name.includes("g2010")) return "Canon G2010";
+    if (name.includes("mf 3010")) return "Canon MF3010";
+    if (name.includes("lbp 6030w") || name.includes("lbp6030w")) return "Canon LBP6030W";
+    if (name.includes("lbp 6030") || name.includes("lbp6030")) return "Canon LBP6030";
+    if (name.includes("robot") && name.includes("camera")) return "CP Plus Robot Cameras";
+    if (name.includes("cp plus") && name.includes("bullet")) return "CP Plus Bullet Cameras";
+    if (name.includes("cp plus") && name.includes("dome")) return "CP Plus Dome Cameras";
+    if (name.includes("cp plus") && name.includes("nvr")) return "CP Plus NVR";
+    if (name.includes("cp plus") && name.includes("dvr")) return "CP Plus DVR";
+    if (name.includes("dahua") && name.includes("bullet")) return "Dahua Bullet Cameras";
+    if (name.includes("dahua") && name.includes("dvr")) return "Dahua DVR";
+    if (name.includes("dahua") && name.includes("nvr")) return "Dahua NVR";
+    if (name.includes("4g sim") || name.includes("4g sim cctv") || (name.includes("camera") && name.includes("4g sim"))) return "4G SIM Cameras";
+    if (name.includes("acer") && name.includes("20")) return "Acer 20 Inch Monitor";
+    if (name.includes("acer") && name.includes("22")) return "Acer 22 Inch IPS Monitor";
+    if (name.includes("dell") && name.includes("20")) return "Dell 20 Inch Monitor";
+    if (name.includes("dell") && name.includes("22")) return "Dell 22 Inch Monitor";
+    if (name.includes("fingers") && name.includes("22")) return "Fingers 22 Inch Monitor";
+    if (name.includes("evm") && (name.includes("monitor") || name.includes("led plasma"))) return "EVM LED Monitors";
+    if (name.includes("128gb ssd") || name.includes("128 gb ssd") || (name.includes("128") && name.includes("ssd"))) return "128GB SSD";
+    if (name.includes("256gb ssd") || name.includes("256 gb ssd") || (name.includes("256") && name.includes("ssd"))) return "256GB SSD";
+    if (name.includes("512gb ssd") || name.includes("512 gb ssd") || (name.includes("512") && name.includes("ssd"))) return "512GB SSD";
+    if (name.includes("1tb hdd") || name.includes("1 tb hdd") || (name.includes("1tb") && name.includes("hdd"))) return "1TB HDD";
+    if (name.includes("2tb hdd") || name.includes("2 tb hdd") || (name.includes("2tb") && name.includes("hdd"))) return "2TB HDD";
     return null;
   }
   return (
@@ -816,7 +967,7 @@ function ProductsPage() {
                 </button>
               )}
               <div className="flex items-center gap-2 sm:gap-3">
-                <span className="inline-flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-2xl bg-primary-foreground/10 text-primary-foreground shadow-soft flex-shrink-0">
+                <span className={`inline-flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${activeColors.gradient} text-white shadow-soft flex-shrink-0`}>
                   <Icon name={activeCategory.icon} className="h-5 w-5 sm:h-7 sm:w-7" />
                 </span>
                 <div className="min-w-0">
@@ -834,9 +985,10 @@ function ProductsPage() {
             </div>
           </div>
 
-          <div className="grid gap-6 xl:grid-cols-[1fr_280px] lg:grid-cols-[1fr_260px] sm:grid-cols-[1fr_220px]">
-            <div className="space-y-6">
-              <div className="rounded-[1.5rem] border border-border bg-card p-4 sm:p-5 shadow-sm">
+          <div className="rounded-[1.5rem] border border-border bg-card p-4 sm:p-5 shadow-sm">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              {/* Search Bar */}
+              <div className="w-full lg:max-w-md">
                 <label className="relative block">
                   <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <input
@@ -844,18 +996,19 @@ function ProductsPage() {
                     onChange={(event) => setSearchTerm(event.target.value)}
                     type="search"
                     placeholder={lang === "ta" ? "பொருள் தேட..." : "Search products..."}
-                    className="w-full rounded-2xl border border-border bg-background px-11 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="w-full rounded-2xl border border-border bg-background px-11 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
                   />
                 </label>
               </div>
 
-              <div className="grid gap-2 sm:gap-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+              {/* Brand Buttons */}
+              <div className="flex flex-wrap items-center gap-2">
                 {brands.map((brand) => (
                   <button
                     key={brand}
                     type="button"
                     onClick={() => toggleBrand(brand)}
-                    className={`rounded-full border px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold transition truncate cursor-pointer ${
+                    className={`rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold transition truncate cursor-pointer ${
                       selectedBrands.includes(brand)
                         ? "border-primary bg-primary text-primary-foreground"
                         : "border-border bg-background text-foreground hover:border-primary"
@@ -868,29 +1021,11 @@ function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedBrands([])}
-                    className="rounded-full border border-border bg-background px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-semibold text-foreground hover:border-primary col-span-2 sm:col-span-1 cursor-pointer"
+                    className="rounded-full border border-border bg-background px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-foreground hover:border-primary cursor-pointer"
                   >
                     {lang === "ta" ? "நீக்கு" : "Clear"}
                   </button>
                 ) : null}
-              </div>
-            </div>
-
-            <div className="rounded-[1.5rem] border border-border bg-card p-4 sm:p-6 shadow-sm flex flex-col justify-between">
-              <div>
-                <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-[0.1em] sm:tracking-[0.18em] text-muted-foreground">
-                  {lang === "ta" ? "வகை" : "Category"}
-                </h3>
-                <p className="mt-2 sm:mt-3 text-lg sm:text-xl font-black tracking-tight line-clamp-2">{activeCategory.name}</p>
-                <p className="mt-2 text-xs sm:text-sm leading-5 sm:leading-6 text-muted-foreground line-clamp-3">{activeCategory.description}</p>
-              </div>
-              <div className="mt-4 sm:mt-5 overflow-hidden rounded-3xl">
-                <img
-                  src={getCategoryImage(activeCategory.key)}
-                  alt={activeCategory.name}
-                  className="h-40 sm:h-52 w-full object-cover"
-                  loading="lazy"
-                />
               </div>
             </div>
           </div>
@@ -908,11 +1043,11 @@ function ProductsPage() {
 
                 const cardContent = (
                   <>
-                    <div className="relative aspect-[4/3] overflow-hidden bg-muted/40">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-border/40 p-3 flex items-center justify-center">
                       <img
                         src={product.image ?? getProductImage(product.name, product.category)}
                         alt={product.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                         loading="lazy"
                       />
                       <span className={`absolute left-2 sm:left-3 top-2 sm:top-3 rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider shadow-soft ${
@@ -939,7 +1074,7 @@ function ProductsPage() {
                         {product.specifications.slice(0, 3).map((spec) => (
                           <li key={spec} className="flex items-center gap-2 line-clamp-1">
                             <CheckCircle2 className={`h-3 w-3 sm:h-4 sm:w-4 ${colors.text} flex-shrink-0`} />
-                            <span className="truncate">{spec}</span>
+                            <span className="truncate">{translateSpec(spec, lang)}</span>
                           </li>
                         ))}
                       </ul>
@@ -1033,11 +1168,11 @@ function ProductsPage() {
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden min-h-0">
                 {/* Left Column: Slideshow */}
                 <div className="relative flex flex-col justify-between bg-muted/20 rounded-2xl overflow-hidden p-2 border border-border/80 h-full min-h-0">
-                  <div className="relative flex-1 aspect-[4/3] md:aspect-auto w-full rounded-xl overflow-hidden bg-black flex items-center justify-center min-h-0">
+                  <div className="relative flex-1 aspect-[4/3] md:aspect-auto w-full rounded-xl overflow-hidden bg-white flex items-center justify-center min-h-0">
                     <img
                       src={details.images[currentSlide]}
                       alt={`${details.title} Slide ${currentSlide + 1}`}
-                      className="h-full w-full object-cover transition-all duration-300"
+                      className="h-full w-full object-contain transition-all duration-300"
                     />
                     
                     <button

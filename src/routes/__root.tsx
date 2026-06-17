@@ -15,6 +15,7 @@ import { I18nProvider } from "@/lib/i18n";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingContact } from "@/components/site/FloatingContact";
+import { AnnouncementBar, ScrollToTop, MobileStickyBar } from "@/components/site/SiteExtras";
 
 function NotFoundComponent() {
   return (
@@ -160,14 +161,17 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <I18nProvider>
+        <AnnouncementBar />
         <div className="flex min-h-screen flex-col">
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pb-16 md:pb-0">
             <Outlet />
           </main>
           <Footer />
         </div>
         <FloatingContact />
+        <ScrollToTop />
+        <MobileStickyBar />
       </I18nProvider>
     </QueryClientProvider>
   );

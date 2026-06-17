@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, telLink, whatsappLink } from "@/lib/business";
 
@@ -31,6 +31,35 @@ function ContactPage() {
           <h1 className="mt-2 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">{t("section.contact")}</h1>
         </div>
       </section>
+
+      {/* WhatsApp CTA Banner */}
+      <div className="bg-[#075E54]">
+        <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex items-center gap-4">
+              <div className="relative shrink-0">
+                <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366]/50" />
+                <span className="relative grid h-10 w-10 place-items-center rounded-full bg-[#25D366]">
+                  <MessageCircle className="h-5 w-5 text-white" />
+                </span>
+              </div>
+              <div>
+                <p className="font-bold text-white">Fastest way to reach us</p>
+                <p className="text-sm text-white/75">Message us on WhatsApp — we reply within minutes</p>
+              </div>
+            </div>
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#25D366] px-6 py-2.5 text-sm font-bold text-white shadow-md transition hover:bg-[#22c35e] hover:scale-[1.03]"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">

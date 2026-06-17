@@ -43,18 +43,47 @@ function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.4fr]">
-          <div className="mx-auto w-full max-w-[240px] sm:max-w-[280px] lg:mx-0">
-            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
-            <img
-              src={ownerImg}
-              alt={BUSINESS.owner}
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 text-white">
-              <p className="text-2xl font-black tracking-tight text-white">{BUSINESS.owner}</p>
-              <p className="text-sm font-medium text-white/80">Founder · Est. {BUSINESS.established}</p>
-            </div>
+        <div className="grid gap-12 lg:grid-cols-[0.75fr_1.4fr] items-start">
+
+          {/* Founder Photo — large & aesthetic */}
+          <div className="flex flex-col items-center lg:items-start">
+            {/* Decorative glow ring */}
+            <div className="relative w-full max-w-[340px] lg:max-w-[340px] mx-auto lg:mx-0">
+              {/* Gradient accent behind card */}
+              <div
+                className="absolute -inset-3 rounded-[2.5rem] opacity-60 blur-2xl"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsl(var(--primary)/0.55) 0%, hsl(var(--secondary)/0.45) 100%)",
+                }}
+              />
+              {/* Photo card */}
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[2rem] shadow-2xl border border-white/10 group">
+                <img
+                  src={ownerImg}
+                  alt={BUSINESS.owner}
+                  className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Deep gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                {/* Name block */}
+                <div className="absolute bottom-0 left-0 right-0 p-7">
+                  <p className="text-3xl font-black tracking-tight text-white drop-shadow-lg">
+                    {BUSINESS.owner}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-white/70 tracking-wide uppercase">
+                    Founder · Est. {BUSINESS.established}
+                  </p>
+                </div>
+                {/* Floating "Est. 2009" badge */}
+                <div
+                  className="absolute top-5 right-5 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-white shadow-lg backdrop-blur-md"
+                  style={{ background: "hsl(var(--primary)/0.75)" }}
+                >
+                  <Sparkles className="h-3.5 w-3.5" />
+                  Est. {BUSINESS.established}
+                </div>
+              </div>
             </div>
           </div>
 
@@ -99,6 +128,49 @@ function AboutPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us — Trust Badges */}
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-bold uppercase tracking-widest text-secondary mb-6">Why SRS?</p>
+        <div className="grid gap-5 sm:grid-cols-3">
+          {[
+            {
+              icon: ShieldCheck,
+              color: "text-emerald-500 bg-emerald-500/10",
+              title: lang === "ta" ? "அசல் தயாரிப்புகள் மட்டுமே" : "Genuine Products Only",
+              desc: lang === "ta"
+                ? "நேரடி விற்பனையாளர்களிடமிருந்து வாங்கப்பட்ட அசல் தயாரிப்புகள் மட்டுமே விற்கிறோம்."
+                : "We sell only brand-authorized products — never grey market or counterfeit.",
+            },
+            {
+              icon: Award,
+              color: "text-primary bg-primary/10",
+              title: lang === "ta" ? "15 ஆண்டு அனுபவம்" : "15-Year Track Record",
+              desc: lang === "ta"
+                ? "2009 முதல் பெரம்பலூர் மக்களுக்கு நம்பகமான சேவை வழங்கி வருகிறோம்."
+                : "Serving Perambalur since 2009 — a name thousands of families trust.",
+            },
+            {
+              icon: Sparkles,
+              color: "text-amber-500 bg-amber-500/10",
+              title: lang === "ta" ? "இடத்திற்கே வந்து சேவை" : "On-Site Service Available",
+              desc: lang === "ta"
+                ? "வீடு, கடை மற்றும் அலுவலகத்திற்கு வந்து பழுதுபார்ப்பு மற்றும் நிறுவல் செய்கிறோம்."
+                : "We come to your home, shop, or office — repairs & installations at your doorstep.",
+            },
+          ].map((badge, i) => (
+            <div key={i} className="flex gap-4 rounded-2xl border border-border bg-card p-6 shadow-soft">
+              <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl ${badge.color}`}>
+                <badge.icon className="h-6 w-6" />
+              </span>
+              <div>
+                <p className="font-bold">{badge.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{badge.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 

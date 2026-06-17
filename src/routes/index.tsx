@@ -124,21 +124,26 @@ function HomePage() {
                 </a>
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/15 p-4 backdrop-blur-sm max-w-lg">
-                <dl className="grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-4">
-                  {[
-                    { v: "15+", k: "stats.years", Icon: Award },
-                    { v: "5000+", k: "stats.customers", Icon: Users },
-                    { v: "100+", k: "stats.products", Icon: Boxes },
-                    { v: "20+", k: "stats.brands", Icon: BadgeCheck },
-                  ].map((s) => (
-                    <div key={s.k} className="flex flex-col items-start">
-                      <s.Icon className="mb-1.5 h-4 w-4 text-secondary" />
-                      <dt className="text-xl font-black tracking-tight text-white">{s.v}</dt>
-                      <dd className="text-[10px] font-semibold text-white/80">{t(s.k)}</dd>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {[
+                  { v: "15+", k: "stats.years", Icon: Award },
+                  { v: "5000+", k: "stats.customers", Icon: Users },
+                  { v: "100+", k: "stats.products", Icon: Boxes },
+                  { v: "20+", k: "stats.brands", Icon: BadgeCheck },
+                ].map((s, idx, arr) => (
+                  <div key={s.k} className="flex items-center">
+                    <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-sm">
+                      <s.Icon className="h-4 w-4 text-secondary shrink-0" />
+                      <div>
+                        <p className="text-lg font-black leading-none text-white">{s.v}</p>
+                        <p className="text-[10px] font-semibold text-white/70 leading-tight mt-0.5">{t(s.k)}</p>
+                      </div>
                     </div>
-                  ))}
-                </dl>
+                    {idx < arr.length - 1 && (
+                      <div className="mx-1.5 h-8 w-px bg-white/10" />
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -299,20 +304,38 @@ function HomePage() {
             <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.testimonials")}</h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {TESTIMONIALS.map((tm, i) => (
-              <figure key={i} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-6 backdrop-blur">
-                <div className="flex items-center gap-1 text-secondary">
-                  {[0,1,2,3,4].map((j) => <Star key={j} className="h-4 w-4 fill-current" />)}
-                </div>
-                <blockquote className="mt-4 text-sm leading-relaxed text-primary-foreground/90">
-                  "{lang === "ta" ? tm.quote.ta : tm.quote.en}"
-                </blockquote>
-                <figcaption className="mt-5 border-t border-primary-foreground/15 pt-4">
-                  <p className="text-sm font-bold">{tm.name}</p>
-                  <p className="text-xs text-primary-foreground/65">{lang === "ta" ? tm.role.ta : tm.role.en}</p>
-                </figcaption>
-              </figure>
-            ))}
+            {TESTIMONIALS.map((tm, i) => {
+              const avatarColors = [
+                "bg-blue-500", "bg-emerald-500", "bg-violet-500", "bg-amber-500"
+              ];
+              const initial = tm.name.charAt(0).toUpperCase();
+              return (
+                <figure key={i} className="relative overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-7 backdrop-blur">
+                  {/* Decorative quote watermark */}
+                  <span className="pointer-events-none absolute -top-2 -left-1 select-none text-[8rem] font-black leading-none text-primary-foreground/5">
+                    ❝
+                  </span>
+                  <div className="relative">
+                    <div className="flex items-center gap-1 text-secondary">
+                      {[0,1,2,3,4].map((j) => <Star key={j} className="h-4 w-4 fill-current" />)}
+                    </div>
+                    <blockquote className="mt-4 text-sm leading-relaxed text-primary-foreground/90">
+                      "{lang === "ta" ? tm.quote.ta : tm.quote.en}"
+                    </blockquote>
+                    <figcaption className="mt-5 flex items-center gap-3 border-t border-primary-foreground/15 pt-4">
+                      {/* Avatar initial circle */}
+                      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-black text-white ${avatarColors[i % avatarColors.length]}`}>
+                        {initial}
+                      </span>
+                      <div>
+                        <p className="text-sm font-bold">{tm.name}</p>
+                        <p className="text-xs text-primary-foreground/65">{lang === "ta" ? tm.role.ta : tm.role.en}</p>
+                      </div>
+                    </figcaption>
+                  </div>
+                </figure>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -209,6 +209,52 @@ import hdd2tb_3 from "@/assets/hdd-2tb-3.jpg";
 import hdd2tb_4 from "@/assets/hdd-2tb-4.jpg";
 import hdd2tb_5 from "@/assets/hdd-2tb-5.jpg";
 
+import acerLaptopBag1 from "@/assets/acer-laptop-bag-1.jpg";
+import acerLaptopBag2 from "@/assets/acer-laptop-bag-2.jpg";
+import acerLaptopBag3 from "@/assets/acer-laptop-bag-3.jpg";
+import acerLaptopBag4 from "@/assets/acer-laptop-bag-4.jpg";
+
+import dellLaptopBag1 from "@/assets/dell-laptop-bag-1.jpg";
+import dellLaptopBag2 from "@/assets/dell-laptop-bag-2.jpg";
+import dellLaptopBag3 from "@/assets/dell-laptop-bag-3.jpg";
+
+import dellBatteryG91j0_1 from "@/assets/dell-battery-g91j0-1.jpg";
+import dellBatteryG91j0_2 from "@/assets/dell-battery-g91j0-2.jpg";
+import dellBatteryG91j0_3 from "@/assets/dell-battery-g91j0-3.jpg";
+import dellBatteryG91j0_4 from "@/assets/dell-battery-g91j0-4.jpg";
+
+import dellDc15250_1 from "@/assets/dell-dc15250-1.jpg";
+import dellDc15250_2 from "@/assets/dell-dc15250-2.jpg";
+import dellDc15250_3 from "@/assets/dell-dc15250-3.jpg";
+import dellDc15250_4 from "@/assets/dell-dc15250-4.jpg";
+
+export const ACER_LAPTOP_BAG_IMAGES = [
+  acerLaptopBag1,
+  acerLaptopBag2,
+  acerLaptopBag3,
+  acerLaptopBag4
+];
+
+export const DELL_LAPTOP_BAG_IMAGES = [
+  dellLaptopBag1,
+  dellLaptopBag2,
+  dellLaptopBag3
+];
+
+export const DELL_BATTERY_G91J0_IMAGES = [
+  dellBatteryG91j0_1,
+  dellBatteryG91j0_2,
+  dellBatteryG91j0_3,
+  dellBatteryG91j0_4
+];
+
+export const DELL_DC15250_IMAGES = [
+  dellDc15250_1,
+  dellDc15250_2,
+  dellDc15250_3,
+  dellDc15250_4
+];
+
 export const ACER_ASPIRE_LITE_IMAGES = [
   acerAspireLite4,
   acerAspireLite2,
@@ -470,47 +516,47 @@ export const HDD_2TB_IMAGES = [
 ];
 
 const PRODUCT_IMAGES: Record<string, string> = {
-  "Acer Aspire 3 Core i3 13th Gen": acerLaptop,
-  "Acer Aspire Lite Core i5 13th Gen": laptop,
-  "Dell Core i3 14th Gen": dellLaptop,
-  "Dell Ryzen 3 Laptop": dellLaptop,
-  "Dell Slim Core i3 14th Gen": dellLaptop,
+  "Acer Aspire 3 Core i3 13th Gen": acerAspireLite4, // maps to the 1st slideshow image of its details modal
+  "Acer Aspire Lite Core i5 13th Gen": acerAspireLite4,
+  "Dell Core i3 14th Gen": dellI3_2,
+  "Dell Ryzen 3 Laptop": dellRyzen2,
+  "Dell Slim Core i3 14th Gen": dellSlim1,
   "Refurbished Laptops": refurbLaptop,
   "Custom Desktop PCs": desktop,
   "Dell Pro Tower Desktop": cabinet,
   "Business Desktops": desktop,
   "Refurbished Desktop Systems": refurbDesktop,
-  "Epson L3210": epsonPrinter,
-  "Epson L3250 WiFi Printer": epsonPrinter,
-  "Epson L6460": printer,
-  "Epson M2050": printer,
-  "Epson M1100": epsonPrinter,
-  "Canon G2010": canonPrinter,
-  "Canon MF3010": canonPrinter,
-  "Canon LBP6030": canonPrinter,
-  "Canon LBP6030W": canonPrinter,
-  "CP Plus Bullet Cameras": cpPlusCamera,
-  "CP Plus Dome Cameras": cctvDome,
-  "CP Plus NVR": nvr,
-  "CP Plus DVR": nvr,
-  "CP Plus Robot Cameras": robotCamera,
-  "Dahua Bullet Cameras": dahuaCamera,
-  "Dahua DVR": nvr,
-  "Dahua NVR": nvr,
-  "4G SIM Cameras": fourGCamera,
-  "Home Security Solutions": securitySystem,
-  "Office Security Solutions": cctvWifi,
-  "Acer 20 Inch Monitor": acerMonitor,
-  "Acer 22 Inch IPS Monitor": monitor,
-  "Dell 20 Inch Monitor": dellMonitor,
-  "Dell 22 Inch Monitor": dellMonitor,
-  "Fingers 22 Inch Monitor": fingersMonitor,
-  "EVM LED Monitors": evmMonitor,
-  "128GB SSD": ssd,
-  "256GB SSD": ssd,
-  "512GB SSD": nvmeSsd,
-  "1TB HDD": hdd,
-  "2TB HDD": hdd,
+  "Epson L3210": epsonL3210_2,
+  "Epson L3250 WiFi Printer": epsonL3250_2,
+  "Epson L6460": epsonL6460_1,
+  "Epson M2050": epsonM2050_1,
+  "Epson M1100": epsonM1100_1,
+  "Canon G2010": canonG2010_1,
+  "Canon MF3010": canonMF3010_1,
+  "Canon LBP6030": canonLBP6030_1,
+  "Canon LBP6030W": canonLBP6030w_1,
+  "CP Plus Bullet Cameras": cpPlusBullet_1,
+  "CP Plus Dome Cameras": cpPlusDome_1,
+  "CP Plus NVR": cpPlusNvr_1,
+  "CP Plus DVR": cpPlusDvr_1,
+  "CP Plus Robot Cameras": cpPlusRobot_1,
+  "Dahua Bullet Cameras": dahuaBullet_1,
+  "Dahua DVR": dahuaDvr_1,
+  "Dahua NVR": dahuaNvr_1,
+  "4G SIM Cameras": simCamera4g_1,
+  "Home Security Solutions": homeSecurity_1,
+  "Office Security Solutions": officeSecurity_1,
+  "Acer 20 Inch Monitor": acer20Monitor_1,
+  "Acer 22 Inch IPS Monitor": acer22Monitor_1,
+  "Dell 20 Inch Monitor": dell20Monitor_1,
+  "Dell 22 Inch Monitor": dell22Monitor_1,
+  "Fingers 22 Inch Monitor": fingers22Monitor_1,
+  "EVM LED Monitors": evmMonitor_1,
+  "128GB SSD": ssd128gb_1,
+  "256GB SSD": ssd256gb_1,
+  "512GB SSD": ssd512gb_1,
+  "1TB HDD": hdd1tb_1,
+  "2TB HDD": hdd2tb_1,
   "NVMe SSD": nvmeSsd,
   "Memory Cards": memoryCard,
   "USB Storage Devices": usbDrive,
@@ -535,6 +581,10 @@ const PRODUCT_IMAGES: Record<string, string> = {
   Keyboard: keyboardMouse,
   Mouse: mouse,
   "Wireless Mouse": wirelessMouse,
+  "ACER LAPTOP CARRY CASE": acerLaptopBag1,
+  "DELL LAPTOP BAG": dellLaptopBag1,
+  "DELL LAPTOP OEM ORIGINAL BATTERY G91J0": dellBatteryG91j0_1,
+  "DELL LAPTOPDC 15250 - CORE 3 / 16GB / 512 / 15.6\" / WIN 11 / MSO": dellDc15250_1,
   "Laptop Bags": laptopBag,
   Adapters: adapter,
   Speakers: speaker,
@@ -572,16 +622,28 @@ const CATEGORY_IMAGES: Record<string, string> = {
 };
 
 const CATEGORY_FALLBACKS: Record<string, string> = {
-  laptops: "https://images.unsplash.com/photo-1496181130204-755241524eab?auto=format&fit=crop&w=500&q=80",
-  desktops: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=500&q=80",
-  printers: "https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=500&q=80",
-  cctv: "https://images.unsplash.com/photo-1557597774-9d2739f85a94?auto=format&fit=crop&w=500&q=80",
-  monitors: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=500&q=80",
-  storage: "https://images.unsplash.com/photo-1618424181497-157f25b6ddd5?auto=format&fit=crop&w=500&q=80",
-  components: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80",
-  networking: "https://images.unsplash.com/photo-1600697395593-e9dc66797e43?auto=format&fit=crop&w=500&q=80",
-  accessories: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80",
-  refurbished: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=500&q=80",
+  laptops: laptop,
+  desktops: desktop,
+  monitors: monitor,
+  printers: printer,
+  "printer-inks-toners": ink,
+  "cctv-cameras": cctvBullet,
+  "dvr-nvr": nvr,
+  networking: router,
+  ram: ram,
+  "ssd-hdd": ssd,
+  processors: intelCpu,
+  motherboards: motherboard,
+  "graphics-cards": graphicsCard,
+  cabinets: cabinet,
+  smps: smps,
+  ups: ups,
+  "keyboard-mouse": keyboardMouse,
+  adapters: adapter,
+  speakers: speaker,
+  "cables-connectors": cable,
+  "memory-cards": memoryCard,
+  accessories: adapter
 };
 
 // Map of precise keyword patterns to specific image URLs
@@ -760,7 +822,7 @@ const KEYWORD_IMAGES: { pattern: RegExp; url: string }[] = [
     url: fingers22Monitor_1,
   },
   {
-    pattern: /evm.*monitor|evm.*led|evm/i,
+    pattern: /evm.*monitor|evm.*led|evm.*plasma/i,
     url: evmMonitor_1,
   },
   {
@@ -904,6 +966,86 @@ export function getProductImage(productName: string, categoryKey?: string): stri
   }
 
   const lower = productName.toLowerCase();
+
+  // 1. High-priority specific models matching (forces cover image to match first image of details slideshow)
+  if (/acer.*aspire.*3|acer.*arpire.*3/i.test(productName)) return acerAspireLite4;
+  if (/acer.*aspire.*lite|acer.*aspi.*light/i.test(productName)) return acerAspireLite4;
+  if (/dell.*core.*i3.*14th/i.test(productName)) return dellI3_2;
+  if (/dell.*slim/i.test(productName)) return dellSlim1;
+  if (/dell.*ryzen/i.test(productName)) return dellRyzen2;
+  if (/dell.*battery|g91j0/i.test(productName)) return dellBatteryG91j0_1;
+  if (/dell.*dc15250|dell.*dc.*15250/i.test(productName)) return dellDc15250_1;
+  if (/dell.*bag/i.test(productName)) return dellLaptopBag1;
+  if (/acer.*(bag|carry.*case)/i.test(productName)) return acerLaptopBag1;
+  if (/bag|carry.*case/i.test(productName)) return acerLaptopBag1;
+
+  // Printers
+  if (/epson.*l3210/i.test(productName)) return epsonL3210_2;
+  if (/epson.*l3250/i.test(productName)) return epsonL3250_2;
+  if (/epson.*l6460/i.test(productName)) return epsonL6460_1;
+  if (/epson.*m2050/i.test(productName)) return epsonM2050_1;
+  if (/epson.*m1100/i.test(productName)) return epsonM1100_1;
+  if (/canon.*g2010/i.test(productName)) return canonG2010_1;
+  if (/canon.*mf.*3010/i.test(productName)) return canonMF3010_1;
+  if (/canon.*lbp.*6030w/i.test(productName)) return canonLBP6030w_1;
+  if (/canon.*lbp.*6030/i.test(productName)) return canonLBP6030_1;
+
+  // CCTV Cameras & NVR/DVR
+  if (/dahua.*bullet/i.test(productName)) return dahuaBullet_1;
+  if (/cp.*plus.*bullet/i.test(productName)) return cpPlusBullet_1;
+  if (/cp.*plus.*dome/i.test(productName)) return cpPlusDome_1;
+  if (/cp.*plus.*nvr/i.test(productName)) return cpPlusNvr_1;
+  if (/cp.*plus.*dvr/i.test(productName)) return cpPlusDvr_1;
+  if (/robot.*camera|cp.*plus.*robot/i.test(productName)) return cpPlusRobot_1;
+  if (/dahua.*dvr/i.test(productName)) return dahuaDvr_1;
+  if (/dahua.*nvr/i.test(productName)) return dahuaNvr_1;
+  if (/4g.*sim|sim.*camera/i.test(productName)) return simCamera4g_1;
+  if (/home.*security/i.test(productName)) return homeSecurity_1;
+  if (/office.*security/i.test(productName)) return officeSecurity_1;
+
+  // Monitors
+  if (/acer.*20.*monitor/i.test(productName)) return acer20Monitor_1;
+  if (/acer.*22.*monitor/i.test(productName)) return acer22Monitor_1;
+  if (/dell.*20.*monitor/i.test(productName)) return dell20Monitor_1;
+  if (/dell.*22.*monitor/i.test(productName)) return dell22Monitor_1;
+  if (/fingers.*22.*monitor|fingers.*monitor/i.test(productName)) return fingers22Monitor_1;
+  if (/evm.*monitor|evm.*led|evm.*plasma/i.test(productName)) return evmMonitor_1;
+
+  // Storage
+  if (/128gb.*ssd|128.*ssd/i.test(productName)) return ssd128gb_1;
+  if (/256gb.*ssd|256.*ssd/i.test(productName)) return ssd256gb_1;
+  if (/512gb.*ssd|512.*ssd/i.test(productName)) return ssd512gb_1;
+  if (/1tb.*hdd|1.*tb.*hard|1tb.*hard/i.test(productName)) return hdd1tb_1;
+  if (/2tb.*hdd|2.*tb.*hard|2tb.*hard/i.test(productName)) return hdd2tb_1;
+
+  // 2. Category overrides to block spec-keyword mismatching (e.g. laptops matching "RAM" or "SSD")
+  if (categoryKey) {
+    if (categoryKey === "laptops") {
+      if (lower.includes("refurb")) return refurbLaptop;
+      if (lower.includes("dell")) return dellLaptop;
+      if (lower.includes("acer")) return acerLaptop;
+      return laptop;
+    }
+    if (categoryKey === "desktops") {
+      if (lower.includes("refurb")) return refurbDesktop;
+      if (lower.includes("dell")) return cabinet;
+      return desktop;
+    }
+    if (categoryKey === "monitors") {
+      if (lower.includes("dell")) return dellMonitor;
+      if (lower.includes("acer")) return acerMonitor;
+      if (lower.includes("fingers")) return fingersMonitor;
+      if (lower.includes("evm")) return evmMonitor;
+      return monitor;
+    }
+    if (categoryKey === "printers") {
+      if (lower.includes("epson")) return epsonPrinter;
+      if (lower.includes("canon")) return canonPrinter;
+      return printer;
+    }
+  }
+
+  // 3. Fallback to generic keyword regex patterns
   const match = KEYWORD_IMAGES.find((item) => item.pattern.test(productName));
   if (match) {
     return match.url;
