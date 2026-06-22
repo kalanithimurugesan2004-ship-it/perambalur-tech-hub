@@ -50,27 +50,27 @@ function ServicesPage() {
   const { t, lang } = useI18n();
   return (
     <>
-      <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
+      <section className="relative isolate overflow-hidden gradient-hero text-slate-800 dark:text-slate-200">
         <Breadcrumb crumbs={[{ label: t("nav.services") }]} />
         <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
-          <h1 className="mt-2 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">{t("section.services")}</h1>
-          <p className="mt-4 max-w-2xl text-primary-foreground/80">{t("section.servicesSub")}</p>
+          <p className="text-sm font-bold uppercase tracking-widest text-[#613ed3] dark:text-indigo-400 font-mono">{t("nav.services")}</p>
+          <h1 className="mt-2 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl text-slate-900 dark:text-white font-display">{t("section.services")}</h1>
+          <p className="mt-4 max-w-2xl text-slate-500 dark:text-slate-400 font-medium leading-relaxed">{t("section.servicesSub")}</p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:py-16 sm:px-6 lg:px-8">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => {
             const desc = SERVICE_DESCS[s.key];
             return (
-              <div key={s.key} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:shadow-elevated">
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
+              <div key={s.key} className="group relative overflow-hidden rounded-2xl glass-card glow-hover p-6 border border-gray-200/50 dark:border-white/10 transition duration-300">
+                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#613ed3]/10 text-[#613ed3] dark:bg-[#cbf220]/10 dark:text-[#cbf220] transition group-hover:bg-[#613ed3] group-hover:text-white dark:group-hover:bg-[#cbf220] dark:group-hover:text-slate-950">
                   <Icon name={s.icon} className="h-7 w-7" />
                 </span>
-                <h3 className="mt-5 text-lg font-bold">{lang === "ta" ? s.ta : s.en}</h3>
+                <h3 className="mt-5 text-lg font-bold text-slate-800 dark:text-slate-100">{lang === "ta" ? s.ta : s.en}</h3>
                 {desc && (
-                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-1.5 text-sm text-slate-550 dark:text-slate-400 leading-relaxed">
                     {lang === "ta" ? desc.ta : desc.en}
                   </p>
                 )}
@@ -78,7 +78,7 @@ function ServicesPage() {
                   href={whatsappLink(`Hello SRS, I need: ${s.en}`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-accent hover:underline"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#613ed3] dark:text-[#cbf220] hover:underline"
                 >
                   {t("cta.enquire")} <ArrowRight className="h-4 w-4" />
                 </a>
@@ -88,20 +88,21 @@ function ServicesPage() {
         </div>
 
 
-        <div className="mt-14 rounded-3xl border border-border bg-muted/40 p-8 sm:p-12 text-center">
-          <h3 className="text-2xl font-black sm:text-3xl">
+        <div className="mt-14 rounded-3xl border border-white/5 bg-[#1f1b2c] p-8 sm:p-12 text-center text-white relative overflow-hidden">
+          <div className="absolute -inset-10 opacity-30 blur-3xl bg-gradient-to-r from-[#613ed3]/50 to-[#cbf220]/30 -z-10 pointer-events-none" />
+          <h3 className="text-2xl font-extrabold sm:text-3xl font-display">
             {lang === "ta" ? "உங்கள் சிக்கலை விளக்குங்கள் — நாங்கள் தீர்க்கிறோம்." : "Tell us the problem — we'll fix it."}
           </h3>
-          <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+          <p className="mx-auto mt-3 max-w-xl text-slate-350 text-sm leading-relaxed">
             {lang === "ta"
               ? "தொலைபேசி அல்லது வாட்ஸ்அப் வழியாக தொடர்பு கொள்ளுங்கள். இடத்திற்கே வந்து சேவையும் கிடைக்கும்."
               : "Call or WhatsApp us. On-site service available across Perambalur and nearby villages."}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-soft hover:scale-[1.02]">
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#22c35e] px-6 py-3 text-sm font-bold text-white shadow-soft transition hover:scale-[1.02]">
               {t("cta.whatsapp")}
             </a>
-            <a href={telLink(BUSINESS.phones[0])} className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-primary-foreground hover:bg-primary/90">
+            <a href={telLink(BUSINESS.phones[0])} className="inline-flex items-center gap-2 rounded-full bg-[#613ed3] hover:bg-[#5232c0] px-6 py-3 text-sm font-bold text-white shadow-soft transition hover:scale-[1.02]">
               <Phone className="h-4 w-4" /> {t("cta.call")}
             </a>
           </div>

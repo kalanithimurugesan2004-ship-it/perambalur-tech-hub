@@ -1076,12 +1076,12 @@ function ProductsPage() {
   }
   return (
     <>
-      <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
+      <section className="relative isolate overflow-hidden gradient-hero text-slate-800 dark:text-slate-200">
         <Breadcrumb crumbs={[{ label: t("nav.products") }]} />
         <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
-          <h1 className="mt-2 max-w-3xl text-2xl font-black tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">{t("section.products")}</h1>
-          <p className="mt-4 max-w-2xl text-sm text-primary-foreground/80 sm:text-base">{t("section.productsSub")}</p>
+          <p className="text-sm font-bold uppercase tracking-widest text-[#613ed3] dark:text-indigo-400 font-mono">{t("nav.products")}</p>
+          <h1 className="mt-2 max-w-3xl text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl text-slate-900 dark:text-white font-display">{t("section.products")}</h1>
+          <p className="mt-4 max-w-2xl text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed sm:text-base">{t("section.productsSub")}</p>
 
           <div className="mt-8 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {PRODUCT_CATEGORIES.map((category) => {
@@ -1093,23 +1093,23 @@ function ProductsPage() {
                   key={category.key}
                   type="button"
                   onClick={() => selectCategory(category.key)}
-                  className={`group flex flex-col rounded-[1.5rem] border p-4 sm:p-5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  className={`group flex flex-col rounded-[1.5rem] p-4 sm:p-5 text-left transition-all duration-300 hover:-translate-y-1 glass-card glow-hover border ${
                     isSelected 
-                      ? "border-white bg-card shadow-lg" 
-                      : "border-white/10 bg-card/10 hover:bg-card/20 text-white"
+                      ? "border-[#613ed3] dark:border-[#cbf220] shadow-elevated text-slate-900 dark:text-white bg-white/70 dark:bg-slate-950/80" 
+                      : "border-gray-200/40 dark:border-white/5 text-slate-700 dark:text-slate-350 bg-white/40 dark:bg-slate-950/40 hover:bg-white/60 dark:hover:bg-slate-950/60"
                   }`}
                 >
                   <div className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${colors.gradient} text-white shadow-soft transition-transform group-hover:scale-105 duration-300`}>
                     <Icon name={category.icon} className="h-5 w-5 sm:h-6 sm:w-6" />
                   </div>
                   <div className="mt-3 sm:mt-4 flex-1">
-                    <h2 className={`text-base sm:text-lg font-black tracking-tight line-clamp-2 ${isSelected ? "text-foreground font-extrabold" : "text-white"}`}>{category.name}</h2>
-                    <p className={`mt-1 sm:mt-2 text-xs sm:text-sm line-clamp-2 ${isSelected ? "text-muted-foreground" : "text-white/70"}`}>{category.description}</p>
+                    <h2 className="text-base sm:text-lg font-bold tracking-tight line-clamp-2 text-slate-800 dark:text-slate-100">{category.name}</h2>
+                    <p className="mt-1 sm:mt-2 text-xs sm:text-sm line-clamp-2 text-slate-500 dark:text-slate-400">{category.description}</p>
                   </div>
                   <span className={`mt-3 sm:mt-4 inline-flex items-center rounded-full px-2.5 py-1 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider ${
                     isSelected 
-                      ? `bg-gradient-to-br ${colors.gradient} text-white` 
-                      : "bg-white/10 text-white/90 group-hover:bg-white/20"
+                      ? "bg-[#613ed3] dark:bg-[#cbf220] text-white dark:text-slate-950" 
+                      : "bg-slate-200/50 dark:bg-white/10 text-slate-600 dark:text-slate-300 group-hover:bg-slate-200 dark:group-hover:bg-white/20"
                   }`}>
                     {productCount} {lang === "ta" ? "தயாரிப்புகள்" : "items"}
                   </span>
@@ -1128,7 +1128,7 @@ function ProductsPage() {
                 <button
                   type="button"
                   onClick={() => selectCategory("")}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-foreground transition hover:border-primary hover:text-primary cursor-pointer animate-fade-up"
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-200/50 dark:border-white/10 bg-white/70 dark:bg-slate-950/70 px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300 transition hover:border-[#613ed3] dark:hover:border-[#cbf220] hover:text-[#613ed3] dark:hover:text-[#cbf220] cursor-pointer animate-fade-up"
                 >
                   <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
                   {lang === "ta" ? "அனைத்து தயாரிப்புகள்" : "All Products"}
@@ -1139,32 +1139,32 @@ function ProductsPage() {
                   <Icon name={activeCategory.icon} className="h-5 w-5 sm:h-7 sm:w-7" />
                 </span>
                 <div className="min-w-0">
-                  <h2 className="text-xl sm:text-3xl font-black tracking-tight line-clamp-2">{activeCategory.name}</h2>
-                  <p className="mt-0.5 sm:mt-2 text-xs sm:text-sm text-muted-foreground line-clamp-2">{activeCategory.description}</p>
+                  <h2 className="text-xl sm:text-3xl font-bold tracking-tight line-clamp-2 text-slate-900 dark:text-white">{activeCategory.name}</h2>
+                  <p className="mt-0.5 sm:mt-2 text-xs sm:text-sm text-slate-550 dark:text-slate-400 line-clamp-2">{activeCategory.description}</p>
                 </div>
               </div>
             </div>
 
-            <div className="rounded-2xl sm:rounded-3xl border border-border bg-card p-3 sm:p-6 shadow-sm flex-shrink-0">
-              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.18em] text-muted-foreground">
+            <div className="rounded-2xl sm:rounded-3xl border border-gray-200/40 dark:border-white/5 bg-white/40 dark:bg-slate-950/40 backdrop-blur-md p-3 sm:p-6 shadow-soft flex-shrink-0">
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.1em] sm:tracking-[0.18em] text-slate-400 dark:text-slate-500">
                 {filteredProducts.length} {lang === "ta" ? "பொருள்" : "products"}
               </p>
-              <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted-foreground">{lang === "ta" ? "தேடுக" : "Search"}</p>
+              <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-550 dark:text-slate-450 font-medium">{lang === "ta" ? "தேடுக" : "Search"}</p>
             </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-border bg-card p-4 sm:p-5 shadow-sm">
+          <div className="rounded-[1.5rem] border border-gray-200/40 dark:border-white/5 bg-white/45 dark:bg-slate-950/45 backdrop-blur-md p-4 sm:p-5 shadow-soft">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               {/* Search Bar */}
               <div className="w-full lg:max-w-md">
                 <label className="relative block">
-                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-555" />
                   <input
                     value={searchTerm}
                     onChange={(event) => setSearchTerm(event.target.value)}
                     type="search"
                     placeholder={lang === "ta" ? "பொருள் தேட..." : "Search products..."}
-                    className="w-full rounded-2xl border border-border bg-background px-11 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/10"
+                    className="w-full rounded-2xl border border-gray-200/50 dark:border-white/10 bg-white/70 dark:bg-slate-950/50 px-11 py-2.5 text-sm outline-none transition focus:border-[#613ed3] dark:focus:border-[#cbf220] focus:ring-2 focus:ring-[#613ed3]/10 dark:focus:ring-[#cbf220]/10 text-slate-800 dark:text-slate-100"
                   />
                 </label>
               </div>
@@ -1176,10 +1176,10 @@ function ProductsPage() {
                     key={brand}
                     type="button"
                     onClick={() => toggleBrand(brand)}
-                    className={`rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold transition truncate cursor-pointer ${
+                    className={`rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-bold transition truncate cursor-pointer ${
                       selectedBrands.includes(brand)
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border bg-background text-foreground hover:border-primary"
+                        ? "border-[#613ed3] bg-[#613ed3] text-white dark:border-[#cbf220] dark:bg-[#cbf220] dark:text-slate-950 shadow-soft"
+                        : "border-gray-200/60 bg-white/50 text-slate-700 dark:border-white/10 dark:bg-slate-950/50 dark:text-slate-300 hover:border-[#613ed3] dark:hover:border-[#cbf220]"
                     }`}
                   >
                     {brand}
@@ -1189,7 +1189,7 @@ function ProductsPage() {
                   <button
                     type="button"
                     onClick={() => setSelectedBrands([])}
-                    className="rounded-full border border-border bg-background px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-semibold text-foreground hover:border-primary cursor-pointer"
+                    className="rounded-full border border-gray-200/60 bg-white/50 px-3 sm:px-4 py-1.5 text-xs sm:text-sm font-bold text-slate-700 dark:border-white/10 dark:bg-slate-950/50 dark:text-slate-300 hover:border-[#613ed3] dark:hover:border-[#cbf220] cursor-pointer"
                   >
                     {lang === "ta" ? "நீக்கு" : "Clear"}
                   </button>
@@ -1199,8 +1199,8 @@ function ProductsPage() {
           </div>
 
           {filteredProducts.length === 0 ? (
-            <div className="rounded-[1.5rem] border border-border bg-card p-8 sm:p-12 text-center text-muted-foreground">
-              <p className="text-sm sm:text-base">{lang === "ta" ? "பொருட்களை கண்டுபிடிக்க முடியவில்லை." : "No products matched your search."}</p>
+            <div className="rounded-[1.5rem] glass-card p-8 sm:p-12 text-center text-slate-500 dark:text-slate-400">
+              <p className="text-sm sm:text-base font-medium">{lang === "ta" ? "பொருட்களை கண்டுபிடிக்க முடியவில்லை." : "No products matched your search."}</p>
             </div>
           ) : (
             <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -1211,7 +1211,7 @@ function ProductsPage() {
 
                 const cardContent = (
                   <>
-                    <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-border p-3 flex items-center justify-center">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-gray-200/10 p-3 flex items-center justify-center">
                       <img
                         src={product.image ?? getProductImage(product.name, product.category)}
                         alt={product.name}
@@ -1311,7 +1311,7 @@ function ProductsPage() {
             onClick={() => setSelectedProduct(null)}
           >
             <div 
-              className="relative w-full max-w-3xl bg-card rounded-3xl border border-border shadow-elevated overflow-hidden flex flex-col p-6 max-h-[90vh] md:max-h-[580px] animate-scale-in"
+              className="relative w-full max-w-3xl bg-card rounded-3xl border border-border shadow-elevated overflow-hidden flex flex-col p-4 sm:p-6 max-h-[95vh] md:max-h-[580px] animate-scale-in"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -1323,7 +1323,7 @@ function ProductsPage() {
               </button>
 
               {/* Modal Header */}
-              <div className="mb-4 pr-10">
+              <div className="mb-3 sm:mb-4 pr-10">
                 <span className="rounded-full bg-accent/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent border border-accent/20">
                   {lang === "ta" ? details.badge.ta : details.badge.en}
                 </span>
@@ -1333,7 +1333,7 @@ function ProductsPage() {
               </div>
 
               {/* Modal Body */}
-              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden min-h-0">
+              <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 overflow-hidden min-h-0">
                 {/* Left Column: Slideshow */}
                 <div className="relative flex flex-col justify-between bg-muted/20 rounded-2xl overflow-hidden p-2 border border-border h-full min-h-0">
                   <div className="relative flex-1 aspect-[4/3] md:aspect-auto w-full rounded-xl overflow-hidden bg-white flex items-center justify-center min-h-0">
@@ -1373,7 +1373,7 @@ function ProductsPage() {
                 {/* Right Column: Specs & CTA */}
                 <div className="flex flex-col justify-between h-full overflow-hidden min-h-0">
                   <div className="space-y-3 overflow-y-auto pr-1">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-primary dark:text-secondary">
                       {lang === "ta" ? "கணினி விவரங்கள்" : "Technical Specifications"}
                     </h4>
                     <div className="grid grid-cols-1 gap-2 text-xs">

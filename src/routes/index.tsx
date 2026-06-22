@@ -68,6 +68,8 @@ function HomePage() {
   const { t, lang } = useI18n();
   const [showAllCategories, setShowAllCategories] = useState(false);
 
+
+
   useEffect(() => {
     // Scroll to the top on load/refresh to ensure it starts at the beginning
     window.scrollTo(0, 0);
@@ -85,38 +87,38 @@ function HomePage() {
             height={1024}
             className="hero-3d-bg h-full w-full object-cover opacity-35"
           />
-          <div className="absolute inset-0 gradient-hero opacity-90" />
+          <div className="absolute inset-0 gradient-hero opacity-95" />
         </div>
 
         <div className="mx-auto max-w-7xl px-4 w-full sm:px-6 lg:px-8 py-4 lg:py-6 h-full flex flex-col justify-between gap-4 lg:gap-6">
           <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] w-full">
             
             {/* LEFT SIDE (55%) */}
-            <div className="animate-fade-up text-primary-foreground lg:pr-4">
-              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/40 px-4 py-1.5 text-xs font-bold text-cyan-300 backdrop-blur shadow-soft">
-                <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+            <div className="animate-fade-up text-slate-800 dark:text-slate-200 lg:pr-4">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#613ed3]/10 bg-indigo-50/50 px-4 py-1.5 text-xs font-bold text-[#613ed3] dark:text-indigo-400 dark:bg-indigo-950/40 dark:border-indigo-500/20 backdrop-blur shadow-soft">
+                <Sparkles className="h-3.5 w-3.5 text-amber-500" />
                 Trusted since 2009 • Perambalur
               </span>
               
               {lang === "ta" ? (
-                <h1 className="mt-4 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-display">
+                <h1 className="mt-4 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-display text-slate-900 dark:text-white">
                   பெரம்பலூரின் நம்பகமான <br />
                   கணினி விற்பனை மற்றும் <br />
-                  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm font-black">
+                  <span className="text-gradient-purple font-black">
                     சேவை மையம்
                   </span>
                 </h1>
               ) : (
-                <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3rem] xl:text-[3.5rem] font-display">
+                <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3rem] xl:text-[3.5rem] font-display text-slate-900 dark:text-white">
                   Perambalur's Trusted <br />
                   Computer Sales & <br />
-                  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm font-black">
+                  <span className="text-gradient-purple font-black">
                     Service Center
                   </span>
                 </h1>
               )}
 
-              <p className="mt-4 max-w-xl text-sm text-slate-300 sm:text-base leading-relaxed font-medium">
+              <p className="mt-4 max-w-xl text-sm text-slate-500 dark:text-slate-400 sm:text-base leading-relaxed font-medium">
                 {lang === "ta" 
                   ? "கணினிகள், லேப்டாப்புகள், பிரிண்டர்கள், சிசிடிவி கேமராக்கள், நெட்வொர்க்கிங், பாகங்கள், புதுப்பிக்கப்பட்ட அமைப்புகள் மற்றும் தொழில்முறை பழுதுபார்ப்பு சேவைகளுக்கான உங்களின் ஒரே தீர்வு."
                   : "Your one-stop solution for computers, laptops, printers, CCTV cameras, networking, accessories, refurbished systems & professional repair services."}
@@ -137,37 +139,37 @@ function HomePage() {
                 </a>
                 <a
                   href={telLink(BUSINESS.phones[0])}
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-6 py-3.5 text-xs sm:text-sm font-extrabold text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.25)] transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#cbf220] hover:bg-lime-400 px-6 py-3.5 text-xs sm:text-sm font-extrabold text-[#171e00] shadow-[0_4px_14px_rgba(203,242,32,0.3)] transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  <Phone className="h-4 w-4 animate-pulse" />
+                  <Phone className="h-4 w-4" />
                   {t("cta.call")}
                 </a>
                 <a
                   href={BUSINESS.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 px-6 py-3.5 text-xs sm:text-sm font-black text-white transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-slate-200 dark:border-white/10 bg-white/40 dark:bg-white/5 backdrop-blur-md hover:bg-white/60 dark:hover:bg-white/10 px-6 py-3.5 text-xs sm:text-sm font-black text-slate-800 dark:text-white transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  <MapPin className="h-4 w-4 text-cyan-400" />
+                  <MapPin className="h-4 w-4 text-[#613ed3] dark:text-cyan-400" />
                   {t("cta.visit")}
                 </a>
               </div>
 
               {/* Glass Stats Row */}
-              <div className="mt-10 p-4 sm:p-5 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-md grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl">
+              <div className="mt-10 p-4 sm:p-5 rounded-3xl border border-gray-200/50 dark:border-white/5 bg-white/45 dark:bg-slate-950/40 backdrop-blur-md grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl">
                 {[
-                  { v: "15+", label: lang === "ta" ? "சேவை ஆண்டுகள்" : "Years of Service", icon: <Award className="h-5.5 w-5.5 text-emerald-400" /> },
-                  { v: "5000+", label: lang === "ta" ? "மகிழ்ச்சியான வாடிக்கையாளர்கள்" : "Happy Customers", icon: <Users className="h-5.5 w-5.5 text-cyan-400" /> },
-                  { v: "100+", label: lang === "ta" ? "தயாரிப்பு வகைகள்" : "Product Range", icon: <ShoppingCart className="h-5.5 w-5.5 text-amber-400" /> },
-                  { v: "20+", label: lang === "ta" ? "நம்பகமான பிராண்டுகள்" : "Trusted Brands", icon: <ShieldCheck className="h-5.5 w-5.5 text-purple-400" /> },
+                  { v: "15+", label: lang === "ta" ? "சேவை ஆண்டுகள்" : "Years of Service", icon: <Award className="h-5.5 w-5.5 text-emerald-500" /> },
+                  { v: "5000+", label: lang === "ta" ? "மகிழ்ச்சியான வாடிக்கையாளர்கள்" : "Happy Customers", icon: <Users className="h-5.5 w-5.5 text-indigo-500" /> },
+                  { v: "100+", label: lang === "ta" ? "தயாரிப்பு வகைகள்" : "Product Range", icon: <ShoppingCart className="h-5.5 w-5.5 text-amber-500" /> },
+                  { v: "20+", label: lang === "ta" ? "நம்பகமான பிராண்டுகள்" : "Trusted Brands", icon: <ShieldCheck className="h-5.5 w-5.5 text-purple-500" /> },
                 ].map((s, idx) => (
                   <div key={idx} className="flex items-center gap-3.5 px-2">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-soft">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-gray-200 dark:border-white/10 bg-slate-100/50 dark:bg-white/5 shadow-soft">
                       {s.icon}
                     </div>
                     <div>
-                      <p className="text-xl sm:text-2xl font-black text-white leading-none tracking-tight">{s.v}</p>
-                      <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mt-1 leading-none">{s.label}</p>
+                      <p className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-none tracking-tight">{s.v}</p>
+                      <p className="text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-400 mt-1 leading-none">{s.label}</p>
                     </div>
                   </div>
                 ))}
@@ -182,7 +184,7 @@ function HomePage() {
           </div>
 
           {/* Feature Services Bar Capsule */}
-          <div className="w-full mt-6 lg:mt-4 p-4 sm:p-5 rounded-3xl border border-white/5 bg-slate-950/60 backdrop-blur-md shadow-2xl grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
+          <div className="w-full mt-10 p-8 md:p-10 rounded-[32px] border border-white/5 bg-[#1f1b2c] text-white shadow-2xl grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
             {[
               { title: lang === "ta" ? "விற்பனை & சேவை" : "Sales & Service", desc: lang === "ta" ? "அனைத்து முன்னணி பிராண்டுகளும்" : "All leading brands", icon: <Monitor className="h-5 w-5 text-cyan-400" /> },
               { title: lang === "ta" ? "சிசிடிவி நிறுவல்" : "CCTV Installation", desc: lang === "ta" ? "எச்டி & ஐபி கேமராக்கள்" : "HD & IP Cameras", icon: <Camera className="h-5 w-5 text-purple-400" /> },
@@ -192,7 +194,7 @@ function HomePage() {
               { title: lang === "ta" ? "இடத்திற்கே வந்து சேவை" : "On-site Support", desc: lang === "ta" ? "விரைவான & நம்பகமான" : "Quick & Reliable", icon: <Wrench className="h-5 w-5 text-rose-400" /> }
             ].map((item, idx) => (
               <div key={idx} className="flex items-center gap-3 px-1">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/5 shadow-inner">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/10 border border-white/10 shadow-inner">
                   {item.icon}
                 </div>
                 <div>
@@ -214,16 +216,17 @@ function HomePage() {
 
       {/* SERVICES */}
       <section id="services" className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4">
+        <div className="flex items-end justify-between gap-4 border-b border-gray-200/50 dark:border-white/5 pb-8 mb-10">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">01</span>
-              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
-            </div>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.services")}</h2>
-            <p className="mt-3 text-muted-foreground">{t("section.servicesSub")}</p>
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-2 text-[#613ed3] dark:text-indigo-400">
+              {t("nav.services")}
+            </span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
+              {t("section.services")}
+            </h2>
+            <p className="mt-3 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{t("section.servicesSub")}</p>
           </div>
-          <Link to="/services" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-primary hover:underline sm:inline-flex">
+          <Link to="/services" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-[#613ed3] dark:text-indigo-400 hover:underline sm:inline-flex">
             {t("cta.viewAll")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -234,26 +237,27 @@ function HomePage() {
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
-              <h3 className="mt-4 text-base font-bold">{lang === "ta" ? s.ta : s.en}</h3>
-              <span className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-secondary/10 transition group-hover:scale-150" />
+              <h3 className="mt-4 text-base font-bold text-slate-900 dark:text-white">{lang === "ta" ? s.ta : s.en}</h3>
+              <span className="pointer-events-none absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-[#613ed3]/5 transition group-hover:scale-150" />
             </div>
           ))}
         </div>
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="products" className="bg-muted/40 py-12 sm:py-16">
+      <section id="products" className="bg-[#fcf9f8] dark:bg-[#0b0c16] py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end border-b border-gray-200/50 dark:border-white/5 pb-8 mb-10">
             <div className="max-w-2xl">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">02</span>
-                <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
-              </div>
-              <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.products")}</h2>
-              <p className="mt-3 text-muted-foreground">{t("section.productsSub")}</p>
+              <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-2 text-[#613ed3] dark:text-indigo-400">
+                {t("nav.products")}
+              </span>
+              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
+                {t("section.products")}
+              </h2>
+              <p className="mt-3 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{t("section.productsSub")}</p>
             </div>
-            <Link to="/products" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-primary hover:underline sm:inline-flex">
+            <Link to="/products" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-[#613ed3] dark:text-indigo-400 hover:underline sm:inline-flex">
               {t("cta.viewAll")} <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -298,40 +302,43 @@ function HomePage() {
         </div>
       </section>
 
+
+
       {/* ABOUT OWNER */}
-      <section id="about" className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
+      <section id="about" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative mx-auto max-w-xs sm:max-w-sm lg:mx-0">
-            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border shadow-elevated relative group">
+            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-white dark:bg-[#081127] border border-gray-200/50 dark:border-white/10 shadow-elevated relative group">
               <img
                 src={ownerImg}
                 alt="R. C. Ramalingam"
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-end p-6 text-white">
-                <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-accent/95 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-accent-foreground mb-2 shadow-soft">
+                <span className="inline-flex items-center gap-1.5 self-start rounded-full bg-[#cbf220] px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-[#171e00] mb-2 shadow-soft">
                   <Sparkles className="h-3 w-3" /> {t("hero.eyebrow")}
                 </span>
                 <p className="text-2xl font-black tracking-tight text-white">{BUSINESS.owner}</p>
                 <p className="text-sm font-medium text-white/85">Founder · SRS Computer & Service</p>
               </div>
             </div>
-            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-card p-5 border border-border shadow-elevated sm:block transition-transform hover:scale-105 duration-300">
-              <p className="text-3xl font-black text-primary">15+</p>
-              <p className="text-xs font-medium text-muted-foreground">{t("stats.years")}</p>
+            <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-white dark:bg-[#081127] p-5 border border-gray-200/50 dark:border-white/10 shadow-elevated sm:block transition-transform hover:scale-105 duration-300">
+              <p className="text-3xl font-black text-[#613ed3] dark:text-indigo-400">15+</p>
+              <p className="text-xs font-bold text-slate-500 dark:text-slate-400">{t("stats.years")}</p>
             </div>
           </div>
 
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">03</span>
-              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.about")}</p>
-            </div>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.about")}</h2>
-            <p className="mt-5 text-muted-foreground leading-relaxed">{t("section.aboutBody")}</p>
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-2 text-[#613ed3] dark:text-indigo-400">
+              {t("nav.about")}
+            </span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
+              {t("section.about")}
+            </h2>
+            <p className="mt-5 text-slate-500 dark:text-slate-400 leading-relaxed text-sm">{t("section.aboutBody")}</p>
             <Link
               to="/about"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition hover:bg-primary/90"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#613ed3] hover:bg-[#4f46e5] px-6 py-3 text-sm font-bold text-white transition hover:scale-[1.02] shadow-md"
             >
               {t("nav.about")} <ArrowRight className="h-4 w-4" />
             </Link>
@@ -340,14 +347,15 @@ function HomePage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-primary py-12 sm:py-16 text-primary-foreground">
+      <section className="bg-[#1f1b2c] py-16 text-white border-t border-white/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="flex items-center justify-center gap-2">
-              <span className="text-xs font-bold font-mono tracking-widest text-secondary/40 bg-secondary/5 px-2 py-0.5 rounded">04</span>
-              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("section.testimonials")}</p>
-            </div>
-            <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.testimonials")}</h2>
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-2 text-[#cbf220]">
+              {t("section.testimonials")}
+            </span>
+            <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+              {lang === "ta" ? "வாடிக்கையாளர் கருத்துக்கள்" : "What Our Clients Say"}
+            </h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((tm, i) => {
@@ -356,26 +364,26 @@ function HomePage() {
               ];
               const initial = tm.name.charAt(0).toUpperCase();
               return (
-                <figure key={i} className="relative overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-7 backdrop-blur">
+                <figure key={i} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur">
                   {/* Decorative quote watermark */}
-                  <span className="pointer-events-none absolute -top-2 -left-1 select-none text-[8rem] font-black leading-none text-primary-foreground/5">
+                  <span className="pointer-events-none absolute -top-2 -left-1 select-none text-[8rem] font-black leading-none text-white/5">
                     ❝
                   </span>
                   <div className="relative">
-                    <div className="flex items-center gap-1 text-secondary">
+                    <div className="flex items-center gap-1 text-[#cbf220]">
                       {[0,1,2,3,4].map((j) => <Star key={j} className="h-4 w-4 fill-current" />)}
                     </div>
-                    <blockquote className="mt-4 text-sm leading-relaxed text-primary-foreground/90">
+                    <blockquote className="mt-4 text-sm leading-relaxed text-slate-300">
                       "{lang === "ta" ? tm.quote.ta : tm.quote.en}"
                     </blockquote>
-                    <figcaption className="mt-5 flex items-center gap-3 border-t border-primary-foreground/15 pt-4">
+                    <figcaption className="mt-5 flex items-center gap-3 border-t border-white/10 pt-4">
                       {/* Avatar initial circle */}
                       <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-black text-white ${avatarColors[i % avatarColors.length]}`}>
                         {initial}
                       </span>
                       <div>
-                        <p className="text-sm font-bold">{tm.name}</p>
-                        <p className="text-xs text-primary-foreground/65">{lang === "ta" ? tm.role.ta : tm.role.en}</p>
+                        <p className="text-sm font-bold text-white">{tm.name}</p>
+                        <p className="text-xs text-slate-400">{lang === "ta" ? tm.role.ta : tm.role.en}</p>
                       </div>
                     </figcaption>
                   </div>
@@ -387,14 +395,14 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl gradient-cta px-8 py-14 text-secondary-foreground shadow-elevated sm:px-14">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#613ed3] to-[#4f46e5] px-8 py-14 text-white shadow-elevated sm:px-14">
           <div className="relative z-10 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div className="max-w-xl">
-              <h3 className="text-3xl font-black tracking-tight sm:text-4xl">
+              <h3 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
                 {lang === "ta" ? "உங்களுக்கு உதவ தயாராக இருக்கிறோம்." : "We're here to help you."}
               </h3>
-              <p className="mt-3 text-secondary-foreground/90">
+              <p className="mt-3 text-indigo-100">
                 {lang === "ta"
                   ? "WhatsApp அல்லது அழைப்பு மூலம் இலவசமாக கேளுங்கள் — ஆலோசனை இலவசம்."
                   : "Reach out via WhatsApp or call for a free consultation — no obligation."}
@@ -405,20 +413,20 @@ function HomePage() {
                 href={whatsappLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-secondary-foreground px-5 py-3 text-sm font-bold text-secondary transition hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#613ed3] shadow-md transition hover:scale-[1.02] hover:bg-slate-50 cursor-pointer"
               >
                 {t("cta.whatsapp")}
               </a>
               <a
                 href={telLink(BUSINESS.phones[0])}
-                className="inline-flex items-center gap-2 rounded-full border-2 border-secondary-foreground/40 px-5 py-3 text-sm font-bold text-secondary-foreground transition hover:bg-secondary-foreground/10"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-white/40 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10 cursor-pointer animate-float-soft"
               >
                 <Phone className="h-4 w-4" /> {t("cta.call")}
               </a>
             </div>
           </div>
-          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-secondary-foreground/10 blur-3xl" />
-          <div className="absolute -bottom-24 -left-12 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
+          <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
+          <div className="absolute -bottom-24 -left-12 h-72 w-72 rounded-full bg-[#cbf220]/20 blur-3xl" />
         </div>
       </section>
     </>
