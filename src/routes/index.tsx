@@ -1,13 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, Phone, ShieldCheck, Sparkles, Star, Award, Users, Boxes, BadgeCheck, ShoppingCart, Monitor, Camera, Network, Headphones, RefreshCw, Wrench } from "lucide-react";
 import * as Icons from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import heroImg from "@/assets/hero-shop.jpg";
 import techHeroBg from "@/assets/tech-hero-bg.png";
 import ownerImg from "@/assets/owner.png";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { ShopGallery, ShopGalleryMarquee } from "@/components/site/ShopGallery";
 import { PremiumShowroomShowcase } from "@/components/site/PremiumShowroomShowcase";
+import acerLaptop from "@/assets/products/acer-laptop.jpg";
+import dellLaptop from "@/assets/products/dell-laptop.jpg";
+import printerImg from "@/assets/products/printer.jpg";
+import cctvBullet from "@/assets/products/cctv-bullet.jpg";
+import routerImg from "@/assets/products/router.jpg";
+import ssdImg from "@/assets/products/ssd.jpg";
+import keyboardMouse from "@/assets/products/keyboard-mouse.jpg";
+import wirelessMouse from "@/assets/products/wireless-mouse.jpg";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
 import { PRODUCT_CATEGORIES } from "@/lib/product-catalog";
@@ -63,6 +71,258 @@ const categoryColors: Record<string, { gradient: string; text: string; bg: strin
   "cables-connectors": { gradient: "from-emerald-600 to-green-500", text: "text-emerald-500", bg: "hover:border-emerald-500/40 hover:shadow-emerald-500/10 hover:bg-emerald-500/[0.02]" },
   "memory-cards": { gradient: "from-sky-600 to-indigo-500", text: "text-sky-500", bg: "hover:border-sky-500/40 hover:shadow-sky-500/10 hover:bg-sky-500/[0.02]" }
 };
+
+interface BentoProduct {
+  id: string;
+  name: string;
+  category: string;
+  tagline: string;
+  specs: string;
+  badge: string;
+  img: string;
+  colSpan: string;
+  rowSpan: string;
+  glowColor: string;
+  borderColor: string;
+}
+
+// 8 Bento products as requested
+const BENTO_PRODUCTS: BentoProduct[] = [
+  {
+    id: "acer-aspire",
+    name: "Acer Aspire Laptop",
+    category: "Computing",
+    tagline: "High Performance Workstation",
+    specs: "Core i5 Processor · 16GB RAM · 512GB SSD · 15.6\" FHD Display",
+    badge: "Featured Hero",
+    img: acerLaptop,
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+    rowSpan: "row-span-1 md:row-span-2 lg:row-span-2",
+    glowColor: "rgba(97, 62, 211, 0.4)", // Brand purple glow
+    borderColor: "rgba(97, 62, 211, 0.15)"
+  },
+  {
+    id: "dell-business",
+    name: "Dell Business Laptop",
+    category: "Computing",
+    tagline: "Intel 14th Gen Professional Powerhouse",
+    specs: "Core i3 14th Gen · 8GB RAM · 512GB SSD · Windows 11",
+    badge: "Best for Office",
+    img: dellLaptop,
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(59, 130, 246, 0.4)", // Blue glow
+    borderColor: "rgba(59, 130, 246, 0.15)"
+  },
+  {
+    id: "cctv-solutions",
+    name: "Hikvision CCTV Kit",
+    category: "Security",
+    tagline: "24/7 Smart Guarding & Pro Surveillance",
+    specs: "4MP Bullet Cameras · 8-Ch NVR · 2TB HDD · Mobile App Alerts",
+    badge: "Premium Protection",
+    img: cctvBullet,
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(168, 85, 247, 0.4)", // Purple glow
+    borderColor: "rgba(168, 85, 247, 0.15)"
+  },
+  {
+    id: "printers-show",
+    name: "HP Printer",
+    category: "Printers",
+    tagline: "Vibrant Color Smart Tank Inkjet System",
+    specs: "WiFi Print/Scan/Copy · High Capacity Ink · Ultra Low Cost per Page",
+    badge: "All-in-One Inkjet",
+    img: printerImg,
+    colSpan: "col-span-1 md:col-span-2 lg:col-span-2",
+    rowSpan: "row-span-1 md:row-span-2 lg:row-span-2",
+    glowColor: "rgba(236, 72, 153, 0.4)", // Pink glow
+    borderColor: "rgba(236, 72, 153, 0.15)"
+  },
+  {
+    id: "tplink-router",
+    name: "TP-Link Router",
+    category: "Networking",
+    tagline: "Gigabit Wireless Connectivity",
+    specs: "Dual-Band Wi-Fi 6 · High Gain Antennas · Gigabit WAN/LAN Ports",
+    badge: "Wi-Fi 6 High Speed",
+    img: routerImg,
+    colSpan: "col-span-1",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(6, 182, 212, 0.4)", // Cyan glow
+    borderColor: "rgba(6, 182, 212, 0.15)"
+  },
+  {
+    id: "ssd-storage",
+    name: "SSD Storage",
+    category: "Storage",
+    tagline: "High-Speed PCIe NVMe Upgrade",
+    specs: "512GB PCIe M.2 SSD · Up to 3500MB/s · Silent and Power Efficient",
+    badge: "Ultrafast Storage",
+    img: ssdImg,
+    colSpan: "col-span-1",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(97, 62, 211, 0.4)", // Brand purple glow
+    borderColor: "rgba(97, 62, 211, 0.15)"
+  },
+  {
+    id: "wireless-keyboard",
+    name: "Wireless Keyboard",
+    category: "Input Accessories",
+    tagline: "Silent, Responsive Typing Experience",
+    specs: "Whisper-Quiet Layout · Long Battery Life · Spill-Resistant Build",
+    badge: "Ergonomic Layout",
+    img: keyboardMouse,
+    colSpan: "col-span-1",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(236, 72, 153, 0.4)", // Pink glow
+    borderColor: "rgba(236, 72, 153, 0.15)"
+  },
+  {
+    id: "wireless-mouse",
+    name: "Wireless Mouse",
+    category: "Input Accessories",
+    tagline: "Precise Ergonomic Tracking",
+    specs: "1600 DPI Optical · Comfort Contoured Grip · Multi-surface Sensor",
+    badge: "Fluid Precision",
+    img: wirelessMouse,
+    colSpan: "col-span-1",
+    rowSpan: "row-span-1",
+    glowColor: "rgba(59, 130, 246, 0.4)", // Blue glow
+    borderColor: "rgba(59, 130, 246, 0.15)"
+  }
+];
+
+function BentoProductCard({ p }: { p: BentoProduct }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    const rotateX = -(y / (rect.height / 2)) * 8;
+    const rotateY = (x / (rect.width / 2)) * 8;
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  // Determine different image height/styles depending on card layout
+  const isLarge = p.colSpan.includes("lg:col-span-2") && p.rowSpan?.includes("lg:row-span-2");
+  const isMedium = p.colSpan.includes("lg:col-span-2") && !p.rowSpan?.includes("lg:row-span-2");
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`group relative overflow-hidden rounded-[24px] bg-slate-950/75 border backdrop-blur-xl p-6 md:p-8 flex flex-col justify-between cursor-pointer transition-all duration-500 ease-out select-none ${p.colSpan} ${p.rowSpan}`}
+      style={{
+        borderColor: isHovered ? p.glowColor : p.borderColor,
+        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${isHovered ? '-6px' : '0px'})`,
+        boxShadow: isHovered 
+          ? `0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px -5px ${p.glowColor}`
+          : '0 10px 30px -15px rgba(0, 0, 0, 0.4)',
+      }}
+    >
+      {/* Background radial glow */}
+      <div 
+        className="absolute inset-0 opacity-15 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle at 50% 50%, ${p.glowColor} 0%, transparent 70%)`
+        }}
+      />
+
+      {/* Floating ambient particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[24px]">
+        <div className="absolute top-[20%] left-[30%] w-1.5 h-1.5 rounded-full bg-white/20 blur-[1.5px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
+        <div className="absolute bottom-[25%] right-[20%] w-1 h-1 rounded-full bg-white/35 blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse" />
+      </div>
+
+      {/* Card Header */}
+      <div className="relative z-10 flex flex-col items-start gap-1">
+        <div className="flex w-full items-center justify-between gap-2">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 font-mono">
+            {p.category}
+          </span>
+          <span 
+            className="rounded-full px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider transition-all duration-300"
+            style={{
+              backgroundColor: isHovered ? p.glowColor.replace('0.4', '0.2') : 'rgba(255,255,255,0.04)',
+              color: isHovered ? '#ffffff' : 'rgba(255,255,255,0.6)',
+              border: `1px solid ${isHovered ? p.glowColor.replace('0.4', '0.3') : 'rgba(255,255,255,0.05)'}`
+            }}
+          >
+            {p.badge}
+          </span>
+        </div>
+        <h3 className="mt-2 text-xl md:text-2xl font-black text-white font-display tracking-tight uppercase leading-none">
+          {p.name}
+        </h3>
+        <p className="text-xs text-slate-400 font-medium tracking-wide mt-1 leading-snug">
+          {p.tagline}
+        </p>
+      </div>
+
+      {/* Product Image Frame */}
+      <div 
+        className={`relative z-10 my-4 flex items-center justify-center overflow-hidden transition-all duration-500 ${
+          isLarge ? 'h-48 md:h-64' : isMedium ? 'h-36 md:h-40' : 'h-32 md:h-36'
+        }`}
+      >
+        <img
+          src={p.img}
+          alt={p.name}
+          className="h-full w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-108"
+        />
+        {/* Holographic light sweep */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
+      </div>
+
+      {/* Card Footer / Specs & CTA */}
+      <div className="relative z-10 flex flex-col gap-3 mt-auto">
+        <div className="h-px bg-slate-800/40 w-full" />
+        <div className="flex items-center justify-between gap-3 min-h-8">
+          {/* Specs Text */}
+          <div className="min-w-0 flex-1">
+            <p className="text-[10px] text-slate-500 font-mono tracking-wider uppercase leading-none">System Specs</p>
+            <p className="text-xs font-semibold text-slate-350 truncate mt-1 leading-tight">
+              {p.specs}
+            </p>
+          </div>
+
+          {/* View Product CTA - slides up and fades in */}
+          <div className="shrink-0 flex items-center justify-end overflow-hidden">
+            <Link 
+              to="/products"
+              hash={p.id}
+              className={`inline-flex items-center gap-1.5 rounded-full bg-[#cbf220] hover:bg-lime-400 text-[#171e00] font-sans text-[10px] font-black tracking-wider uppercase py-2 px-3.5 shadow-md transition-all duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.1) transform ${
+                isHovered 
+                  ? 'translate-y-0 opacity-100 scale-100' 
+                  : 'translate-y-4 opacity-0 scale-90 pointer-events-none'
+              }`}
+            >
+              <span>Explore</span>
+              <Icons.ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function HomePage() {
   const { t, lang } = useI18n();
@@ -244,60 +504,44 @@ function HomePage() {
         </div>
       </section>
 
-      {/* PRODUCT CATEGORIES */}
-      <section id="products" className="bg-[#fcf9f8] dark:bg-[#0b0c16] py-12 sm:py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end border-b border-gray-200/50 dark:border-white/5 pb-8 mb-10">
-            <div className="max-w-2xl">
-              <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-2 text-[#613ed3] dark:text-indigo-400">
-                {t("nav.products")}
-              </span>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-slate-900 dark:text-white">
-                {t("section.products")}
-              </h2>
-              <p className="mt-3 text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{t("section.productsSub")}</p>
-            </div>
-            <Link to="/products" className="hidden shrink-0 items-center gap-1 text-sm font-bold text-[#613ed3] dark:text-indigo-400 hover:underline sm:inline-flex">
-              {t("cta.viewAll")} <ArrowRight className="h-4 w-4" />
-            </Link>
+      {/* PRODUCT CONFIGURATION SHOWCASE BENTO GRID */}
+      <section id="products" className="relative bg-[#fcf9f8] dark:bg-[#0b0c16] py-16 sm:py-24 overflow-hidden scroll-mt-24 border-t border-b border-gray-200/40 dark:border-white/5">
+        {/* Subtle animated ambient background glows */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-[350px] h-[350px] rounded-full bg-blue-500/5 blur-[120px] animate-pulse" style={{ animationDuration: '8s' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-purple-500/5 blur-[130px] animate-pulse" style={{ animationDuration: '12s' }} />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
+            <span className="text-[11px] font-bold tracking-[0.25em] uppercase block mb-3 text-[#613ed3] dark:text-indigo-400 font-mono">
+              Showroom
+            </span>
+            <h2 className="text-3xl font-black tracking-tight sm:text-5xl text-slate-900 dark:text-white font-display uppercase leading-tight">
+              Featured Products
+            </h2>
+            <p className="mt-4 text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed font-medium">
+              Explore our latest laptops, printers, CCTV systems, networking solutions, and computer accessories.
+            </p>
           </div>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {(showAllCategories ? PRODUCT_CATEGORIES : PRODUCT_CATEGORIES.slice(0, 6)).map((c) => (
-              <Link
-                key={c.key}
-                to="/products"
-                hash={c.key}
-                className={`group relative overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${categoryColors[c.key]?.bg || "hover:border-primary/40 hover:shadow-primary/10"}`}
-              >
-                <div className="flex items-start justify-between">
-                  <span className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${categoryColors[c.key]?.gradient || "gradient-hero"} text-white shadow-soft transition-transform group-hover:scale-105 duration-300`}>
-                    <Icon name={c.icon} className="h-7 w-7" />
-                  </span>
-                  <span className="rounded-full bg-accent/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-accent">
-                    {t("badge.inStock")}
-                  </span>
-                </div>
-                <h3 className="mt-5 text-lg font-bold">{c.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{c.description}</p>
-                <div className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-primary">
-                  Explore <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                </div>
-              </Link>
+          {/* Bento Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+            {BENTO_PRODUCTS.map((p) => (
+              <BentoProductCard key={p.id} p={p} />
             ))}
           </div>
 
+          {/* Bottom Showroom Action Link */}
           <div className="mt-12 text-center">
-            <button
-              type="button"
-              onClick={() => setShowAllCategories(!showAllCategories)}
-              className="inline-flex items-center gap-2.5 rounded-full bg-primary hover:bg-primary/95 px-6 py-3.5 text-sm font-bold text-primary-foreground transition-all hover:scale-[1.02] shadow-elevated cursor-pointer"
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 rounded-full bg-[#613ed3] hover:bg-[#5232c0] px-6 py-3.5 text-sm font-bold text-white transition-all hover:scale-[1.02] shadow-elevated cursor-pointer"
             >
-              {showAllCategories
-                ? (lang === "ta" ? "குறைவான வகைகளைக் காட்டு" : "Show Less Categories")
-                : (lang === "ta" ? `அனைத்து ${PRODUCT_CATEGORIES.length} வகைகளையும் காட்டு` : `Show All ${PRODUCT_CATEGORIES.length} Categories`)}
-              <ArrowRight className={`h-4 w-4 transition-transform duration-300 ${showAllCategories ? "rotate-90" : ""}`} />
-            </button>
+              <span>Explore All Products Catalog</span>
+              <Icons.ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
