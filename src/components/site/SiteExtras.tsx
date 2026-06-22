@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Phone, ChevronUp, Clock, MapPin, MessageCircle } from "lucide-react";
+import { Phone, ChevronUp, Clock, MapPin, MessageCircle, Facebook, Instagram } from "lucide-react";
 import { BUSINESS, telLink, whatsappLink } from "@/lib/business";
 
 /* ─── Announcement Bar ─────────────────────────────────────── */
@@ -10,41 +10,76 @@ export function AnnouncementBar() {
 
   return (
     <div
-      className="relative z-50 bg-primary text-primary-foreground text-xs font-medium"
+      className="relative z-50 bg-[#050b1a] text-slate-300 text-xs border-b border-white/5 shadow-lg select-none"
       role="banner"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
         {/* Left: hours + location */}
-        <div className="flex items-center gap-4 text-primary-foreground/80">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-400">
           <span className="flex items-center gap-1.5">
-            <Clock className="h-3 w-3 text-secondary" />
+            <Clock className="h-3.5 w-3.5 text-amber-400" />
             Mon–Sat · 9 AM – 7 PM
           </span>
-          <span className="hidden sm:flex items-center gap-1.5">
-            <MapPin className="h-3 w-3 text-secondary" />
+          <span className="hidden md:flex items-center gap-1.5 border-l border-white/10 pl-4">
+            <MapPin className="h-3.5 w-3.5 text-cyan-400" />
             Venkatesapuram, Perambalur
           </span>
         </div>
 
         {/* Center: promo pill */}
-        <div className="hidden md:flex items-center gap-1.5 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-0.5 text-secondary font-semibold">
-          ✦ Free consultation — call or WhatsApp us today
+        <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-cyan-500/20 bg-cyan-950/30 px-3 py-0.5 text-xs text-cyan-300 font-medium">
+          <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          Free consultation — call or WhatsApp us today
         </div>
 
-        {/* Right: quick call + dismiss */}
-        <div className="flex items-center gap-3">
-          <a
-            href={telLink(BUSINESS.phones[0])}
-            className="hidden sm:inline-flex items-center gap-1 text-secondary font-semibold hover:text-secondary/80 transition-colors"
-          >
-            <Phone className="h-3 w-3" />
-            +91 {BUSINESS.phones[0]}
-          </a>
+        {/* Right: quick call + socials + dismiss */}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            <a
+              href={telLink(BUSINESS.phones[0])}
+              className="inline-flex items-center gap-1.5 text-slate-300 font-bold hover:text-cyan-400 transition-colors"
+            >
+              <Phone className="h-3.5 w-3.5 text-amber-400 animate-bounce" />
+              +91 {BUSINESS.phones[0]}
+            </a>
+            
+            {/* Social Icons matching the second image */}
+            <div className="hidden sm:flex items-center gap-2 border-l border-white/10 pl-3">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-slate-400 hover:border-cyan-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-3 w-3" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-slate-400 hover:border-cyan-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-3 w-3" />
+              </a>
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-slate-400 hover:border-cyan-400 hover:text-white hover:bg-white/5 transition-all duration-200"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="h-3 w-3" />
+              </a>
+            </div>
+          </div>
+          
           <button
             type="button"
             onClick={() => setVisible(false)}
             aria-label="Dismiss"
-            className="text-primary-foreground/50 hover:text-primary-foreground transition-colors text-base leading-none"
+            className="text-slate-500 hover:text-slate-300 transition-colors text-sm leading-none"
           >
             ✕
           </button>

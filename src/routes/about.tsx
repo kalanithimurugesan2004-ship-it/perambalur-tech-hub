@@ -4,6 +4,8 @@ import { useI18n } from "@/lib/i18n";
 import { BUSINESS } from "@/lib/business";
 import { PRODUCT_SHOWCASE } from "@/lib/shop-images";
 import ownerImg from "@/assets/owner.png";
+import { StreetViewMap } from "@/components/site/StreetViewMap";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -35,7 +37,8 @@ function AboutPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <Breadcrumb crumbs={[{ label: t("nav.about") }]} />
+        <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.about")}</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">{t("section.about")}</h1>
           <p className="mt-5 max-w-3xl text-primary-foreground/85 leading-relaxed">{t("section.aboutBody")}</p>
@@ -106,7 +109,7 @@ function AboutPage() {
 
             <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {VALUES.map((v, i) => (
-                <div key={i} className="group rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-5 glass-card glow-hover">
+                <div key={i} className="group rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-5 glass-card glow-hover">
                   <v.icon className="h-6 w-6 text-secondary transition-transform duration-300 group-hover:scale-110" />
                   <p className="mt-3 text-sm font-bold">{lang === "ta" ? v.ta : v.en}</p>
                 </div>
@@ -190,13 +193,13 @@ function AboutPage() {
             {PRODUCT_SHOWCASE.map((p) => (
               <article
                 key={p.key}
-                className="group overflow-hidden rounded-[1.5rem] border border-border/80 bg-card shadow-soft transition hover:-translate-y-0.5 hover:shadow-elevated"
+                className="group overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-soft transition hover:-translate-y-0.5 hover:shadow-elevated"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden bg-white flex items-center justify-center p-3 border-b border-border">
                   <img
                     src={p.image}
                     alt={p.en}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>

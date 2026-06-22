@@ -3,6 +3,7 @@ import * as Icons from "lucide-react";
 import { ArrowRight, Phone } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, telLink, whatsappLink } from "@/lib/business";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -50,7 +51,8 @@ function ServicesPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <Breadcrumb crumbs={[{ label: t("nav.services") }]} />
+        <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">{t("section.services")}</h1>
           <p className="mt-4 max-w-2xl text-primary-foreground/80">{t("section.servicesSub")}</p>

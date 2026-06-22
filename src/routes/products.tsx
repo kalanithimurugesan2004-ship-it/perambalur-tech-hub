@@ -4,8 +4,9 @@ import { ArrowLeft, CheckCircle2, MessageCircle, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useI18n } from "@/lib/i18n";
 import { whatsappLink } from "@/lib/business";
-import { getProductImage, getCategoryImage, ACER_ASPIRE_LITE_IMAGES, DELL_I3_IMAGES, DELL_RYZEN_IMAGES, DELL_SLIM_IMAGES, EPSON_L3210_IMAGES, EPSON_L3250_IMAGES, EPSON_L6460_IMAGES, EPSON_M2050_IMAGES, EPSON_M1100_IMAGES, CANON_G2010_IMAGES, CANON_MF3010_IMAGES, CANON_LBP6030_IMAGES, CANON_LBP6030W_IMAGES, CP_PLUS_BULLET_IMAGES, CP_PLUS_DOME_IMAGES, CP_PLUS_NVR_IMAGES, CP_PLUS_DVR_IMAGES, CP_PLUS_ROBOT_IMAGES, DAHUA_BULLET_IMAGES, DAHUA_DVR_IMAGES, DAHUA_NVR_IMAGES, SIM_4G_CAMERA_IMAGES, HOME_SECURITY_IMAGES, OFFICE_SECURITY_IMAGES, ACER_20_MONITOR_IMAGES, ACER_22_MONITOR_IMAGES, DELL_20_MONITOR_IMAGES, DELL_22_MONITOR_IMAGES, FINGERS_22_MONITOR_IMAGES, EVM_MONITOR_IMAGES, SSD_128GB_IMAGES, SSD_256GB_IMAGES, SSD_512GB_IMAGES, HDD_1TB_IMAGES, HDD_2TB_IMAGES, ACER_LAPTOP_BAG_IMAGES, DELL_LAPTOP_BAG_IMAGES, DELL_BATTERY_G91J0_IMAGES, DELL_DC15250_IMAGES } from "@/lib/product-images";
+import { getProductImage, getCategoryImage, ACER_ASPIRE_LITE_IMAGES, DELL_I3_IMAGES, DELL_RYZEN_IMAGES, DELL_SLIM_IMAGES, EPSON_L3210_IMAGES, EPSON_L3250_IMAGES, EPSON_L6460_IMAGES, EPSON_M2050_IMAGES, EPSON_M1100_IMAGES, CANON_G2010_IMAGES, CANON_MF3010_IMAGES, CANON_LBP6030_IMAGES, CANON_LBP6030W_IMAGES, CP_PLUS_BULLET_IMAGES, CP_PLUS_DOME_IMAGES, CP_PLUS_NVR_IMAGES, CP_PLUS_DVR_IMAGES, CP_PLUS_ROBOT_IMAGES, DAHUA_BULLET_IMAGES, DAHUA_DVR_IMAGES, DAHUA_NVR_IMAGES, SIM_4G_CAMERA_IMAGES, HOME_SECURITY_IMAGES, OFFICE_SECURITY_IMAGES, ACER_20_MONITOR_IMAGES, ACER_22_MONITOR_IMAGES, DELL_20_MONITOR_IMAGES, DELL_22_MONITOR_IMAGES, FINGERS_22_MONITOR_IMAGES, EVM_MONITOR_IMAGES, SSD_128GB_IMAGES, SSD_256GB_IMAGES, SSD_512GB_IMAGES, HDD_1TB_IMAGES, HDD_2TB_IMAGES, ACER_LAPTOP_BAG_IMAGES, DELL_LAPTOP_BAG_IMAGES, DELL_BATTERY_G91J0_IMAGES, DELL_DC15250_IMAGES, HP_12A_TONER_IMAGES, HP_12A_PRESSURE_ROLLER_IMAGES, HIKVISION_RAM_IMAGES, AARVEX_RAM_IMAGES, HP_88A_TONER_IMAGES, CRUCIAL_LAPTOP_RAM_IMAGES, CRUCIAL_DESKTOP_RAM_IMAGES, ACER_135W_ADAPTER_IMAGES, ACURAA_CAT6_CABLE_IMAGES, LG_ADAPTOR_19V_IMAGES } from "@/lib/product-images";
 import { PRODUCT_CATEGORIES, PRODUCTS, type Product } from "@/lib/product-catalog";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 
 export const Route = createFileRoute("/products")({
   head: () => ({
@@ -64,6 +65,162 @@ interface ProductDetails {
 }
 
 const INTERACTIVE_PRODUCTS: Record<string, (lang: string) => ProductDetails> = {
+  "ACURAA CAT6 CABLE OUT DOOR": (lang) => ({
+    title: "Acuraa CAT6 Cable Outdoor",
+    badge: {
+      en: "Waterproof Outdoor Cable",
+      ta: "வெளிப்புறத்திற்கான வாட்டர்புரூஃப் கேபிள்",
+    },
+    images: ACURAA_CAT6_CABLE_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "வேகம் (Speed)" : "Transmission Speed", value: "10Gbps High-Speed Data Transfer", icon: "Activity" },
+      { label: lang === "ta" ? "கம்பியின் அளவு (Gauge)" : "Conductor Gauge", value: "23 AWG Solid Copper Conductors", icon: "Settings" },
+      { label: lang === "ta" ? "ஜாக்கெட் வகை" : "Jacket Material", value: "UV Resistant & Waterproof Double-Jacket", icon: "Shield" },
+      { label: lang === "ta" ? "மதிப்பீடு (Rating)" : "Installation Rating", value: "Direct Burial Rated for underground setups", icon: "HardDrive" },
+      { label: lang === "ta" ? "பயன்பாடு (Usage)" : "Ideal For", value: "CCTV Cameras, outdoor access points & routers", icon: "Network" },
+    ],
+    whatsappEnquiry: "ACURAA CAT6 CABLE OUT DOOR",
+  }),
+  "ADAPTOR MNT LG 19V 2.1A": (lang) => ({
+    title: "Adaptor MNT LG 19V 2.1A",
+    badge: {
+      en: "Genuine LG Monitor Adaptor",
+      ta: "அசல் எல்ஜி மானிட்டர் அடாப்டர்",
+    },
+    images: LG_ADAPTOR_19V_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "வெளியீடு (Output)" : "Power Output", value: "19V 2.1A (Compatible with 1.7A / 1.3A / 0.8A)", icon: "Zap" },
+      { label: lang === "ta" ? "சக்தி (Power)" : "Max Wattage", value: "Up to 40 Watts Max", icon: "Activity" },
+      { label: lang === "ta" ? "இணைப்பான் முனை" : "Connector Type", value: "6.5mm x 4.4mm with Center Pin (LG standard)", icon: "Link" },
+      { label: lang === "ta" ? "பொருந்தக்கூடிய தன்மை" : "Compatibility", value: "LG LED/LCD Monitors & smart TVs", icon: "Monitor" },
+      { label: lang === "ta" ? "உள்ளீடு (Input)" : "Input Power", value: "100-240V ~ 50/60Hz 1.0A", icon: "Cpu" },
+    ],
+    whatsappEnquiry: "ADAPTOR MNT LG 19V 2.1A",
+  }),
+  "88A TONER POWDER BOTTLE": (lang) => ({
+    title: "88A Toner Powder Bottle",
+    badge: {
+      en: "Universal Toner Powder",
+      ta: "யுனிவர்சல் டோனர் பவுடர்",
+    },
+    images: HP_88A_TONER_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "பொருந்தக்கூடிய பிரிண்டர்கள்" : "Compatible Printers", value: "HP LaserJet P1007, P1106, P1108, P1008, M1213nf, M1136, M126nw, M128fw, M128fn", icon: "Printer" },
+      { label: lang === "ta" ? "நிகர எடை (Net Weight)" : "Net Weight", value: "80g Premium Quality", icon: "Scale" },
+      { label: lang === "ta" ? "தூள் வகை (Powder Type)" : "Powder Type", value: "Ultra Dark High Yield Black", icon: "Droplet" },
+      { label: lang === "ta" ? "பக்க உற்பத்தி (Page Yield)" : "Page Yield", value: "Up to 1,500 pages at 5% coverage", icon: "FileText" },
+    ],
+    whatsappEnquiry: "88A TONER POWDER BOTTLE",
+  }),
+  "8GB DDR4 3200 LAPTOP RAM CRUCIAL": (lang) => ({
+    title: "8GB DDR4 3200 Laptop RAM Crucial",
+    badge: {
+      en: "Crucial Laptop SODIMM",
+      ta: "க்ரூஷியல் லேப்டாப் ரேம்",
+    },
+    images: CRUCIAL_LAPTOP_RAM_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "கொள்ளளவு (Capacity)" : "Capacity", value: "8 GB", icon: "Layers" },
+      { label: lang === "ta" ? "வேகம் (Speed)" : "Frequency", value: "3200 MHz", icon: "Zap" },
+      { label: lang === "ta" ? "தொழில்நுட்பம் (Technology)" : "Memory Type", value: "DDR4 SODIMM", icon: "Cpu" },
+      { label: lang === "ta" ? "மின்னழுத்தம் (Voltage)" : "Working Voltage", value: "1.2V Low Voltage", icon: "Activity" },
+      { label: lang === "ta" ? "பொருந்தக்கூடிய தன்மை" : "Compatibility", value: "Intel & AMD laptop processors", icon: "CheckCircle" },
+    ],
+    whatsappEnquiry: "8GB DDR4 3200 LAPTOP RAM CRUCIAL",
+  }),
+  "8GB DDR4 DESKTOP RAM": (lang) => ({
+    title: "8GB DDR4 Desktop RAM",
+    badge: {
+      en: "Crucial Desktop UDIMM",
+      ta: "டெஸ்க்டாப் கணினி ரேம்",
+    },
+    images: CRUCIAL_DESKTOP_RAM_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "கொள்ளளவு (Capacity)" : "Capacity", value: "8 GB", icon: "Layers" },
+      { label: lang === "ta" ? "வேகம் (Speed)" : "Frequency", value: "3200 MHz", icon: "Zap" },
+      { label: lang === "ta" ? "தொழில்நுட்பம் (Technology)" : "Memory Type", value: "DDR4 UDIMM", icon: "Cpu" },
+      { label: lang === "ta" ? "மின்னழுத்தம் (Voltage)" : "Working Voltage", value: "1.2V", icon: "Activity" },
+      { label: lang === "ta" ? "வடிவம் (Form Factor)" : "Form Factor", value: "288-Pin Desktop UDIMM", icon: "Settings" },
+    ],
+    whatsappEnquiry: "8GB DDR4 DESKTOP RAM",
+  }),
+  "ACER 135 WATTS ADAPTOR": (lang) => ({
+    title: "Acer 135 Watts Adaptor",
+    badge: {
+      en: "High-Wattage Power Supply",
+      ta: "அதிவேக பவர் அடாப்டர்",
+    },
+    images: ACER_135W_ADAPTER_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "சக்தி வெளியீடு (Output)" : "Power Output", value: "135 Watts / 19V 7.1A", icon: "Zap" },
+      { label: lang === "ta" ? "இணைப்பான் முனை" : "Connector Tip", value: "5.5mm Outer / 1.7mm Inner Diameter (Orange Tip)", icon: "Link" },
+      { label: lang === "ta" ? "உள்ளீடு (Input)" : "Input Range", value: "100-240V ~ 2.5A 50-60Hz", icon: "Activity" },
+      { label: lang === "ta" ? "பாதுகாப்பு அம்சங்கள்" : "Safety Features", value: "Over-voltage, short-circuit, over-current protection", icon: "Shield" },
+    ],
+    whatsappEnquiry: "ACER 135 WATTS ADAPTOR",
+  }),
+  "16GB DDR4 RAM HIKVISION": (lang) => ({
+    title: "16GB DDR4 RAM Hikvision",
+    badge: {
+      en: "High Speed Desktop RAM",
+      ta: "அதிவேக டெஸ்க்டாப் ரேம்",
+    },
+    images: HIKVISION_RAM_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "கொள்ளளவு (Capacity)" : "Capacity", value: "16 GB", icon: "Layers" },
+      { label: lang === "ta" ? "தொழில்நுட்பம் (Technology)" : "Memory Type", value: "DDR4 UDIMM", icon: "Cpu" },
+      { label: lang === "ta" ? "வேகம் (Speed)" : "Frequency", value: "3200 MHz", icon: "Zap" },
+      { label: lang === "ta" ? "வடிவம் (Form Factor)" : "Form Factor", value: "288-Pin Desktop UDIMM", icon: "Settings" },
+      { label: lang === "ta" ? "ஹீட் ஸ்ப்ரெடர்" : "Heat Spreader", value: "Included (Premium U10 Series)", icon: "Shield" },
+    ],
+    whatsappEnquiry: "16GB DDR4 RAM HIKVISION",
+  }),
+  "16GB RAM DDR4 DESKTOP AARVEX": (lang) => ({
+    title: "16GB RAM DDR4 Desktop Aarvex",
+    badge: {
+      en: "Budget Friendly Desktop RAM",
+      ta: "பட்ஜெட் விலையில் டெஸ்க்டாப் ரேம்",
+    },
+    images: AARVEX_RAM_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "கொள்ளளவு (Capacity)" : "Capacity", value: "16 GB", icon: "Layers" },
+      { label: lang === "ta" ? "தொழில்நுட்பம் (Technology)" : "Memory Type", value: "DDR4 UDIMM", icon: "Cpu" },
+      { label: lang === "ta" ? "வேகம் (Speed)" : "Frequency", value: "3200 MHz", icon: "Zap" },
+      { label: lang === "ta" ? "மின்னழுத்தம் (Voltage)" : "Working Voltage", value: "1.2V Low Voltage", icon: "Activity" },
+      { label: lang === "ta" ? "பொருந்தக்கூடிய தன்மை" : "Compatibility", value: "Optimized for Intel & AMD motherboards", icon: "CheckCircle" },
+    ],
+    whatsappEnquiry: "16GB RAM DDR4 DESKTOP AARVEX",
+  }),
+  "12A HP TONER BOTTLE MAGIC": (lang) => ({
+    title: "12A HP Toner Bottle Magic",
+    badge: {
+      en: "Premium Refill Toner",
+      ta: "பிரீமியம் ரீஃபில் டோனர்",
+    },
+    images: HP_12A_TONER_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "பொருந்தக்கூடிய பிரிண்டர்கள்" : "Compatible Printers", value: "HP LaserJet 1010, 1012, 1015, 1018, 1020, 1022, 3015, 3020, 3030, 3050, 3052, 3055, M1005, M1319f", icon: "Printer" },
+      { label: lang === "ta" ? "மை வகை (Ink Type)" : "Toner Powder", value: "High-grade premium black magnetic powder", icon: "Droplet" },
+      { label: lang === "ta" ? "மறுசுழற்சி முறை (Refill)" : "Easy Reload System", value: "Shake at least 10s, insert, turn counterclockwise, squeeze, turn clockwise, remove", icon: "Zap" },
+      { label: lang === "ta" ? "பக்க உற்பத்தி (Page Yield)" : "Page Yield", value: "Up to 2,000 pages at 5% coverage", icon: "FileText" },
+    ],
+    whatsappEnquiry: "12A HP TONER BOTTLE MAGIC",
+  }),
+  "12A PRESSURE ROLLER HP": (lang) => ({
+    title: "12A Pressure Roller HP",
+    badge: {
+      en: "High Quality Pressure Roller",
+      ta: "உயர்தர பிரஷர் ரோலர்",
+    },
+    images: HP_12A_PRESSURE_ROLLER_IMAGES,
+    specs: [
+      { label: lang === "ta" ? "பொருந்தக்கூடிய மாதிரி" : "Compatibility", value: "HP LaserJet 12A (Q2612A) Cartridges & compatible printers", icon: "Settings" },
+      { label: lang === "ta" ? "பொருள் வகை (Material)" : "Material", value: "High-temperature resistant silicone rubber", icon: "Layers" },
+      { label: lang === "ta" ? "செயல்பாடு (Function)" : "Fusing System", value: "Applies pressure to fuse toner onto paper efficiently", icon: "Activity" },
+      { label: lang === "ta" ? "ஆயுள் (Durability)" : "Lifespan", value: "Designed for heavy-duty long-term office printing", icon: "Shield" },
+    ],
+    whatsappEnquiry: "12A PRESSURE ROLLER HP",
+  }),
   "ACER LAPTOP CARRY CASE": (lang) => ({
     title: "Acer Laptop Carry Case",
     badge: {
@@ -865,6 +1022,16 @@ function ProductsPage() {
     for (const key of Object.keys(INTERACTIVE_PRODUCTS)) {
       if (key.toLowerCase() === name) return key;
     }
+    if (name.includes("acuraa") && name.includes("cat6")) return "ACURAA CAT6 CABLE OUT DOOR";
+    if (name.includes("lg") && name.includes("19v") && name.includes("2.1")) return "ADAPTOR MNT LG 19V 2.1A";
+    if (name.includes("88a") && name.includes("toner")) return "88A TONER POWDER BOTTLE";
+    if (name.includes("crucial") && name.includes("laptop") && name.includes("ram")) return "8GB DDR4 3200 LAPTOP RAM CRUCIAL";
+    if (name.includes("8gb ddr4 desktop ram") || (name.includes("desktop") && name.includes("ram") && !name.includes("aarvex") && !name.includes("hikvision"))) return "8GB DDR4 DESKTOP RAM";
+    if (name.includes("acer") && name.includes("135") && name.includes("adaptor")) return "ACER 135 WATTS ADAPTOR";
+    if (name.includes("12a") && name.includes("toner") && name.includes("magic")) return "12A HP TONER BOTTLE MAGIC";
+    if (name.includes("12a") && name.includes("pressure") && name.includes("roller")) return "12A PRESSURE ROLLER HP";
+    if (name.includes("hikvision") && name.includes("ram")) return "16GB DDR4 RAM HIKVISION";
+    if (name.includes("aarvex") && name.includes("ram")) return "16GB RAM DDR4 DESKTOP AARVEX";
     if (name.includes("dell") && name.includes("bag")) return "DELL LAPTOP BAG";
     if (name.includes("acer") && (name.includes("bag") || name.includes("carry case"))) return "ACER LAPTOP CARRY CASE";
     if (name.includes("dell") && (name.includes("battery") || name.includes("g91j0"))) return "DELL LAPTOP OEM ORIGINAL BATTERY G91J0";
@@ -910,7 +1077,8 @@ function ProductsPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <Breadcrumb crumbs={[{ label: t("nav.products") }]} />
+        <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
           <h1 className="mt-2 max-w-3xl text-2xl font-black tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">{t("section.products")}</h1>
           <p className="mt-4 max-w-2xl text-sm text-primary-foreground/80 sm:text-base">{t("section.productsSub")}</p>
@@ -1043,7 +1211,7 @@ function ProductsPage() {
 
                 const cardContent = (
                   <>
-                    <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-border/40 p-3 flex items-center justify-center">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-white border-b border-border p-3 flex items-center justify-center">
                       <img
                         src={product.image ?? getProductImage(product.name, product.category)}
                         alt={product.name}
@@ -1110,7 +1278,7 @@ function ProductsPage() {
                         setSelectedProduct(interactiveKey);
                         setCurrentSlide(0);
                       }}
-                      className={`group flex flex-col overflow-hidden rounded-[1.5rem] border border-border/80 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${colors.bg}`}
+                      className={`group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer ${colors.bg}`}
                     >
                       {cardContent}
                     </div>
@@ -1123,7 +1291,7 @@ function ProductsPage() {
                     href={whatsappLink(`Hello SRS, I'd like to enquire about: ${product.name}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex flex-col overflow-hidden rounded-[1.5rem] border border-border/80 bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${colors.bg}`}
+                    className={`group flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${colors.bg}`}
                   >
                     {cardContent}
                   </a>
@@ -1167,7 +1335,7 @@ function ProductsPage() {
               {/* Modal Body */}
               <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden min-h-0">
                 {/* Left Column: Slideshow */}
-                <div className="relative flex flex-col justify-between bg-muted/20 rounded-2xl overflow-hidden p-2 border border-border/80 h-full min-h-0">
+                <div className="relative flex flex-col justify-between bg-muted/20 rounded-2xl overflow-hidden p-2 border border-border h-full min-h-0">
                   <div className="relative flex-1 aspect-[4/3] md:aspect-auto w-full rounded-xl overflow-hidden bg-white flex items-center justify-center min-h-0">
                     <img
                       src={details.images[currentSlide]}
@@ -1210,7 +1378,7 @@ function ProductsPage() {
                     </h4>
                     <div className="grid grid-cols-1 gap-2 text-xs">
                       {details.specs.map((spec) => (
-                        <div key={spec.label} className="flex items-center gap-2.5 rounded-xl border border-border/80 bg-muted/40 p-2">
+                        <div key={spec.label} className="flex items-center gap-2.5 rounded-xl border border-border bg-muted/40 p-2">
                           <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary-soft text-primary shrink-0">
                             <Icon name={spec.icon} className="h-4 w-4" />
                           </span>

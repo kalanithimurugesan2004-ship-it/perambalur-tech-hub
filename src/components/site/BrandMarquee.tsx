@@ -104,7 +104,7 @@ export function BrandMarquee() {
   const marqueeItems = [...brands, ...brands, ...brands];
 
   return (
-    <div className="w-full border-y border-border/60 bg-muted/30 py-6 overflow-hidden relative select-none">
+    <div className="w-full border-y border-border bg-muted/30 py-6 overflow-hidden relative select-none">
       {/* Subtle overlay gradient to blend edges */}
       <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-background to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-background to-transparent z-10" />

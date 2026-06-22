@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock, ExternalLink, MessageCircle } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, telLink, whatsappLink } from "@/lib/business";
+import { Breadcrumb } from "@/components/site/Breadcrumb";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -26,7 +27,8 @@ function ContactPage() {
   return (
     <>
       <section className="relative isolate overflow-hidden gradient-hero text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <Breadcrumb crumbs={[{ label: t("nav.contact") }]} />
+        <div className="mx-auto max-w-7xl px-4 pt-10 pb-20 sm:px-6 lg:px-8">
           <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.contact")}</p>
           <h1 className="mt-2 max-w-3xl text-4xl font-black tracking-tight sm:text-5xl">{t("section.contact")}</h1>
         </div>
@@ -63,7 +65,7 @@ function ContactPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr]">
-          <div className="space-y-5">
+          <div className="space-y-2">
             <Card icon={<MapPin className="h-5 w-5" />} title={t("contact.address")}>
               <p className="leading-relaxed">{lang === "ta" ? BUSINESS.address.ta : BUSINESS.address.en}</p>
               <a

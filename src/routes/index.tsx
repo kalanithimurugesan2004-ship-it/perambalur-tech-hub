@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, MapPin, Phone, ShieldCheck, Sparkles, Star, Award, Users, Boxes, BadgeCheck } from "lucide-react";
+import { ArrowRight, MapPin, Phone, ShieldCheck, Sparkles, Star, Award, Users, Boxes, BadgeCheck, ShoppingCart, Monitor, Camera, Network, Headphones, RefreshCw, Wrench } from "lucide-react";
 import * as Icons from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import heroImg from "@/assets/hero-shop.jpg";
+import techHeroBg from "@/assets/tech-hero-bg.png";
 import ownerImg from "@/assets/owner.png";
 import { BrandMarquee } from "@/components/site/BrandMarquee";
 import { ShopGallery, ShopGalleryMarquee } from "@/components/site/ShopGallery";
-import { TechHeroAnimation3D } from "@/components/site/TechHeroAnimation3D";
+import { PremiumShowroomShowcase } from "@/components/site/PremiumShowroomShowcase";
 import { useI18n } from "@/lib/i18n";
 import { BUSINESS, SERVICES, TESTIMONIALS, telLink, whatsappLink } from "@/lib/business";
 import { PRODUCT_CATEGORIES } from "@/lib/product-catalog";
@@ -67,108 +68,141 @@ function HomePage() {
   const { t, lang } = useI18n();
   const [showAllCategories, setShowAllCategories] = useState(false);
 
+  useEffect(() => {
+    // Scroll to the top on load/refresh to ensure it starts at the beginning
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* HERO */}
-      <section id="home" className="relative isolate overflow-hidden lg:h-[calc(100vh-5.5rem)] lg:min-h-[550px] lg:flex lg:items-center py-8 lg:py-0">
+      <section id="home" className="relative isolate overflow-hidden lg:h-[calc(100vh-7.25rem)] lg:min-h-[580px] lg:flex py-10 lg:py-0">
         <div className="absolute inset-0 -z-10">
           <img
-            src={heroImg}
+            src={techHeroBg}
             alt=""
             width={1600}
             height={1024}
-            className="hero-3d-bg h-full w-full object-cover opacity-25"
+            className="hero-3d-bg h-full w-full object-cover opacity-35"
           />
-          <div className="absolute inset-0 gradient-hero opacity-95" />
+          <div className="absolute inset-0 gradient-hero opacity-90" />
         </div>
 
-        <div className="mx-auto max-w-7xl px-4 w-full sm:px-6 lg:px-8 py-6 lg:py-8">
-          <div className="grid items-center gap-8 lg:grid-cols-[1.25fr_0.75fr] w-full">
-            <div className="animate-fade-up text-primary-foreground">
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-semibold backdrop-blur">
-                <Sparkles className="h-3.5 w-3.5 text-secondary" />
-                {t("hero.eyebrow")}
+        <div className="mx-auto max-w-7xl px-4 w-full sm:px-6 lg:px-8 py-4 lg:py-6 h-full flex flex-col justify-between gap-4 lg:gap-6">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] w-full">
+            
+            {/* LEFT SIDE (55%) */}
+            <div className="animate-fade-up text-primary-foreground lg:pr-4">
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/40 px-4 py-1.5 text-xs font-bold text-cyan-300 backdrop-blur shadow-soft">
+                <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                Trusted since 2009 • Perambalur
               </span>
-              <h1 className="mt-3 text-3xl font-black leading-[1.1] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem]">
-                {t("hero.headline")}
-              </h1>
-              <p className="mt-3 max-w-xl text-sm text-primary-foreground/85 sm:text-base leading-relaxed">
-                {t("hero.subheadline")}
+              
+              {lang === "ta" ? (
+                <h1 className="mt-4 text-3xl font-extrabold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.75rem] xl:text-[3.25rem] font-display">
+                  பெரம்பலூரின் நம்பகமான <br />
+                  கணினி விற்பனை மற்றும் <br />
+                  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm font-black">
+                    சேவை மையம்
+                  </span>
+                </h1>
+              ) : (
+                <h1 className="mt-4 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-[3rem] xl:text-[3.5rem] font-display">
+                  Perambalur's Trusted <br />
+                  Computer Sales & <br />
+                  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-sm font-black">
+                    Service Center
+                  </span>
+                </h1>
+              )}
+
+              <p className="mt-4 max-w-xl text-sm text-slate-300 sm:text-base leading-relaxed font-medium">
+                {lang === "ta" 
+                  ? "கணினிகள், லேப்டாப்புகள், பிரிண்டர்கள், சிசிடிவி கேமராக்கள், நெட்வொர்க்கிங், பாகங்கள், புதுப்பிக்கப்பட்ட அமைப்புகள் மற்றும் தொழில்முறை பழுதுபார்ப்பு சேவைகளுக்கான உங்களின் ஒரே தீர்வு."
+                  : "Your one-stop solution for computers, laptops, printers, CCTV cameras, networking, accessories, refurbished systems & professional repair services."}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-2.5">
+              {/* CTA Buttons */}
+              <div className="mt-8 flex flex-wrap gap-3.5">
                 <a
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs sm:text-sm font-bold text-accent-foreground shadow-glow transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] hover:bg-[#20ba56] px-6 py-3.5 text-xs sm:text-sm font-black text-white shadow-[0_0_20px_-3px_rgba(37,211,102,0.5)] transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current mr-0.5" fill="currentColor">
+                    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84a11.77 11.77 0 0 0 1.6 5.94L0 24l6.36-1.66a11.83 11.83 0 0 0 5.68 1.45h.01c6.54 0 11.84-5.3 11.84-11.84a11.77 11.77 0 0 0-3.47-8.47Zm-8.48 18.2h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.78.99 1-3.68-.23-.38a9.82 9.82 0 0 1-1.5-5.19c0-5.43 4.42-9.85 9.86-9.85 2.63 0 5.1 1.03 6.96 2.89a9.78 9.78 0 0 1 2.89 6.97c0 5.44-4.42 9.85-9.86 9.85Zm5.4-7.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.78-1.48-1.74-1.65-2.04-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.49.1-.2.05-.37-.03-.52-.07-.15-.66-1.6-.91-2.19-.24-.58-.49-.5-.66-.51l-.56-.01c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.45s1.06 2.84 1.21 3.04c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.49 1.68.62.7.22 1.34.19 1.85.12.56-.08 1.75-.71 2-1.4.25-.69.25-1.28.17-1.4-.07-.13-.27-.2-.57-.35Z" />
+                  </svg>
                   {t("cta.whatsapp")}
-                  <ArrowRight className="h-4 w-4" />
                 </a>
                 <a
                   href={telLink(BUSINESS.phones[0])}
-                  className="inline-flex items-center gap-2 rounded-full gradient-cta px-4 py-2.5 text-xs sm:text-sm font-bold text-secondary-foreground shadow-elevated transition hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 px-6 py-3.5 text-xs sm:text-sm font-extrabold text-slate-950 shadow-[0_0_20px_rgba(245,158,11,0.25)] transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-4 w-4 animate-pulse" />
                   {t("cta.call")}
                 </a>
                 <a
                   href={BUSINESS.mapLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-primary-foreground backdrop-blur transition hover:bg-primary-foreground/15"
+                  className="inline-flex items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 px-6 py-3.5 text-xs sm:text-sm font-black text-white transition duration-300 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-4 w-4 text-cyan-400" />
                   {t("cta.visit")}
                 </a>
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              {/* Glass Stats Row */}
+              <div className="mt-10 p-4 sm:p-5 rounded-3xl border border-white/5 bg-slate-950/40 backdrop-blur-md grid grid-cols-2 lg:grid-cols-4 gap-6 shadow-2xl">
                 {[
-                  { v: "15+", k: "stats.years", Icon: Award },
-                  { v: "5000+", k: "stats.customers", Icon: Users },
-                  { v: "100+", k: "stats.products", Icon: Boxes },
-                  { v: "20+", k: "stats.brands", Icon: BadgeCheck },
-                ].map((s, idx, arr) => (
-                  <div key={s.k} className="flex items-center">
-                    <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-black/20 px-4 py-2.5 backdrop-blur-sm">
-                      <s.Icon className="h-4 w-4 text-secondary shrink-0" />
-                      <div>
-                        <p className="text-lg font-black leading-none text-white">{s.v}</p>
-                        <p className="text-[10px] font-semibold text-white/70 leading-tight mt-0.5">{t(s.k)}</p>
-                      </div>
+                  { v: "15+", label: lang === "ta" ? "சேவை ஆண்டுகள்" : "Years of Service", icon: <Award className="h-5.5 w-5.5 text-emerald-400" /> },
+                  { v: "5000+", label: lang === "ta" ? "மகிழ்ச்சியான வாடிக்கையாளர்கள்" : "Happy Customers", icon: <Users className="h-5.5 w-5.5 text-cyan-400" /> },
+                  { v: "100+", label: lang === "ta" ? "தயாரிப்பு வகைகள்" : "Product Range", icon: <ShoppingCart className="h-5.5 w-5.5 text-amber-400" /> },
+                  { v: "20+", label: lang === "ta" ? "நம்பகமான பிராண்டுகள்" : "Trusted Brands", icon: <ShieldCheck className="h-5.5 w-5.5 text-purple-400" /> },
+                ].map((s, idx) => (
+                  <div key={idx} className="flex items-center gap-3.5 px-2">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-soft">
+                      {s.icon}
                     </div>
-                    {idx < arr.length - 1 && (
-                      <div className="mx-1.5 h-8 w-px bg-white/10" />
-                    )}
+                    <div>
+                      <p className="text-xl sm:text-2xl font-black text-white leading-none tracking-tight">{s.v}</p>
+                      <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mt-1 leading-none">{s.label}</p>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="lg:hidden">
-              <ShopGallery compact autoPlayMs={3500} />
+            {/* RIGHT SIDE (45%) */}
+            <div className="relative w-full overflow-visible">
+              <PremiumShowroomShowcase />
             </div>
 
-            <div className="relative hidden lg:block max-w-md mx-auto w-full">
-              <div className="animate-float-soft">
-                <ShopGallery compact autoPlayMs={3500} />
-              </div>
-              <div className="absolute -bottom-6 -left-6 max-w-[220px] rounded-2xl bg-card p-3.5 border border-border shadow-elevated">
-                <div className="flex items-center gap-2 text-secondary">
-                  {[0,1,2,3,4].map((i) => <Star key={i} className="h-4 w-4 fill-current" />)}
-                </div>
-                <p className="mt-2 text-xs font-semibold text-card-foreground">"Honest pricing. Quick service."</p>
-                <p className="mt-1 text-[10px] text-muted-foreground">— Verified customer, Perambalur</p>
-              </div>
-              <div className="absolute -right-6 top-8 rounded-2xl bg-card p-3.5 border border-border shadow-elevated">
-                <ShieldCheck className="h-6 w-6 text-accent" />
-                <p className="mt-1 text-xs font-bold text-card-foreground">Genuine Products</p>
-                <p className="text-[10px] text-muted-foreground">Brand warranty</p>
-              </div>
-            </div>
           </div>
+
+          {/* Feature Services Bar Capsule */}
+          <div className="w-full mt-6 lg:mt-4 p-4 sm:p-5 rounded-3xl border border-white/5 bg-slate-950/60 backdrop-blur-md shadow-2xl grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-6">
+            {[
+              { title: lang === "ta" ? "விற்பனை & சேவை" : "Sales & Service", desc: lang === "ta" ? "அனைத்து முன்னணி பிராண்டுகளும்" : "All leading brands", icon: <Monitor className="h-5 w-5 text-cyan-400" /> },
+              { title: lang === "ta" ? "சிசிடிவி நிறுவல்" : "CCTV Installation", desc: lang === "ta" ? "எச்டி & ஐபி கேமராக்கள்" : "HD & IP Cameras", icon: <Camera className="h-5 w-5 text-purple-400" /> },
+              { title: lang === "ta" ? "நெட்வொர்க்கிங் தீர்வுகள்" : "Networking Solutions", desc: lang === "ta" ? "வைஃபை, லேன், ரவுட்டர்கள்" : "WiFi, LAN, Routers", icon: <Network className="h-5 w-5 text-blue-400" /> },
+              { title: lang === "ta" ? "துணைப் பொருட்கள்" : "Accessories", desc: lang === "ta" ? "அசல் & தரம்" : "Genuine & Quality", icon: <Headphones className="h-5 w-5 text-emerald-400" /> },
+              { title: lang === "ta" ? "புதுப்பிக்கப்பட்ட அமைப்புகள்" : "Refurbished Systems", desc: lang === "ta" ? "சிறந்த செயல்திறன்" : "Best Performance", icon: <RefreshCw className="h-5 w-5 text-amber-400 animate-spin-slow" /> },
+              { title: lang === "ta" ? "இடத்திற்கே வந்து சேவை" : "On-site Support", desc: lang === "ta" ? "விரைவான & நம்பகமான" : "Quick & Reliable", icon: <Wrench className="h-5 w-5 text-rose-400" /> }
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3 px-1">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/5 border border-white/5 shadow-inner">
+                  {item.icon}
+                </div>
+                <div>
+                  <p className="text-xs sm:text-sm font-black text-white leading-none">{item.title}</p>
+                  <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 mt-1 leading-none">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -179,10 +213,13 @@ function HomePage() {
       <ShopGalleryMarquee />
 
       {/* SERVICES */}
-      <section id="services" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section id="services" className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">01</span>
+              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.services")}</p>
+            </div>
             <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.services")}</h2>
             <p className="mt-3 text-muted-foreground">{t("section.servicesSub")}</p>
           </div>
@@ -193,7 +230,7 @@ function HomePage() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.slice(0, 8).map((s) => (
-            <div key={s.key} className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover">
+            <div key={s.key} className="group relative overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 glass-card glow-hover">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition group-hover:bg-primary group-hover:text-primary-foreground">
                 <Icon name={s.icon} className="h-6 w-6" />
               </span>
@@ -205,11 +242,14 @@ function HomePage() {
       </section>
 
       {/* PRODUCT CATEGORIES */}
-      <section id="products" className="bg-muted/40 py-20">
+      <section id="products" className="bg-muted/40 py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div className="max-w-2xl">
-              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">02</span>
+                <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.products")}</p>
+              </div>
               <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.products")}</h2>
               <p className="mt-3 text-muted-foreground">{t("section.productsSub")}</p>
             </div>
@@ -224,7 +264,7 @@ function HomePage() {
                 key={c.key}
                 to="/products"
                 hash={c.key}
-                className={`group relative overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-sm p-6 glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${categoryColors[c.key]?.bg || "hover:border-primary/40 hover:shadow-primary/10"}`}
+                className={`group relative overflow-hidden rounded-2xl border border-border bg-card/60 backdrop-blur-sm p-6 glass-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${categoryColors[c.key]?.bg || "hover:border-primary/40 hover:shadow-primary/10"}`}
               >
                 <div className="flex items-start justify-between">
                   <span className={`grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${categoryColors[c.key]?.gradient || "gradient-hero"} text-white shadow-soft transition-transform group-hover:scale-105 duration-300`}>
@@ -259,10 +299,10 @@ function HomePage() {
       </section>
 
       {/* ABOUT OWNER */}
-      <section id="about" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section id="about" className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative mx-auto max-w-xs sm:max-w-sm lg:mx-0">
-            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border/80 shadow-elevated relative group">
+            <div className="aspect-[3/4] overflow-hidden rounded-3xl bg-card border border-border shadow-elevated relative group">
               <img
                 src={ownerImg}
                 alt="R. C. Ramalingam"
@@ -283,7 +323,10 @@ function HomePage() {
           </div>
 
           <div>
-            <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.about")}</p>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold font-mono tracking-widest text-primary/40 bg-primary/5 px-2 py-0.5 rounded">03</span>
+              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("nav.about")}</p>
+            </div>
             <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl text-gradient">{t("section.about")}</h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">{t("section.aboutBody")}</p>
             <Link
@@ -297,10 +340,13 @@ function HomePage() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-primary py-20 text-primary-foreground">
+      <section className="bg-primary py-12 sm:py-16 text-primary-foreground">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("section.testimonials")}</p>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-xs font-bold font-mono tracking-widest text-secondary/40 bg-secondary/5 px-2 py-0.5 rounded">04</span>
+              <p className="text-sm font-bold uppercase tracking-widest text-secondary">{t("section.testimonials")}</p>
+            </div>
             <h2 className="mt-2 text-3xl font-black tracking-tight sm:text-4xl">{t("section.testimonials")}</h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -341,7 +387,7 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl gradient-cta px-8 py-14 text-secondary-foreground shadow-elevated sm:px-14">
           <div className="relative z-10 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
             <div className="max-w-xl">

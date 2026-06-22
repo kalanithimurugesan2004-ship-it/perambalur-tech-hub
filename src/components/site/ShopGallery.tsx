@@ -153,7 +153,7 @@ export function ShopGalleryMarquee() {
   const items = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
 
   return (
-    <section className="overflow-hidden border-y border-border/60 bg-muted/30 py-10">
+    <section className="overflow-hidden border-y border-border bg-muted/30 py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-sm font-bold uppercase tracking-widest text-secondary">
           {lang === "ta" ? "எங்கள் கடை" : "Our Store"}
@@ -170,7 +170,7 @@ export function ShopGalleryMarquee() {
           {items.map((img, i) => (
             <figure
               key={`${img.alt}-${i}`}
-              className="w-64 shrink-0 overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-soft sm:w-72"
+              className="w-64 shrink-0 overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-soft sm:w-72"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={img.src} alt={img.alt} className="h-full w-full object-cover" loading="lazy" />

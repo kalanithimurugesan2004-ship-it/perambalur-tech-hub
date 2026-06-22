@@ -228,11 +228,118 @@ import dellDc15250_2 from "@/assets/dell-dc15250-2.jpg";
 import dellDc15250_3 from "@/assets/dell-dc15250-3.jpg";
 import dellDc15250_4 from "@/assets/dell-dc15250-4.jpg";
 
+import hp12aToner1 from "@/assets/hp-12a-toner-1.jpg";
+import hp12aToner2 from "@/assets/hp-12a-toner-2.jpg";
+import hp12aToner3 from "@/assets/hp-12a-toner-3.jpg";
+import hp12aToner4 from "@/assets/hp-12a-toner-4.jpg";
+
+import hp12aPressureRoller1 from "@/assets/hp-12a-pressure-roller-1.jpg";
+import hp12aPressureRoller2 from "@/assets/hp-12a-pressure-roller-2.jpg";
+import hp12aPressureRoller3 from "@/assets/hp-12a-pressure-roller-3.jpg";
+
+import hikvisionRam1 from "@/assets/hikvision-ram-1.jpg";
+import hikvisionRam2 from "@/assets/hikvision-ram-2.jpg";
+import hikvisionRam3 from "@/assets/hikvision-ram-3.jpg";
+import hikvisionRam4 from "@/assets/hikvision-ram-4.jpg";
+
+import aarvexRam1 from "@/assets/aarvex-ram-1.jpg";
+import aarvexRam2 from "@/assets/aarvex-ram-2.jpg";
+import aarvexRam3 from "@/assets/aarvex-ram-3.jpg";
+
+import hp88aToner1 from "@/assets/hp-88a-toner-1.jpg";
+import hp88aToner2 from "@/assets/hp-88a-toner-2.jpg";
+import hp88aToner3 from "@/assets/hp-88a-toner-3.jpg";
+import hp88aToner4 from "@/assets/hp-88a-toner-4.jpg";
+
+import crucialLaptopRam1 from "@/assets/crucial-laptop-ram-1.jpg";
+import crucialLaptopRam2 from "@/assets/crucial-laptop-ram-2.jpg";
+import crucialLaptopRam3 from "@/assets/crucial-laptop-ram-3.jpg";
+
+import crucialDesktopRam1 from "@/assets/crucial-desktop-ram-1.jpg";
+import crucialDesktopRam2 from "@/assets/crucial-desktop-ram-2.jpg";
+import crucialDesktopRam3 from "@/assets/crucial-desktop-ram-3.jpg";
+
+import acerAdapter135w1 from "@/assets/acer-adapter-135w-1.jpg";
+import acerAdapter135w2 from "@/assets/acer-adapter-135w-2.jpg";
+import acerAdapter135w3 from "@/assets/acer-adapter-135w-3.jpg";
+
+import acuraaCat6Cable1 from "@/assets/acuraa-cat6-cable-1.jpg";
+import acuraaCat6Cable2 from "@/assets/acuraa-cat6-cable-2.jpg";
+import acuraaCat6Cable3 from "@/assets/acuraa-cat6-cable-3.jpg";
+import acuraaCat6Cable4 from "@/assets/acuraa-cat6-cable-4.jpg";
+
+import lgAdaptor19v1 from "@/assets/lg-adaptor-19v-1.jpg";
+import lgAdaptor19v2 from "@/assets/lg-adaptor-19v-2.jpg";
+import lgAdaptor19v3 from "@/assets/lg-adaptor-19v-3.jpg";
+
 export const ACER_LAPTOP_BAG_IMAGES = [
   acerLaptopBag1,
   acerLaptopBag2,
   acerLaptopBag3,
   acerLaptopBag4
+];
+
+export const HP_88A_TONER_IMAGES = [
+  hp88aToner1,
+  hp88aToner2,
+  hp88aToner3,
+  hp88aToner4
+];
+
+export const CRUCIAL_LAPTOP_RAM_IMAGES = [
+  crucialLaptopRam1,
+  crucialLaptopRam2,
+  crucialLaptopRam3
+];
+
+export const CRUCIAL_DESKTOP_RAM_IMAGES = [
+  crucialDesktopRam1,
+  crucialDesktopRam2,
+  crucialDesktopRam3
+];
+
+export const ACER_135W_ADAPTER_IMAGES = [
+  acerAdapter135w1,
+  acerAdapter135w2,
+  acerAdapter135w3
+];
+export const ACURAA_CAT6_CABLE_IMAGES = [
+  acuraaCat6Cable1,
+  acuraaCat6Cable2,
+  acuraaCat6Cable3,
+  acuraaCat6Cable4
+];
+
+export const LG_ADAPTOR_19V_IMAGES = [
+  lgAdaptor19v1,
+  lgAdaptor19v2,
+  lgAdaptor19v3
+];
+
+export const HP_12A_TONER_IMAGES = [
+  hp12aToner1,
+  hp12aToner2,
+  hp12aToner3,
+  hp12aToner4
+];
+
+export const HP_12A_PRESSURE_ROLLER_IMAGES = [
+  hp12aPressureRoller1,
+  hp12aPressureRoller2,
+  hp12aPressureRoller3
+];
+
+export const HIKVISION_RAM_IMAGES = [
+  hikvisionRam1,
+  hikvisionRam2,
+  hikvisionRam3,
+  hikvisionRam4
+];
+
+export const AARVEX_RAM_IMAGES = [
+  aarvexRam1,
+  aarvexRam2,
+  aarvexRam3
 ];
 
 export const DELL_LAPTOP_BAG_IMAGES = [
@@ -591,6 +698,16 @@ const PRODUCT_IMAGES: Record<string, string> = {
   UPS: ups,
   "Power Strips": powerStrip,
   Webcams: webcam,
+  "12A HP TONER BOTTLE MAGIC": hp12aToner1,
+  "12A PRESSURE ROLLER HP": hp12aPressureRoller1,
+  "16GB DDR4 RAM HIKVISION": hikvisionRam1,
+  "16GB RAM DDR4 DESKTOP AARVEX": aarvexRam1,
+  "88A TONER POWDER BOTTLE": hp88aToner1,
+  "8GB DDR4 3200 LAPTOP RAM CRUCIAL": crucialLaptopRam1,
+  "8GB DDR4 DESKTOP RAM": crucialDesktopRam1,
+  "ACER 135 WATTS ADAPTOR": acerAdapter135w1,
+  "ACURAA CAT6 CABLE OUT DOOR": acuraaCat6Cable1,
+  "ADAPTOR MNT LG 19V 2.1A": lgAdaptor19v1,
   "Printer Ink": ink,
   "Printer Toners": toner,
   "Refurbished Desktops": refurbDesktop,
@@ -978,8 +1095,18 @@ export function getProductImage(productName: string, categoryKey?: string): stri
   if (/dell.*bag/i.test(productName)) return dellLaptopBag1;
   if (/acer.*(bag|carry.*case)/i.test(productName)) return acerLaptopBag1;
   if (/bag|carry.*case/i.test(productName)) return acerLaptopBag1;
+  if (/hikvision.*ram|ram.*hikvision/i.test(productName)) return hikvisionRam1;
+  if (/aarvex.*ram|ram.*aarvex/i.test(productName)) return aarvexRam1;
+  if (/crucial.*(laptop.*ram|ram.*laptop)/i.test(productName)) return crucialLaptopRam1;
+  if (/8gb.*ddr4.*desktop.*ram|crucial.*desktop.*ram/i.test(productName)) return crucialDesktopRam1;
+  if (/acer.*135.*watts.*adaptor|acer.*135w.*adaptor/i.test(productName)) return acerAdapter135w1;
+  if (/acuraa.*cat6|cat6.*acuraa/i.test(productName)) return acuraaCat6Cable1;
+  if (/lg.*(adaptor|charger).*19v/i.test(productName)) return lgAdaptor19v1;
 
   // Printers
+  if (/12a.*toner.*magic/i.test(productName)) return hp12aToner1;
+  if (/12a.*pressure.*roller/i.test(productName)) return hp12aPressureRoller1;
+  if (/88a.*toner/i.test(productName)) return hp88aToner1;
   if (/epson.*l3210/i.test(productName)) return epsonL3210_2;
   if (/epson.*l3250/i.test(productName)) return epsonL3250_2;
   if (/epson.*l6460/i.test(productName)) return epsonL6460_1;
